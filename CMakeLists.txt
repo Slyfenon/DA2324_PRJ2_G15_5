@@ -12,4 +12,6 @@ add_executable(da_proj2 src/main.cpp
         src/Coordinate.h
         src/Coordinate.cpp
         src/Edge.cpp
+        src/Manager.h
+        src/Manager.cpp
 )
