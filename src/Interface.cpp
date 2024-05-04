@@ -48,6 +48,18 @@ int Interface::readEdgeNumber() {
     return stoi(option);
 }
 
+int Interface::readVertex() {
+    string option;
+    do {
+        cout << BOLD << BLUE << "\n\tVertex: " << RESET;
+        cin.clear();
+        cin >> option;
+        cin.ignore();
+    } while (false); // manager.validateVertex()
+
+    return stoi(option);
+}
+
 void Interface::startMenu() {
     clear();
     header();
@@ -56,7 +68,7 @@ void Interface::startMenu() {
     << BOLD << BLUE << "\t[1]" << RESET << " - Toy Graph" << endl
     << BOLD << BLUE << "\t[2]" << RESET << " - Extra Graph" << endl
     << BOLD << BLUE << "\t[3]" << RESET << " - Real World Graph" << endl
-    << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
+    << BOLD << RED << "\t[0]" << RESET << " - Exit" << endl;
 
     footer();
 
@@ -82,11 +94,52 @@ void Interface::startMenu() {
 }
 
 void Interface::mainMenu() {
+    clear();
+    header();
 
+    cout << "\tWhich " << BOLD << BLUE << "TSP Algorithm" << RESET " would you like to run?\n" << endl
+         << BOLD << BLUE << "\t[1]" << RESET << " - Backtracking" << endl
+         << BOLD << BLUE << "\t[2]" << RESET << " - Triangular Approximantion Heuristic" << endl
+         << BOLD << BLUE << "\t[3]" << RESET << " - Other Sus Heuristic" << endl
+         << BOLD << BLUE << "\t[4]" << RESET << " - Arbitrary Starting Point" << endl
+         << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
+
+    footer();
+
+    int option = readOption(4);
+
+    switch(option) {
+        case 1:
+            // manager.backtracking
+            // printBacktracking
+            break;
+        case 2:
+            triangularHeuristicMenu();
+            break;
+        case 3:
+            otherHeuristicMenu();
+            break;
+        case 4:
+            realWorldGraphsMenu();
+            break;
+        case 0:
+            startMenu();
+        default:
+            mainMenu();
+            break;
+    }
+
+    mainMenu();
 }
 
 void Interface::exitMenu() {
+    clear();
+    header();
 
+    cout << BOLD << "\n\t\t\t   Thank you for using our TSP Calculator!" << RESET << endl;
+
+    footer();
+    exit(EXIT_SUCCESS);
 }
 
 void Interface::loadToyGraphMenu() {
@@ -104,9 +157,10 @@ void Interface::loadToyGraphMenu() {
     int option = readOption(3);
 
     if (option == 0) startMenu();
-    else ; // manager.loadToyGraph(option)
-
-    mainMenu();
+    else {
+        // manager.loadToyGraph(option)
+        mainMenu();
+    };
 }
 
 void Interface::loadRealGraphMenu() {
@@ -123,9 +177,10 @@ void Interface::loadRealGraphMenu() {
     int option = readOption(3);
 
     if (option == 0) startMenu();
-    else ; // manager.loadRealGraph(option)
-
-    mainMenu();
+    else {
+        // manager.loadRealGraph(option)
+        mainMenu();
+    };
 }
 
 void Interface::loadExtraGraphMenu() {
@@ -142,19 +197,86 @@ void Interface::loadExtraGraphMenu() {
     int option = readEdgeNumber();
 
     if (option == 0) startMenu();
-    else ; // manager.loadExtraGraph(option);
-
-    mainMenu();
+    else {
+        // manager.loadExtraGraph(option);
+        mainMenu();
+    }
 }
 
 void Interface::triangularHeuristicMenu() {
+    clear();
+    header();
 
+    cout << "\tWhat would you like to" << BOLD << BLUE <<  " do?\n" << RESET << endl
+    << BOLD << BLUE << "\t[1]" << RESET << " - Run Triangular Heuristics Algorithm" << endl
+    << BOLD << BLUE << "\t[2]" << RESET << " - Run Comparison with Backtracking Algorithm" << endl
+    << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
+
+    footer();
+    int option = readOption(2);
+
+    switch(option) {
+        case 1:
+            // manager.triangularHeuristics
+            // printPath
+            break;
+        case 2:
+            // manager.triangularHeuristics
+            // printMetrics
+            // manager.backtracking
+            // printMetrics
+            break;
+        case 0:
+            mainMenu();
+    }
+
+    triangularHeuristicMenu();
 }
 
 void Interface::otherHeuristicMenu() {
+    clear();
+    header();
 
+    cout << "\tWhat would you like to" << BOLD << BLUE <<  " do?\n" << RESET << endl
+         << BOLD << BLUE << "\t[1]" << RESET << " - Run Sus Heuristics Algorithm" << endl
+         << BOLD << BLUE << "\t[2]" << RESET << " - Run Comparison with Backtracking Algorithm" << endl
+         << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
+
+    footer();
+    int option = readOption(2);
+
+    switch(option) {
+        case 1:
+            // manager.susHeuristics
+            // printPath
+            break;
+        case 2:
+            // manager.susHeuristics
+            // printMetrics
+            // manager.backtracking
+            // printMetrics
+            break;
+        case 0:
+            mainMenu();
+    }
+
+    otherHeuristicMenu();
 }
 
 void Interface::realWorldGraphsMenu() {
+    clear();
+    header();
 
+    cout << "\n\t\t    Insert the" << BOLD << BLUE << " start node " << RESET << "for the" << BOLD << BLUE << " TSP "
+    << RESET << "or" << BOLD << RED << " [0] " << RESET << "to" << BOLD << RED << " go back" << RESET << endl;
+
+    footer();
+    int option = readVertex();
+
+    if (option == 0) mainMenu();
+    else {
+        // manager.realWorldTSP(option)
+        // printPath
+        realWorldGraphsMenu();
+    }
 }

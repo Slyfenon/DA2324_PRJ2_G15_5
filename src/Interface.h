@@ -26,6 +26,7 @@ private:
     void inputWait();
     int readOption(unsigned int options);
     int readEdgeNumber();
+    int readVertex();
 
 public:
 
