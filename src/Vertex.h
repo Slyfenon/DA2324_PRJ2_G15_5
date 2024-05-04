@@ -9,6 +9,7 @@ class Vertex {
     private:
         Coordinate *coord;
         int id;
+        std::string label;
         std::vector<Edge*> adj;
         bool visited = false;
         bool processing = false;
@@ -22,6 +23,9 @@ class Vertex {
 
 
         virtual int getId() const;
+
+        void setLabel(const std::string &label);
+        std::string getLabel() const;
 
 
         /**
