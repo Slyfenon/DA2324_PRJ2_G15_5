@@ -33,10 +33,17 @@ void Parser::readToyGraph(const std::string& fileName, Graph* graph) {
             getline(iss, destLabel, '\r');
         }
 
-            graph->addEdge( graph->addVertex(stoi(origin)), graph->addVertex(stoi(dest)), stoi(dist));
-    }
+        if(!tourism) {
+            graph->addVertex(stoi(origin));
+            graph->addVertex(stoi(dest));
+            graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+        }
+        }
     for(auto v : graph->getVertexSet()){
-        std::cout << v->getId() << std::endl;
+        std::cout << "- " << v->getId() << std::endl;
+        for(auto e : v->getAdj()){
+            std::cout << e->getOrig() <<" "<<e->getDest()<< " "<< e->getWeight() << std::endl;
+        }
     }
 
 }
