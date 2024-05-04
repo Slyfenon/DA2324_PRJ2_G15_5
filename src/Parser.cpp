@@ -37,6 +37,7 @@ void Parser::readToyGraph(const std::string& fileName, Graph* graph) {
             graph->addVertex(stoi(origin));
             graph->addVertex(stoi(dest));
             graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+            graph->addEdge(stoi(dest), stoi(origin), stod(dist));
         } else {
             graph->addVertex(stoi(origin));
             graph->addVertex(stoi(dest));
@@ -45,12 +46,7 @@ void Parser::readToyGraph(const std::string& fileName, Graph* graph) {
             v = graph->findVertex(stoi(dest));
             v->setLabel(destLabel);
             graph->addEdge(stoi(origin), stoi(dest), stod(dist));
-        }
-    }
-    for(auto v : graph->getVertexSet()){
-        std::cout << "- " << v->getId() << v->getLabel() << std::endl;
-        for(auto e : v->getAdj()){
-            std::cout << e->getOrig() <<" "<<e->getDest()<< " "<< e->getWeight() << std::endl;
+            graph->addEdge(stoi(dest), stoi(origin), stod(dist));
         }
     }
 
