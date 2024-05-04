@@ -3,4 +3,13 @@ project(da_proj2)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(da_proj2 src/main.cpp)
+add_executable(da_proj2 src/main.cpp
+        src/Parser.h
+        src/Parser.cpp
+        src/Vertex.cpp
+        src/Graph.h
+        src/Graph.cpp
+        src/Coordinate.h
+        src/Coordinate.cpp
+        src/Edge.cpp
+)
