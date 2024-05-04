@@ -2,10 +2,13 @@
 #include <chrono>
 #include "Parser.h"
 #include "Manager.h"
+#include "Interface.h"
 
 
 int main() {
-    Parser parser = Parser();
+    Interface interface;
+    interface.startMenu();
+    /*Parser parser = Parser();
     Manager manager = Manager();
 
     parser.readToyGraph("stadiums.csv", manager.getGraph());
@@ -34,5 +37,5 @@ int main() {
 
 
 
-    return 0;
+    return 0;*/
 }

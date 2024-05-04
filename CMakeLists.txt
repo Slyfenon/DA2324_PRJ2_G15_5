@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.27)
 project(da_proj2)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -14,4 +14,6 @@ add_executable(da_proj2 src/main.cpp
         src/Edge.cpp
         src/Manager.h
         src/Manager.cpp
+        src/Interface.h
+        src/Interface.cpp
 )
