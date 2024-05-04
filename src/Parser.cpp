@@ -19,13 +19,13 @@ void Parser::readToyGraph(const std::string& fileName, Graph* graph) {
 
     inputFile.open("../data/toy/" + fileName);
     getline(inputFile, line);
-    while(getline(inputFile, line)){
+    while(getline(inputFile, line)) {
         iss.clear();
         iss.str(line);
 
         getline(iss, origin, ',');
         getline(iss, dest, ',');
-        if(!tourism)
+        if (!tourism)
             getline(iss, dist, '\r');
         else {
             getline(iss, dist, ',');
@@ -33,17 +33,26 @@ void Parser::readToyGraph(const std::string& fileName, Graph* graph) {
             getline(iss, destLabel, '\r');
         }
 
-        if(!tourism) {
+        if (!tourism) {
             graph->addVertex(stoi(origin));
             graph->addVertex(stoi(dest));
             graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+        } else {
+            graph->addVertex(stoi(origin));
+            graph->addVertex(stoi(dest));
+            Vertex *v = graph->findVertex(stoi(origin));
+            v->setLabel(originLabel);
+            v = graph->findVertex(stoi(dest));
+            v->setLabel(destLabel);
+            graph->addEdge(stoi(origin), stoi(dest), stod(dist));
         }
-        }
+    }
     for(auto v : graph->getVertexSet()){
-        std::cout << "- " << v->getId() << std::endl;
+        std::cout << "- " << v->getId() << v->getLabel() << std::endl;
         for(auto e : v->getAdj()){
             std::cout << e->getOrig() <<" "<<e->getDest()<< " "<< e->getWeight() << std::endl;
         }
     }
 
 }
+

@@ -40,3 +40,11 @@ Coordinate *Vertex::getCoord() const {
     return coord;
 }
 
+void Vertex::setLabel(const std::string &label) {
+    this->label = label;
+}
+
+std::string Vertex::getLabel() const {
+    return label;
+}
+
