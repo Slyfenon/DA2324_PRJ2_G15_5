@@ -5,7 +5,7 @@
 int main() {
     Parser parser;
     Graph* graph = new Graph();
-    parser.readToyGraph("shipping.csv", graph);
+    parser.readToyGraph("tourism.csv", graph);
     std::cout << "------------------------------------------------------------" << std::endl;
     //parser.readToyGraph("stadiums.csv");
     //std::cout << "------------------------------------------------------------" << std::endl;
