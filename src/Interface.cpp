@@ -178,7 +178,7 @@ void Interface::loadRealGraphMenu() {
 
     if (option == 0) startMenu();
     else {
-        // manager.loadRealGraph(option)
+        manager.loadRealGraph(option);
         mainMenu();
     };
 }
