@@ -15,3 +15,8 @@ double Coordinate::getLatitude() const {
 double Coordinate::getLongitude() const {
     return longitude;
 }
+
+Coordinate::Coordinate(double latitude, double longitude) {
+    this->latitude = latitude;
+    this->longitude = longitude;
+}

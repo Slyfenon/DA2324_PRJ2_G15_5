@@ -12,7 +12,7 @@ private:
 
 public:
     void readToyGraph(const std::string& fileName, Graph* graph);
-
+    void readExtraGraph(Graph *graph, int option);
 };
 
 
