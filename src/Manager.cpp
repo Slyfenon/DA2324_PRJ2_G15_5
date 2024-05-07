@@ -45,3 +45,24 @@ Graph *Manager::getGraph() const {
     return graph;
 }
 
+void Manager::loadToyGraph(int option) {
+    switch (option) {
+        case 1:
+            parser->readToyGraph("shipping.csv", graph);
+            break;
+        case 2:
+            parser->readToyGraph("stadiums.csv", graph);
+            break;
+        case 3:
+            parser->readToyGraph("tourism.csv", graph);
+            break;
+        default:
+            break;
+
+    }
+}
+
+void Manager::loadExtraGraph(int option) {
+    parser->readExtraGraph(graph, option);
+}
+

@@ -8,6 +8,7 @@ private:
     double latitude;
     double longitude;
 public:
+    Coordinate(double latitude, double longitude);
     void setLatitude(double& value);
     void setLongitude(double& value);
     double getLatitude() const;
