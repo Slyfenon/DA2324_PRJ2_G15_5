@@ -142,12 +142,4 @@ void Parser::readRealGraph(Graph *graph, const std::string& graphNumber){
         graph->addEdge(stoi(dest), stoi(origin), stod(dist));
     }
     inputFile.close();
-
-    int count = 0;
-    for(auto v : graph->getVertexSet()){
-        for(auto e : v->getAdj()){
-            count++;
-        }
-    }
-    std::cout << count << std::endl;
 }
