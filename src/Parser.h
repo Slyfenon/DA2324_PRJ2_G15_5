@@ -13,6 +13,10 @@ private:
 public:
     void readToyGraph(const std::string& fileName, Graph* graph);
     void readExtraGraph(Graph *graph, int option);
+
+    void readRealGraph(Graph *graph, std::string &graphNumber);
+
+    void readRealGraph(Graph *graph, const std::string &graphNumber);
 };
 
 

@@ -57,12 +57,17 @@ void Parser::readExtraGraph(Graph *graph, int option) {
     std::istringstream iss;
     std::string line;
 
+    int counter = 0;
+    int sum = 25;
+
     std::string id, origin, dest, dist, originLabel, destLabel,
             longitude, latitude;
 
     inputFile.open("../data/extra/nodes.csv");
     getline(inputFile, line);
     while (getline(inputFile, line)) {
+        if(counter > option)
+            break;
         iss.clear();
         iss.str(line);
 
@@ -73,16 +78,17 @@ void Parser::readExtraGraph(Graph *graph, int option) {
         graph->addVertex(stoi(id));
         Vertex *v = graph->findVertex(stoi(id));
         v->setCoord(new Coordinate(stod(longitude), stod(latitude)));
+        counter++;
     }
     inputFile.close();
 
-    int counter = 25;
-    int sum = 25;
+    counter = 25;
     while (counter <= option || (counter % 100 == 0 && counter <= 1000)) {
         inputFile.open("../data/extra/edges_" + std::to_string(counter) + ".csv");
         counter += sum;
         if(counter == 100) sum = 100;
 
+        getline(inputFile, line);
         while(getline(inputFile, line)) {
             iss.clear();
             iss.str(line);
@@ -98,3 +104,50 @@ void Parser::readExtraGraph(Graph *graph, int option) {
     }
 }
 
+void Parser::readRealGraph(Graph *graph, const std::string& graphNumber){
+
+    std::ifstream inputFile;
+    std::istringstream iss;
+    std::string line;
+
+    std::string id, origin, dest, dist,
+    longitude, latitude;
+
+    inputFile.open("../data/real/" + graphNumber + "/nodes.csv");
+    getline(inputFile, line);
+    while(getline(inputFile, line)) {
+        iss.clear();
+        iss.str(line);
+
+        getline(iss, id, ',');
+        getline(iss, longitude, ',');
+        getline(iss, latitude, '\r');
+        graph->addVertex(stoi(id));
+        Vertex *v = graph->findVertex(stoi(id));
+        v->setCoord(new Coordinate(stod(longitude), stod(latitude)));
+    }
+    inputFile.close();
+
+    inputFile.open("../data/real/" + graphNumber + "/edges.csv");
+    getline(inputFile, line);
+    while(getline(inputFile, line)) {
+        iss.clear();
+        iss.str(line);
+
+        getline(iss, origin, ',');
+        getline(iss, dest, ',');
+        getline(iss, dist, '\r');
+
+        graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+        graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+    }
+    inputFile.close();
+
+    int count = 0;
+    for(auto v : graph->getVertexSet()){
+        for(auto e : v->getAdj()){
+            count++;
+        }
+    }
+    std::cout << count << std::endl;
+}

@@ -66,3 +66,21 @@ void Manager::loadExtraGraph(int option) {
     parser->readExtraGraph(graph, option);
 }
 
+void Manager::loadRealGraph(int option) {
+    switch (option) {
+        case 1:
+            parser->readRealGraph(graph, "graph1");
+            break;
+        case 2:
+            parser->readRealGraph(graph, "graph2");
+            break;
+        case 3:
+            parser->readRealGraph( graph, "graph3");
+            break;
+        default:
+            break;
+
+    }
+
+}
+
