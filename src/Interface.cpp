@@ -158,7 +158,7 @@ void Interface::loadToyGraphMenu() {
 
     if (option == 0) startMenu();
     else {
-        // manager.loadToyGraph(option)
+        manager.loadToyGraph(option);
         mainMenu();
     };
 }
@@ -198,7 +198,7 @@ void Interface::loadExtraGraphMenu() {
 
     if (option == 0) startMenu();
     else {
-        // manager.loadExtraGraph(option);
+        manager.loadExtraGraph(option);
         mainMenu();
     }
 }
