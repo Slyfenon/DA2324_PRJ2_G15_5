@@ -2,23 +2,23 @@
 #include "Graph.h"
 
 Vertex* Graph::findVertex(const int &id) const {
-    for (Vertex* vertex : vertexSet) {
-        if (vertex->getId() == id) {
-            return vertex;
-        }
-    }
-    return nullptr;
+    auto it = vertexSet.find(id);
+    if (it == vertexSet.end())
+        return nullptr;
+    return (it->second);
 }
+
 
 
 bool Graph::addVertex(const int &id) {
     if (findVertex(id) != nullptr)
         return false;
-    vertexSet.push_back(new Vertex(id));
+    std::pair<int, Vertex*> p(id, new Vertex(id));
+    vertexSet.insert(p);
     return true;
 }
 
-std::vector<Vertex *> Graph::getVertexSet() const {
+std::unordered_map<int, Vertex*> Graph::getVertexSet() const {
     return vertexSet;
 }
 
@@ -35,9 +35,9 @@ Edge* Graph::addEdge(const int &sourc, const int& dest, double w) {
     return newEdge;
 }
 
-void Graph::setVertexSet(std::vector<Vertex *> &v) {
-    this->vertexSet = v;
-}
+//void Graph::setVertexSet(std::vector<Vertex *> &v) {
+ //   this->vertexSet = v;
+ //   }
 
 void Graph::deleteEdge(const int &s, Edge *Edge) const{
     Vertex *dest = findVertex(Edge->getDest());
@@ -84,11 +84,11 @@ bool Graph::removeEdge(const int &sourc, const int &dest) {
 bool Graph::removeVertex(const int &in) {
     auto it = vertexSet.begin();
 
-    while (it != vertexSet.end() && (*it) != findVertex(in)) it++;
+    while (it != vertexSet.end() && (*it).second != findVertex(in)) it++;
 
     if (it == vertexSet.end()) return false;
 
-    Vertex* vertex = *it;
+    Vertex* vertex = (*it).second;
 
     while (!vertex->adj.empty()) {
         Edge* Edge = vertex->adj[0];
@@ -104,6 +104,7 @@ bool Graph::removeVertex(const int &in) {
     delete vertex;
 
     return true;
+
 }
 
 
