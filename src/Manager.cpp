@@ -1,4 +1,6 @@
 
+#include <chrono>
+#include <iostream>
 #include "Manager.h"
 
 void checkAndUpdateBestPath(const std::vector<int>& path, std::vector<int>& bestPath, double& minCost, double currentCost, int firstVertex, Graph* graph) {
@@ -82,5 +84,23 @@ void Manager::loadRealGraph(int option) {
 
     }
 
+}
+
+std::vector<int> &Manager::backtracking() {
+    std::vector<int> path;
+    path.push_back(0);
+    std::vector<int> bestPath;
+    graph->findVertex(0)->setVisited(true);
+    double minCost = std::numeric_limits<double>::max();
+
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    tsp_backtracking(path, bestPath, minCost, 0.0);
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    for(auto v : bestPath){
+        std::cout << v << " ";
+    }
+    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
+
+    return bestPath;
 }
 
