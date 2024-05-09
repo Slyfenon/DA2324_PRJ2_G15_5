@@ -6,13 +6,15 @@
 #include <limits>
 #include <algorithm>
 #include <string>
+#include <unordered_set>
+#include <unordered_map>
 
 #define INF std::numeric_limits<double>::max();
 
 class Graph {
 
 protected:
-    std::vector<Vertex*> vertexSet;
+    std::unordered_map<int,Vertex*> vertexSet;
 
 public:
     /**
@@ -53,7 +55,7 @@ public:
      * Getter for the VertexSet.
      * @return Vector of Vertexes corresponding to the VertexSet.
      */
-    std::vector<Vertex*> getVertexSet() const;
+    std::unordered_map<int, Vertex *> getVertexSet() const;
 
     /**
      * Setter for the VertexSet
