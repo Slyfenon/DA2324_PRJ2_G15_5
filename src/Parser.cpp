@@ -63,9 +63,10 @@ void Parser::readExtraGraph(Graph *graph, int option) {
     std::string id, origin, dest, dist, originLabel, destLabel,
             longitude, latitude;
 
+
     inputFile.open("../data/extra/nodes.csv");
     getline(inputFile, line);
-    while (getline(inputFile, line)) {
+    while (getline(inputFile, line)  && counter < option) {
         if(counter > option)
             break;
         iss.clear();

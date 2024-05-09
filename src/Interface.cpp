@@ -110,8 +110,8 @@ void Interface::mainMenu() {
 
     switch(option) {
         case 1:
-            // manager.backtracking
-            // printBacktracking
+            manager.backtracking();
+            //printBacktracking();
             break;
         case 2:
             triangularHeuristicMenu();

@@ -15,6 +15,8 @@ public:
     Graph* getGraph() const;
     void loadToyGraph(int option);
     void tsp_backtracking(std::vector<int> &path, std::vector<int> &bestPath, double &minCost, double sumCost);
+    std::vector<int>& backtracking();
+    //void primMST();
     void loadExtraGraph(int option);
     void loadRealGraph(int option);
 };
