@@ -16,4 +16,5 @@ add_executable(da_proj2 src/main.cpp
         src/Manager.cpp
         src/Interface.h
         src/Interface.cpp
+        src/MutablePriorityQueue.h
 )
