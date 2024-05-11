@@ -48,3 +48,15 @@ std::string Vertex::getLabel() const {
     return label;
 }
 
+void Vertex::setDistance(double distance) {
+    this->distance = distance;
+}
+
+double Vertex::getDistance() const {
+    return distance;
+}
+
+bool Vertex::operator<(Vertex &vertex) const {
+    return this->distance < vertex.distance;
+}
+
