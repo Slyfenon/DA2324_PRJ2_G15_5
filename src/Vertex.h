@@ -4,6 +4,7 @@
 #include <string>
 #include "Edge.h"
 #include "Coordinate.h"
+#include "MutablePriorityQueue.h"
 
 class Vertex {
     private:
@@ -11,21 +12,29 @@ class Vertex {
         int id;
         std::string label;
         std::vector<Edge*> adj;
+        double distance = 0;
         bool visited = false;
         bool processing = false;
         Edge *path = nullptr;
+        int queueIndex = 0; 		// required by MutablePriorityQueue
         std::vector<Edge *> incoming;
         friend class Graph;
+        friend class MutablePriorityQueue<Vertex>;
 
     public:
 
         Vertex(const int& id);
 
+        bool operator<(Vertex & vertex) const; // // required by MutablePriorityQueue
 
-        virtual int getId() const;
+
+    virtual int getId() const;
 
         void setLabel(const std::string &label);
         std::string getLabel() const;
+
+        void setDistance(double distance);
+        double getDistance() const;
 
 
         /**

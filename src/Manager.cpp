@@ -3,6 +3,7 @@
 #include <iostream>
 #include <queue>
 #include "Manager.h"
+#include "MutablePriorityQueue.h"
 
 void checkAndUpdateBestPath(const std::vector<int>& path, std::vector<int>& bestPath, double& minCost, double currentCost, int firstVertex, Graph* graph) {
 
@@ -139,54 +140,45 @@ void Manager::preOrderWalk(std::vector<Edge*> MST, Vertex* v, std::vector<Vertex
 
 
 std::vector<Edge*> Manager::primMST() {
-    auto vertexSet = graph->getVertexSet();
-    unsigned long numVertices = vertexSet.size();
+    std::vector<Edge*> MST;
+   for(auto v :graph->getVertexSet()){
+       v.second->setDistance(std::numeric_limits<double>::max());
+       v.second->setPath(nullptr);
+       v.second->setVisited(false);
+   }
 
-    std::vector<bool> inMST(numVertices, false);
-    std::vector<PrimVertexInfo> primInfo(numVertices);
-    std::vector<Edge*> MSTEdges(numVertices - 1);
+   Vertex* root = graph->getVertexSet().find(0)->second;
+   root->setDistance(0);
 
-    for (auto& entry : vertexSet) {
-        int id = entry.first;
-        primInfo[id].id = id;
-        primInfo[id].key = std::numeric_limits<double>::max();
-        primInfo[id].parent = -1;
-    }
+   MutablePriorityQueue<Vertex> queue;
+   queue.insert(root);
 
-    primInfo[0].key = 0;
+    while (!queue.empty()){
+        Vertex* u = queue.extractMin();
+        u->setVisited(true);
 
-    std::priority_queue<PrimVertexInfo, std::vector<PrimVertexInfo>, CompareVertexKeys> pq;
-    for (int i = 0; i < numVertices; ++i)
-        pq.push(primInfo[i]);
-
-    while (!pq.empty()) {
-        PrimVertexInfo u = pq.top();
-        pq.pop();
-
-        inMST[u.id] = true;
-
-        for (Edge* edge : vertexSet[u.id]->getAdj()) {
-            int v = edge->getDest();
-            if (!inMST[v] && edge->getWeight() < primInfo[v].key) {
-                primInfo[v].parent = u.id;
-                primInfo[v].key = edge->getWeight();
-                pq.push(primInfo[v]);
+        for(Edge* edge : u->getAdj()){
+            Vertex* v = graph->findVertex(edge->getDest());
+            if(!v->isVisited()) {
+                auto oldDist = v->getDistance();
+                if (edge->getWeight() < oldDist) {
+                    v->setDistance(edge->getWeight());
+                    v->setPath(edge);
+                    if (oldDist == std::numeric_limits<double>::max()) {
+                        queue.insert(v);
+                    } else {
+                        queue.decreaseKey(v);
+                    }
+                }
             }
         }
     }
-
-    int edgeIndex = 0;
-    for (int i = 1; i < numVertices; ++i) {
-        int parent = primInfo[i].parent;
-        for (Edge* edge : vertexSet[i]->getAdj()) {
-            if (edge->getDest() == parent) {
-                MSTEdges[edgeIndex++] = edge;
-                break;
-            }
+    for(auto v : graph->getVertexSet()){
+        if(v.second->getPath() != nullptr){
+            MST.push_back(v.second->getPath());
         }
     }
-
-    return MSTEdges;
+    return MST;
 
 }
 
