@@ -16,8 +16,12 @@ public:
     void loadToyGraph(int option);
     void tsp_backtracking(std::vector<int> &path, std::vector<int> &bestPath, double &minCost, double sumCost);
     std::vector<int>& backtracking();
-    //void primMST();
+    void triangularInequality();
+    void preOrderWalk(std::vector<Edge*> MST, Vertex *v, std::vector<Vertex*> &preOrder);
+    std::vector<Edge *> primMST();
     void loadExtraGraph(int option);
     void loadRealGraph(int option);
+
+    void triangularInequality(Graph *graph);
 };
 #endif //DA_PROJ2_MANAGER_H
