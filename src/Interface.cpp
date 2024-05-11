@@ -114,6 +114,7 @@ void Interface::mainMenu() {
             //printBacktracking();
             break;
         case 2:
+            manager.triangularInequality();
             triangularHeuristicMenu();
             break;
         case 3:
