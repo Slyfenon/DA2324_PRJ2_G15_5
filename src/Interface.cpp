@@ -8,19 +8,19 @@ void Interface::clear() {
 
 void Interface::header() {
     clear();
-    std::cout << BOLD << " __________________________________________________________________________________________\n"
-              << "/-----/-----/-----/-----/-----/-----/-----/---\\--\\-----\\-----\\-----\\-----\\-----\\-----\\-----\\\n"
-              << "" << RESET << "|------------------------------- " << BOLD << BLUE << "TSP Calculator? (Group 5)" << RESET <<" --------------------------------|" << BOLD << "\n\n" << RESET;
+    std::cout << BOLD << " _________________________________________________________________________________________\n"
+              << "/-----/-----/-----/-----/-----/-----/-----/-----\\-----\\-----\\-----\\-----\\-----\\-----\\-----\\\n"
+              << "" << RESET << "|------------------------------- " << BOLD << BLUE << "TSP Calculator (Group 5)" << RESET <<" --------------------------------|" << BOLD << "\n\n" << RESET;
 }
 
 void Interface::footer() {
 
-    std::cout << BOLD << "\n\n" << "|------------------------------  " << BOLD << BLUE << "TSP Calculator? (Group 5)" << RESET << " --------------------------------|\n";
+    std::cout << BOLD << "\n\n" << "|------------------------------  " << BOLD << BLUE << "TSP Calculator (Group 5)" << RESET << " --------------------------------|\n";
 }
 
 void Interface::inputWait() {
     cin.clear();
-    cout << "\n\n\t\t\t\t  " << FAINT << "< Press " << RESET << BOLD << "ENTER" << RESET << FAINT << " to Continue >" << RESET;
+    cout << "\n\n\t\t\t       " << FAINT << "< Press " << RESET << BOLD << "ENTER" << RESET << FAINT << " to Continue >" << RESET;
     cin.ignore();
 }
 
@@ -110,8 +110,7 @@ void Interface::mainMenu() {
 
     switch(option) {
         case 1:
-            manager.backtracking();
-            //printBacktracking();
+            printBacktracking();
             break;
         case 2:
             manager.triangularInequality();
@@ -280,4 +279,23 @@ void Interface::realWorldGraphsMenu() {
         // printPath
         realWorldGraphsMenu();
     }
+}
+
+void Interface::printBacktracking() {
+    clear();
+    header();
+
+    cout << GREEN << BOLD << "\tRunning Backtracking Algorithm..." << RESET << endl;
+    long duration; double cost;
+    std::vector<int> path = manager.backtracking(duration, cost);
+    cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+    cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+
+    footer();
+
+    // Enable path only sometimes??
+    cout << "\n\n\tThe Path";
+    for (auto v : path) cout << " -> " << v;
+
+    inputWait();
 }
