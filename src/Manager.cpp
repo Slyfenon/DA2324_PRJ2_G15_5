@@ -88,7 +88,7 @@ void Manager::loadRealGraph(int option) {
 
 }
 
-std::vector<int> &Manager::backtracking() {
+std::vector<int> Manager::backtracking(long &duration, double &cost) {
     std::vector<int> path;
     path.push_back(0);
     std::vector<int> bestPath;
@@ -98,11 +98,8 @@ std::vector<int> &Manager::backtracking() {
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     tsp_backtracking(path, bestPath, minCost, 0.0);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    for(auto v : bestPath){
-        std::cout << v << " ";
-    }
-    std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
-
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+    cost = minCost;
     return bestPath;
 }
 

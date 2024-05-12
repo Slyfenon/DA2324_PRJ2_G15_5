@@ -18,7 +18,6 @@ class Interface {
 
 private:
     Manager manager = Manager();
-    Parser parser = Parser();
 
     void clear();
     void header();
@@ -39,6 +38,8 @@ public:
     void triangularHeuristicMenu();
     void otherHeuristicMenu();
     void realWorldGraphsMenu();
+
+    void printBacktracking();
 };
 
 
