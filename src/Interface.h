@@ -40,6 +40,7 @@ public:
     void realWorldGraphsMenu();
 
     void printBacktracking();
+    void printRealWorldHeuristic(int option);
 };
 
 

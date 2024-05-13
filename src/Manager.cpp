@@ -226,7 +226,7 @@ Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
 }
 
 // Nearest neighbor heuristic
-void Manager::realWorldHeuristic(int source) {
+std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost) {
     std::stack<Vertex*> processing; int stack_size = 0;
     for (auto vertex : graph->getVertexSet()) {
         vertex.second->setVisited(false);
@@ -257,23 +257,26 @@ void Manager::realWorldHeuristic(int source) {
                 stack_size++;
             }
         } else {
+            if (v->getId() == src->getId()) {
+                std::cout << "No path found!" << std::endl;
+                v->setVisited(true);
+            }
             v->setVisited(false);
             processing.pop();
             stack_size--;
         }
     }
 
-    Vertex* curr = src; double cost = 0;
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+
+    Vertex* curr = src; std::vector<int> result; cost = 0;
     while (curr->getPath()->getOrig() != src->getId()) {
-        std::cout << curr->getId() << " <- " << curr->getPath()->getOrig() << std::endl;
+        result.push_back(curr->getId());
         cost += curr->getPath()->getWeight();
         curr = graph->findVertex(curr->getPath()->getOrig());
     }
-    std::cout << "\n\tTour Cost: " << cost << std::endl;
-
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
-    std::cout << "\n\tRuntime: " << duration << " ms" << std::endl;
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+    return result;
 }
 
 void Manager::resetGraph() {

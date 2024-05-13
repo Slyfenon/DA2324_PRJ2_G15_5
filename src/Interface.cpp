@@ -276,9 +276,7 @@ void Interface::realWorldGraphsMenu() {
 
     if (option == -1) mainMenu();
     else {
-        manager.realWorldHeuristic(option);
-        inputWait();
-        // printPath
+        printRealWorldHeuristic(option);
         realWorldGraphsMenu();
     }
 }
@@ -290,6 +288,25 @@ void Interface::printBacktracking() {
     cout << GREEN << BOLD << "\tRunning Backtracking Algorithm..." << RESET << endl;
     long duration; double cost;
     std::vector<int> path = manager.backtracking(duration, cost);
+    cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+    cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+
+    footer();
+
+    // Enable path only sometimes??
+    cout << "\n\n\tThe Path";
+    for (auto v : path) cout << " -> " << v;
+
+    inputWait();
+}
+
+void Interface::printRealWorldHeuristic(int option) {
+    clear();
+    header();
+
+    cout << GREEN << BOLD << "\tRunning Nearest Neighbor Heuristic..." << RESET << endl;
+    long duration; double cost;
+    std::vector<int> path = manager.realWorldHeuristic(option, duration, cost);
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
 
