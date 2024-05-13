@@ -23,5 +23,10 @@ public:
     void loadRealGraph(int option);
 
     void triangularInequality(Graph *graph);
+    void realWorldHeuristic(int source);
+
+    void resetGraph();
+
+    Edge *findShortestEdge(Vertex *vertex, Vertex *src, bool final);
 };
 #endif //DA_PROJ2_MANAGER_H

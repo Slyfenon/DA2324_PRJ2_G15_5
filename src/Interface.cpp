@@ -123,6 +123,7 @@ void Interface::mainMenu() {
             realWorldGraphsMenu();
             break;
         case 0:
+            manager.resetGraph();
             startMenu();
         default:
             mainMenu();
@@ -268,14 +269,15 @@ void Interface::realWorldGraphsMenu() {
     header();
 
     cout << "\n\t\t    Insert the" << BOLD << BLUE << " start node " << RESET << "for the" << BOLD << BLUE << " TSP "
-    << RESET << "or" << BOLD << RED << " [0] " << RESET << "to" << BOLD << RED << " go back" << RESET << endl;
+    << RESET << "or" << BOLD << RED << " [-1] " << RESET << "to" << BOLD << RED << " go back" << RESET << endl;
 
     footer();
     int option = readVertex();
 
-    if (option == 0) mainMenu();
+    if (option == -1) mainMenu();
     else {
-        // manager.realWorldTSP(option)
+        manager.realWorldHeuristic(option);
+        inputWait();
         // printPath
         realWorldGraphsMenu();
     }

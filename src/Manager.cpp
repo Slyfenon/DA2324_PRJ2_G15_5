@@ -1,7 +1,7 @@
-
 #include <chrono>
 #include <iostream>
-#include <queue>
+#include <stack>
+#include <climits>
 #include "Manager.h"
 #include "MutablePriorityQueue.h"
 
@@ -205,3 +205,78 @@ void Manager::triangularInequality() {
     std::cout << count <<std::endl;
 }
 
+
+Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
+    if (final) {
+        for (Edge* edge : vertex->getAdj()) {
+            if (edge->getDest() == src->getId()) return edge;
+        }
+        return nullptr;
+    } else {
+        Edge* result = nullptr; double min_cost = INF;
+        for (Edge* edge : vertex->getAdj()) {
+            if (!edge->getProcessed() && edge->getWeight() < min_cost
+                && edge->getDest() != src->getId() && !graph->findVertex(edge->getDest())->isVisited()) {
+                result = edge;
+                min_cost = edge->getWeight();
+            }
+        }
+        return result;
+    }
+}
+
+// Nearest neighbor heuristic
+void Manager::realWorldHeuristic(int source) {
+    std::stack<Vertex*> processing; int stack_size = 0;
+    for (auto vertex : graph->getVertexSet()) {
+        vertex.second->setVisited(false);
+        for (Edge* edge : vertex.second->getAdj()) {
+            edge->setProcessed(false);
+        }
+    }
+
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+
+    Vertex* src = graph->findVertex(source);
+    processing.push(src);
+    stack_size++;
+
+    while (!src->isVisited()) {
+        Vertex* v = processing.top();
+        if (!v->isVisited() && v->getId() != src->getId()) {
+            for (Edge* edge : v->getAdj()) edge->setProcessed(false);
+            v->setVisited(true);
+        }
+        Edge* shortest = findShortestEdge(v, src, stack_size == graph->getVertexSet().size());
+        if (shortest) {
+            graph->findVertex(shortest->getDest())->setPath(shortest);
+            shortest->setProcessed(true);
+            if (shortest->getDest() == src->getId()) src->setVisited(true);
+            else {
+                processing.push(graph->findVertex(shortest->getDest()));
+                stack_size++;
+            }
+        } else {
+            v->setVisited(false);
+            processing.pop();
+            stack_size--;
+        }
+    }
+
+    Vertex* curr = src; double cost = 0;
+    while (curr->getPath()->getOrig() != src->getId()) {
+        std::cout << curr->getId() << " <- " << curr->getPath()->getOrig() << std::endl;
+        cost += curr->getPath()->getWeight();
+        curr = graph->findVertex(curr->getPath()->getOrig());
+    }
+    std::cout << "\n\tTour Cost: " << cost << std::endl;
+
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+    std::cout << "\n\tRuntime: " << duration << " ms" << std::endl;
+}
+
+void Manager::resetGraph() {
+    delete this->graph;
+    graph = new Graph();
+}
