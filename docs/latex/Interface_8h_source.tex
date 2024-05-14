@@ -1,0 +1,57 @@
+\doxysection{Interface.\+h}
+\hypertarget{Interface_8h_source}{}\label{Interface_8h_source}\index{/home/oxi-\/moron/LEIC/DA/DA2324\_PRJ2\_G15\_5/src/Interface.h@{/home/oxi-\/moron/LEIC/DA/DA2324\_PRJ2\_G15\_5/src/Interface.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DA\_PROJ2\_INTERFACE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DA\_PROJ2\_INTERFACE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Manager.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Parser.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <bits/stdc++.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ RESET\ \ \ \ \ \ \ "{}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ BOLD\ \ \ \ \ \ \ \ "{}\(\backslash\)033[1m"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ FAINT\ \ \ \ \ \ \ "{}\(\backslash\)033[2m"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ RED\ \ \ \ \ \ \ \ \ "{}\(\backslash\)033[31m"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ GREEN\ \ \ \ \ \ \ "{}\(\backslash\)033[32m"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ YELLOW\ \ \ \ \ \ "{}\(\backslash\)033[33m"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ BLUE\ \ \ \ \ \ \ \ "{}\(\backslash\)033[34m"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInterface}{Interface}}\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classManager}{Manager}}\ manager\ =\ \mbox{\hyperlink{classManager}{Manager}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ clear();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ header();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ footer();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ inputWait();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ readOption(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ options);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ readNodeNumber();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ readVertex();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ readPath();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ startMenu();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ mainMenu();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ exitMenu();}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ loadToyGraphMenu();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ loadRealGraphMenu();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ loadExtraGraphMenu();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ triangularHeuristicMenu();}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ otherHeuristicMenu();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ realWorldGraphsMenu();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ printBacktracking();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ printRealWorldHeuristic(\textcolor{keywordtype}{int}\ option);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ printTriangularInequality(\textcolor{keywordtype}{bool}\ compare);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ printOtherHeuristic(\textcolor{keywordtype}{bool}\ compare);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ printPath(std::vector<int>\ path);}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DA\_PROJ2\_INTERFACE\_H}}
+
+\end{DoxyCode}
