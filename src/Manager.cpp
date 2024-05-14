@@ -300,6 +300,10 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
     return result;
 }
 
+std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cost) {
+    return {};
+}
+
 void Manager::resetGraph() {
     delete this->graph;
     graph = new Graph();
