@@ -26,6 +26,7 @@ private:
     int readOption(unsigned int options);
     int readNodeNumber();
     int readVertex();
+    bool readPath();
 
 public:
 
@@ -42,12 +43,8 @@ public:
     void printBacktracking();
     void printRealWorldHeuristic(int option);
     void printTriangularInequality(bool compare);
-
     void printOtherHeuristic(bool compare);
-
     void printPath(std::vector<int> path);
-
-    bool readPath();
 };
 
 
