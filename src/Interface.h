@@ -41,6 +41,9 @@ public:
 
     void printBacktracking();
     void printRealWorldHeuristic(int option);
+    void printTriangularInequality(bool compare);
+
+    void printOtherHeuristic(bool compare);
 };
 
 

@@ -26,5 +26,8 @@ public:
     std::vector<int> realWorldHeuristic(int source, long &duration, double &cost);
 
     void resetGraph();
+
+    static bool validateEdgeNumber(const std::string &option);
+    bool validateVertex(const std::string &option);
 };
 #endif //DA_PROJ2_MANAGER_H

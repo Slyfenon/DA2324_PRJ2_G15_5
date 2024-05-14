@@ -5,6 +5,21 @@
 #include "Manager.h"
 #include "MutablePriorityQueue.h"
 
+bool Manager::validateVertex(const std::string &option) {
+    for (const char &c : option) {
+        if (!isdigit(c)) return false;
+    }
+    return (graph->findVertex(stoi(option)));
+}
+
+bool Manager::validateEdgeNumber(const std::string &option) {
+    for (const char &c : option) {
+        if (!isdigit(c)) return false;
+    }
+    return ((0 < stoi(option) && stoi(option) <= 900) && (stoi(option) % 100 == 0
+            || (stoi(option) % 25 == 0 && stoi(option) < 100)));
+}
+
 void checkAndUpdateBestPath(const std::vector<int>& path, std::vector<int>& bestPath, double& minCost, double currentCost, int firstVertex, Graph* graph) {
 
     for (Edge* edge : graph->findVertex(path.back())->getAdj()) {
@@ -92,6 +107,9 @@ std::vector<int> Manager::backtracking(long &duration, double &cost) {
     std::vector<int> path;
     path.push_back(0);
     std::vector<int> bestPath;
+    for(auto v : graph->getVertexSet()){
+        v.second->setVisited(false);
+    }
     graph->findVertex(0)->setVisited(true);
     double minCost = std::numeric_limits<double>::max();
 
@@ -270,11 +288,11 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
     Vertex* curr = src; std::vector<int> result; cost = 0;
-    while (curr->getPath()->getOrig() != src->getId()) {
+    do {
         result.push_back(curr->getId());
         cost += curr->getPath()->getWeight();
         curr = graph->findVertex(curr->getPath()->getOrig());
-    }
+    } while (curr->getId() != src->getId());
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
     return result;
 }

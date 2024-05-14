@@ -43,7 +43,7 @@ int Interface::readEdgeNumber() {
         cin.clear();
         cin >> option;
         cin.ignore();
-    } while (false); // manager.validateEdgeNumber()
+    } while (!Manager::validateEdgeNumber(option)); // manager.validateEdgeNumber()
 
     return stoi(option);
 }
@@ -55,7 +55,7 @@ int Interface::readVertex() {
         cin.clear();
         cin >> option;
         cin.ignore();
-    } while (false); // manager.validateVertex()
+    } while (!manager.validateVertex(option) && option != "-1"); // manager.validateVertex()
 
     return stoi(option);
 }
@@ -100,7 +100,7 @@ void Interface::mainMenu() {
     cout << "\tWhich " << BOLD << BLUE << "TSP Algorithm" << RESET " would you like to run?\n" << endl
          << BOLD << BLUE << "\t[1]" << RESET << " - Backtracking" << endl
          << BOLD << BLUE << "\t[2]" << RESET << " - Triangular Approximantion Heuristic" << endl
-         << BOLD << BLUE << "\t[3]" << RESET << " - Other Sus Heuristic" << endl
+         << BOLD << BLUE << "\t[3]" << RESET << " - ??? Heuristic" << endl
          << BOLD << BLUE << "\t[4]" << RESET << " - Arbitrary Starting Point" << endl
          << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
 
@@ -218,14 +218,10 @@ void Interface::triangularHeuristicMenu() {
 
     switch(option) {
         case 1:
-            // manager.triangularHeuristics
-            // printPath
+            printTriangularInequality(false);
             break;
         case 2:
-            // manager.triangularHeuristics
-            // printMetrics
-            // manager.backtracking
-            // printMetrics
+            printTriangularInequality(true);
             break;
         case 0:
             mainMenu();
@@ -239,7 +235,7 @@ void Interface::otherHeuristicMenu() {
     header();
 
     cout << "\tWhat would you like to" << BOLD << BLUE <<  " do?\n" << RESET << endl
-         << BOLD << BLUE << "\t[1]" << RESET << " - Run Sus Heuristics Algorithm" << endl
+         << BOLD << BLUE << "\t[1]" << RESET << " - Run ??? Heuristics Algorithm" << endl
          << BOLD << BLUE << "\t[2]" << RESET << " - Run Comparison with Backtracking Algorithm" << endl
          << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
 
@@ -248,14 +244,10 @@ void Interface::otherHeuristicMenu() {
 
     switch(option) {
         case 1:
-            // manager.susHeuristics
-            // printPath
+            printOtherHeuristic(false);
             break;
         case 2:
-            // manager.susHeuristics
-            // printMetrics
-            // manager.backtracking
-            // printMetrics
+            printOtherHeuristic(true);
             break;
         case 0:
             mainMenu();
@@ -306,15 +298,54 @@ void Interface::printRealWorldHeuristic(int option) {
 
     cout << GREEN << BOLD << "\tRunning Nearest Neighbor Heuristic..." << RESET << endl;
     long duration; double cost;
-    std::vector<int> path = manager.realWorldHeuristic(option, duration, cost);
+    manager.realWorldHeuristic(option, duration, cost);
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
 
     footer();
+    inputWait();
+}
 
-    // Enable path only sometimes??
-    cout << "\n\n\tThe Path";
-    for (auto v : path) cout << " -> " << v;
+void Interface::printTriangularInequality(bool compare) {
+    clear();
+    header();
 
+    long duration; double cost;
+
+    cout << GREEN << BOLD << "\tRunning Triangular Inequality Heuristic..." << RESET << endl;
+    manager.realWorldHeuristic(0, duration, cost); // manager.triangularInequality
+    cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+    cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+
+    if (compare) {
+        cout << GREEN << BOLD << "\n\n\tRunning Backtracking Algorithm..." << RESET << endl;
+        manager.backtracking(duration, cost);
+        cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+        cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+    }
+
+    footer();
+    inputWait();
+}
+
+void Interface::printOtherHeuristic(bool compare) {
+    clear();
+    header();
+
+    long duration; double cost;
+
+    cout << GREEN << BOLD << "\tRunning ???? Heuristic..." << RESET << endl;
+    manager.realWorldHeuristic(0, duration, cost); // manager.otherHeuristic
+    cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+    cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+
+    if (compare) {
+        cout << GREEN << BOLD << "\n\n\tRunning Backtracking Algorithm..." << RESET << endl;
+        manager.backtracking(duration, cost);
+        cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+        cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+    }
+
+    footer();
     inputWait();
 }
