@@ -3,6 +3,7 @@
 #include <stack>
 #include <queue>
 #include <climits>
+#include <cmath>
 #include "Manager.h"
 #include "MutablePriorityQueue.h"
 
@@ -209,13 +210,6 @@ void Manager::triangularInequality(long &duration, double &cost) {
 
 
     cost = calculateCost(preOrder);
-    /*for(auto v : preOrder){
-      // std::cout << v->getId() << " ";
-        if(v->getPath() != nullptr){
-            std::cout << v->getPath()->getOrig() << " " << v->getPath()->getDest() << " " << v->getPath()->getWeight() << std::endl;
-            cost += v->getPath()->getWeight();
-        }
-    }*/
 }
 
 Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
@@ -299,6 +293,15 @@ void Manager::resetGraph() {
     graph = new Graph();
 }
 
+bool Manager::checkConnected(Vertex* v1, Vertex* v2 ){
+    for(Edge* edge : v1->getAdj()){
+        if(edge->getDest() == v2->getId()){
+            return true;
+        }
+    }
+    return false;
+}
+
 double Manager::calculateCost(std::vector<Vertex *> preorder) {
 
     double cost = 0;
@@ -306,12 +309,39 @@ double Manager::calculateCost(std::vector<Vertex *> preorder) {
         Vertex* v1 = preorder[i];
         Vertex* v2 = preorder[(i+1)];
 
-        for(Edge* edge : v1->getAdj()){
-            if(edge->getDest() == v2->getId()){
-                cost += edge->getWeight();
-                break;
+        if(checkConnected(v1, v2)) {
+            for (Edge *edge: v1->getAdj()) {
+                if (edge->getDest() == v2->getId()) {
+                    cost += edge->getWeight();
+                    break;
+                }
             }
+        }
+        else{
+            cost += haversineDistance(v1, v2);
         }
     }
     return cost;
+}
+
+double convertToRadians(double degree){
+    return degree * (M_PI/180);
+}
+double Manager::haversineDistance(Vertex* v1, Vertex* v2){
+    double lat1 = v1->getCoord()->getLatitude();
+    double lon1 = v1->getCoord()->getLongitude();
+    double lat2 = v2->getCoord()->getLatitude();
+    double lon2 = v2->getCoord()->getLongitude();
+
+    double earthRadius = 6371e3;
+    double phi1 = convertToRadians(lat1);
+    double phi2 = convertToRadians(lat2);
+    double deltaLat = convertToRadians(lat2 - lat1);
+    double deltaLon = convertToRadians(lon2 - lon1);
+
+    double a = sin(deltaLat / 2) * sin(deltaLat / 2) + cos(phi1) * cos(phi2) * sin(deltaLon / 2) * sin(deltaLon / 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1-a));
+
+    return earthRadius * c;
+
 }

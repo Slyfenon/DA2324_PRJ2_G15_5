@@ -32,5 +32,9 @@ public:
     void triangularInequality(long &duration, double &cost);
 
     double calculateCost(std::vector<Vertex *> vector1);
+
+    bool checkConnected(Vertex *v1, Vertex *v2);
+
+    double haversineDistance(Vertex *v1, Vertex *v2);
 };
 #endif //DA_PROJ2_MANAGER_H
