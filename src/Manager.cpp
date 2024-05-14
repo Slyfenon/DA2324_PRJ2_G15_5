@@ -12,7 +12,7 @@ bool Manager::validateVertex(const std::string &option) {
     return (graph->findVertex(stoi(option)));
 }
 
-bool Manager::validateEdgeNumber(const std::string &option) {
+bool Manager::validateNodeNumber(const std::string &option) {
     for (const char &c : option) {
         if (!isdigit(c)) return false;
     }
@@ -245,6 +245,7 @@ Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
 
 // Nearest neighbor heuristic
 std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost) {
+    std::vector<int> result;
     std::stack<Vertex*> processing; int stack_size = 0;
     for (auto vertex : graph->getVertexSet()) {
         vertex.second->setVisited(false);
@@ -276,8 +277,10 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
             }
         } else {
             if (v->getId() == src->getId()) {
-                std::cout << "No path found!" << std::endl;
-                v->setVisited(true);
+                cost = 0;
+                std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+                duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+                return result;
             }
             v->setVisited(false);
             processing.pop();
@@ -287,7 +290,7 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    Vertex* curr = src; std::vector<int> result; cost = 0;
+    Vertex* curr = src; cost = 0;
     do {
         result.push_back(curr->getId());
         cost += curr->getPath()->getWeight();

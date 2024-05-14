@@ -24,7 +24,7 @@ private:
     void footer();
     void inputWait();
     int readOption(unsigned int options);
-    int readEdgeNumber();
+    int readNodeNumber();
     int readVertex();
 
 public:
@@ -44,6 +44,10 @@ public:
     void printTriangularInequality(bool compare);
 
     void printOtherHeuristic(bool compare);
+
+    void printPath(std::vector<int> path);
+
+    bool readPath();
 };
 
 
