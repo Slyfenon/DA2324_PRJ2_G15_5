@@ -24,8 +24,9 @@ private:
     void footer();
     void inputWait();
     int readOption(unsigned int options);
-    int readEdgeNumber();
+    int readNodeNumber();
     int readVertex();
+    bool readPath();
 
 public:
 
@@ -40,6 +41,10 @@ public:
     void realWorldGraphsMenu();
 
     void printBacktracking();
+    void printRealWorldHeuristic(int option);
+    void printTriangularInequality(bool compare);
+    void printOtherHeuristic(bool compare);
+    void printPath(std::vector<int> path);
 };
 
 
