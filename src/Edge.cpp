@@ -27,3 +27,11 @@ void Edge::setWeight(double weight) {
 bool Edge::getDirection() const {
     return direction;
 }
+
+bool Edge::getProcessed() const {
+    return processed;
+}
+
+void Edge::setProcessed(bool p) {
+    this->processed = p;
+}

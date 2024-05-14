@@ -36,14 +36,14 @@ int Interface::readOption(unsigned int options) {
     return stoi(option);
 }
 
-int Interface::readEdgeNumber() {
+int Interface::readNodeNumber() {
     string option;
     do {
-        cout << BOLD << BLUE << "\n\tEdge Number: " << RESET;
+        cout << BOLD << BLUE << "\n\tNode Number: " << RESET;
         cin.clear();
         cin >> option;
         cin.ignore();
-    } while (false); // manager.validateEdgeNumber()
+    } while (!Manager::validateNodeNumber(option));
 
     return stoi(option);
 }
@@ -55,9 +55,21 @@ int Interface::readVertex() {
         cin.clear();
         cin >> option;
         cin.ignore();
-    } while (false); // manager.validateVertex()
+    } while (!manager.validateVertex(option) && option != "-1");
 
     return stoi(option);
+}
+
+bool Interface::readPath() {
+    string option;
+    do {
+        cout << "\n\tWould you like to print" << BLUE << " the path" << RESET << "? [yes/no]: ";
+        cin.clear();
+        cin >> option;
+        cin.ignore();
+    } while (option != "yes" && option != "no");
+
+    return option == "yes";
 }
 
 void Interface::startMenu() {
@@ -100,7 +112,7 @@ void Interface::mainMenu() {
     cout << "\tWhich " << BOLD << BLUE << "TSP Algorithm" << RESET " would you like to run?\n" << endl
          << BOLD << BLUE << "\t[1]" << RESET << " - Backtracking" << endl
          << BOLD << BLUE << "\t[2]" << RESET << " - Triangular Approximantion Heuristic" << endl
-         << BOLD << BLUE << "\t[3]" << RESET << " - Other Sus Heuristic" << endl
+         << BOLD << BLUE << "\t[3]" << RESET << " - ??? Heuristic" << endl
          << BOLD << BLUE << "\t[4]" << RESET << " - Arbitrary Starting Point" << endl
          << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
 
@@ -123,6 +135,7 @@ void Interface::mainMenu() {
             realWorldGraphsMenu();
             break;
         case 0:
+            manager.resetGraph();
             startMenu();
         default:
             mainMenu();
@@ -187,14 +200,14 @@ void Interface::loadExtraGraphMenu() {
     clear();
     header();
 
-    cout << "\t Enter the number of " << BOLD << BLUE << "edges" << RESET << " to load the"
+    cout << "\t Enter the number of " << BOLD << BLUE << "nodes" << RESET << " to load the"
     << BOLD << BLUE << " extra graph " << RESET << "with or"
     << BOLD << RED << " [0] " << RESET <<  "to" << BOLD << RED << " go back" << endl;
-    cout << BOLD << YELLOW << "\n\t Edge Options: " << RESET << "25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900";
+    cout << BOLD << YELLOW << "\n\t Node Options: " << RESET << "25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900";
 
     footer();
 
-    int option = readEdgeNumber();
+    int option = readNodeNumber();
 
     if (option == 0) startMenu();
     else {
@@ -217,14 +230,10 @@ void Interface::triangularHeuristicMenu() {
 
     switch(option) {
         case 1:
-            // manager.triangularHeuristics
-            // printPath
+            printTriangularInequality(false);
             break;
         case 2:
-            // manager.triangularHeuristics
-            // printMetrics
-            // manager.backtracking
-            // printMetrics
+            printTriangularInequality(true);
             break;
         case 0:
             mainMenu();
@@ -238,7 +247,7 @@ void Interface::otherHeuristicMenu() {
     header();
 
     cout << "\tWhat would you like to" << BOLD << BLUE <<  " do?\n" << RESET << endl
-         << BOLD << BLUE << "\t[1]" << RESET << " - Run Sus Heuristics Algorithm" << endl
+         << BOLD << BLUE << "\t[1]" << RESET << " - Run ??? Heuristics Algorithm" << endl
          << BOLD << BLUE << "\t[2]" << RESET << " - Run Comparison with Backtracking Algorithm" << endl
          << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
 
@@ -247,14 +256,10 @@ void Interface::otherHeuristicMenu() {
 
     switch(option) {
         case 1:
-            // manager.susHeuristics
-            // printPath
+            printOtherHeuristic(false);
             break;
         case 2:
-            // manager.susHeuristics
-            // printMetrics
-            // manager.backtracking
-            // printMetrics
+            printOtherHeuristic(true);
             break;
         case 0:
             mainMenu();
@@ -268,15 +273,14 @@ void Interface::realWorldGraphsMenu() {
     header();
 
     cout << "\n\t\t    Insert the" << BOLD << BLUE << " start node " << RESET << "for the" << BOLD << BLUE << " TSP "
-    << RESET << "or" << BOLD << RED << " [0] " << RESET << "to" << BOLD << RED << " go back" << RESET << endl;
+    << RESET << "or" << BOLD << RED << " [-1] " << RESET << "to" << BOLD << RED << " go back" << RESET << endl;
 
     footer();
     int option = readVertex();
 
-    if (option == 0) mainMenu();
+    if (option == -1) mainMenu();
     else {
-        // manager.realWorldTSP(option)
-        // printPath
+        printRealWorldHeuristic(option);
         realWorldGraphsMenu();
     }
 }
@@ -291,11 +295,81 @@ void Interface::printBacktracking() {
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
 
+    if (path.size() < 10 || readPath()) printPath(path);
+
     footer();
-
-    // Enable path only sometimes??
-    cout << "\n\n\tThe Path";
-    for (auto v : path) cout << " -> " << v;
-
     inputWait();
+}
+
+void Interface::printRealWorldHeuristic(int option) {
+    clear();
+    header();
+
+    cout << GREEN << BOLD << "\tRunning Nearest Neighbor Heuristic..." << RESET << endl;
+    long duration; double cost;
+    std::vector<int> path = manager.realWorldHeuristic(option, duration, cost);
+    cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+    cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+
+    if (path.size() < 10 || readPath()) printPath(path);
+
+    footer();
+    inputWait();
+}
+
+void Interface::printTriangularInequality(bool compare) {
+    clear();
+    header();
+
+    long duration; double cost;
+
+    cout << GREEN << BOLD << "\tRunning Triangular Inequality Heuristic..." << RESET << endl;
+    manager.triangularInequality();
+    cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+    cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+
+    if (compare) {
+        cout << GREEN << BOLD << "\n\n\tRunning Backtracking Algorithm..." << RESET << endl;
+        manager.backtracking(duration, cost);
+        cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+        cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+    }
+
+    footer();
+    inputWait();
+}
+
+void Interface::printOtherHeuristic(bool compare) {
+    clear();
+    header();
+
+    long duration; double cost;
+
+    cout << GREEN << BOLD << "\tRunning ???? Heuristic..." << RESET << endl;
+    std::vector<int> path = manager.realWorldHeuristic(0, duration, cost); // manager.otherHeuristic
+    cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+    cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+
+    if (compare) {
+        cout << GREEN << BOLD << "\n\n\tRunning Backtracking Algorithm..." << RESET << endl;
+        manager.backtracking(duration, cost);
+        cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+        cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+    } else {
+        if (path.size() < 10) printPath(path);
+    }
+
+    footer();
+    inputWait();
+}
+
+void Interface::printPath(std::vector<int> path) {
+    cout << BOLD << YELLOW << "\n\tFound Path: \n\n\t" << RESET;
+
+    int count = 0;
+    for (int i : path) {
+        count++;
+        cout << BOLD << " -> " << BLUE << i << RESET;
+        if (count % 10 == 0) cout << "\n\t";
+    }
 }

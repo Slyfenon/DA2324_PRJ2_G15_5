@@ -11,6 +11,7 @@ class Edge {
         int dest;
         double weight;
         bool direction;
+        bool processed; // For nearest neighbor
 
     public:
 
@@ -47,6 +48,10 @@ class Edge {
          * @return 0 for bidirectional and  1 for unidirectional.
          */
         bool getDirection() const;
+
+        bool getProcessed() const;
+
+        void setProcessed(bool p);
 };
 
 

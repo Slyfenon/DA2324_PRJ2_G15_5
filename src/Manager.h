@@ -11,6 +11,8 @@ private:
     Graph *graph = new Graph();
     Parser *parser;
 
+    Edge *findShortestEdge(Vertex *vertex, Vertex *src, bool final);
+
 public:
     Graph* getGraph() const;
     void loadToyGraph(int option);
@@ -21,7 +23,11 @@ public:
     std::vector<Edge *> primMST();
     void loadExtraGraph(int option);
     void loadRealGraph(int option);
+    std::vector<int> realWorldHeuristic(int source, long &duration, double &cost);
 
-    void triangularInequality(Graph *graph);
+    void resetGraph();
+
+    static bool validateNodeNumber(const std::string &option);
+    bool validateVertex(const std::string &option);
 };
 #endif //DA_PROJ2_MANAGER_H
