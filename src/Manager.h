@@ -18,7 +18,6 @@ public:
     void loadToyGraph(int option);
     void tsp_backtracking(std::vector<int> &path, std::vector<int> &bestPath, double &minCost, double sumCost);
     std::vector<int> backtracking(long &duration, double &cost);
-    void triangularInequality();
     void preOrderWalk(std::vector<Edge*> MST, Vertex *v, std::vector<Vertex*> &preOrder);
     std::vector<Edge *> primMST();
     void loadExtraGraph(int option);
@@ -29,5 +28,9 @@ public:
 
     static bool validateNodeNumber(const std::string &option);
     bool validateVertex(const std::string &option);
+
+    void triangularInequality(long &duration, double &cost);
+
+    double calculateCost(std::vector<Vertex *> vector1);
 };
 #endif //DA_PROJ2_MANAGER_H

@@ -116,23 +116,14 @@ std::vector<int> Manager::backtracking(long &duration, double &cost) {
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     tsp_backtracking(path, bestPath, minCost, 0.0);
+    for(auto v: bestPath){
+        std::cout << v << " ";
+    }
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
     cost = minCost;
     return bestPath;
 }
-
-struct PrimVertexInfo {
-    int id;
-    double key;
-    int parent;
-};
-
-struct CompareVertexKeys {
-    bool operator()(const PrimVertexInfo& v1, const PrimVertexInfo& v2) {
-        return v1.key > v2.key;
-    }
-};
 
 
 void Manager::preOrderWalk(std::vector<Edge*> MST, Vertex* v, std::vector<Vertex*> &preOrder) {
@@ -198,9 +189,11 @@ std::vector<Edge*> Manager::primMST() {
 
 }
 
-void Manager::triangularInequality() {
+void Manager::triangularInequality(long &duration, double &cost) {
     std::vector<Edge*> MSTTree;
     std::vector<Vertex*> preOrder;
+
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     for(auto v : graph->getVertexSet()){
         v.second->setVisited(false);
     }
@@ -214,14 +207,18 @@ void Manager::triangularInequality() {
     preOrderWalk(MSTTree, root, preOrder);
 
     preOrder.push_back(root);
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 
-    int count = 0;
-    for(auto v : preOrder){
-        count++;
-        std::cout << v->getId() << " ";
-    }
-    std::cout << std::endl;
-    std::cout << count <<std::endl;
+
+    cost = calculateCost(preOrder);
+    /*for(auto v : preOrder){
+      // std::cout << v->getId() << " ";
+        if(v->getPath() != nullptr){
+            std::cout << v->getPath()->getOrig() << " " << v->getPath()->getDest() << " " << v->getPath()->getWeight() << std::endl;
+            cost += v->getPath()->getWeight();
+        }
+    }*/
 }
 
 Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
@@ -303,4 +300,21 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
 void Manager::resetGraph() {
     delete this->graph;
     graph = new Graph();
+}
+
+double Manager::calculateCost(std::vector<Vertex *> preorder) {
+
+    double cost = 0;
+    for(int i = 0; i < preorder.size() - 1; i++){
+        Vertex* v1 = preorder[i];
+        Vertex* v2 = preorder[(i+1)];
+
+        for(Edge* edge : v1->getAdj()){
+            if(edge->getDest() == v2->getId()){
+                cost += edge->getWeight();
+                break;
+            }
+        }
+    }
+    return cost;
 }
