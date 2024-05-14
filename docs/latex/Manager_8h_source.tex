@@ -1,0 +1,39 @@
+\doxysection{Manager.\+h}
+\hypertarget{Manager_8h_source}{}\label{Manager_8h_source}\index{/home/oxi-\/moron/LEIC/DA/DA2324\_PRJ2\_G15\_5/src/Manager.h@{/home/oxi-\/moron/LEIC/DA/DA2324\_PRJ2\_G15\_5/src/Manager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ DA\_PROJ2\_MANAGER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ DA\_PROJ2\_MANAGER\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Graph.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Parser.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classManager}{Manager}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ *graph\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGraph}{Graph}}();}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classParser}{Parser}}\ *parser;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ *findShortestEdge(\mbox{\hyperlink{classVertex}{Vertex}}\ *vertex,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *src,\ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{final});}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}*\ getGraph()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ loadToyGraph(\textcolor{keywordtype}{int}\ option);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ tsp\_backtracking(std::vector<int>\ \&path,\ std::vector<int>\ \&bestPath,\ \textcolor{keywordtype}{double}\ \&minCost,\ \textcolor{keywordtype}{double}\ sumCost);}
+\DoxyCodeLine{00020\ \ \ \ \ std::vector<int>\ backtracking(\textcolor{keywordtype}{long}\ \&duration,\ \textcolor{keywordtype}{double}\ \&cost);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ triangularInequality();}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ preOrderWalk(std::vector<Edge*>\ MST,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *v,\ std::vector<Vertex*>\ \&preOrder);}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<Edge\ *>\ primMST();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ loadExtraGraph(\textcolor{keywordtype}{int}\ option);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ loadRealGraph(\textcolor{keywordtype}{int}\ option);}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<int>\ realWorldHeuristic(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{long}\ \&duration,\ \textcolor{keywordtype}{double}\ \&cost);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ resetGraph();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ validateNodeNumber(\textcolor{keyword}{const}\ std::string\ \&option);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ validateVertex(\textcolor{keyword}{const}\ std::string\ \&option);}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DA\_PROJ2\_MANAGER\_H}}
+
+\end{DoxyCode}
