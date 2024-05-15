@@ -302,7 +302,7 @@ bool Manager::checkConnected(Vertex* v1, Vertex* v2 ){
     return false;
 }
 
-double Manager::calculateCost(std::vector<Vertex *> preorder) {
+double Manager::calculateCost(std::vector<Vertex *> &preorder) {
 
     double cost = 0;
     for(int i = 0; i < preorder.size() - 1; i++){

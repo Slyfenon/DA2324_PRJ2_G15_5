@@ -58,7 +58,6 @@ void Parser::readExtraGraph(Graph *graph, int option) {
     std::string line;
 
     int counter = 0;
-    int sum = 25;
 
     std::string id, origin, dest, dist, originLabel, destLabel,
             longitude, latitude;
@@ -83,26 +82,20 @@ void Parser::readExtraGraph(Graph *graph, int option) {
     }
     inputFile.close();
 
-    counter = 25;
-    while (counter <= option || (counter % 100 == 0 && counter <= 1000)) {
-        inputFile.open("../data/extra/edges_" + std::to_string(counter) + ".csv");
-        counter += sum;
-        if(counter == 100) sum = 100;
+    inputFile.open("../data/extra/edges_" + std::to_string(option) + ".csv");
+    getline(inputFile, line);
+    while(getline(inputFile, line)) {
+        iss.clear();
+        iss.str(line);
 
-        getline(inputFile, line);
-        while(getline(inputFile, line)) {
-            iss.clear();
-            iss.str(line);
+        getline(iss, origin, ',');
+        getline(iss, dest, ',');
+        getline(iss, dist, '\r');
 
-            getline(iss, origin, ',');
-            getline(iss, dest, ',');
-            getline(iss, dist, '\r');
-
-            graph->addEdge(stoi(origin), stoi(dest), stod(dist));
-            graph->addEdge(stoi(dest), stoi(origin), stod(dist));
-        }
-        inputFile.close();
+        graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+        graph->addEdge(stoi(dest), stoi(origin), stod(dist));
     }
+    inputFile.close();
 }
 
 void Parser::readRealGraph(Graph *graph, const std::string& graphNumber){
