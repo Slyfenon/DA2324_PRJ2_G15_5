@@ -225,6 +225,7 @@ void Manager::triangularInequality() {
 
 
 Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
+    vertex->setDistance(vertex->getDistance() + 1);
     if (final) {
         for (Edge* edge : vertex->getAdj()) {
             if (edge->getDest() == src->getId()) return edge;
@@ -235,6 +236,7 @@ Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
         for (Edge* edge : vertex->getAdj()) {
             if (!edge->getProcessed() && edge->getWeight() < min_cost
                 && edge->getDest() != src->getId() && !graph->findVertex(edge->getDest())->isVisited()) {
+                if (graph->findVertex(edge->getDest())->getDistance() < 10) return edge;
                 result = edge;
                 min_cost = edge->getWeight();
             }
@@ -243,12 +245,13 @@ Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
     }
 }
 
-// Nearest neighbor heuristic
+// Tweaked nearest neighbor heuristic
 std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost) {
     std::vector<int> result;
     std::stack<Vertex*> processing; int stack_size = 0;
     for (auto vertex : graph->getVertexSet()) {
         vertex.second->setVisited(false);
+        vertex.second->setDistance(0);
         for (Edge* edge : vertex.second->getAdj()) {
             edge->setProcessed(false);
         }
@@ -262,8 +265,15 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
 
     while (!src->isVisited()) {
         Vertex* v = processing.top();
+
+        if (v->getDistance() >= v->getAdj().size()) {
+            cost = 0;
+            std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+            duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+            return result;
+        }
+
         if (!v->isVisited() && v->getId() != src->getId()) {
-            for (Edge* edge : v->getAdj()) edge->setProcessed(false);
             v->setVisited(true);
         }
         Edge* shortest = findShortestEdge(v, src, stack_size == graph->getVertexSet().size());
@@ -274,14 +284,9 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
             else {
                 processing.push(graph->findVertex(shortest->getDest()));
                 stack_size++;
+                for (Edge* edge : graph->findVertex(shortest->getDest())->getAdj()) edge->setProcessed(false);
             }
         } else {
-            if (v->getId() == src->getId()) {
-                cost = 0;
-                std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-                duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
-                return result;
-            }
             v->setVisited(false);
             processing.pop();
             stack_size--;

@@ -311,7 +311,8 @@ void Interface::printRealWorldHeuristic(int option) {
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
 
-    if (path.size() < 10 || readPath()) printPath(path);
+    if (path.empty()) cout << RED << BOLD << "\tNo path found!" << RESET << endl;
+    else if (path.size() < 10 || readPath()) printPath(path);
 
     footer();
     inputWait();
