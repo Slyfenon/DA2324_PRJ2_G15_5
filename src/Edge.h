@@ -9,6 +9,7 @@ class Edge {
     private:
         int origin;
         int dest;
+        int visited = false;
         double weight;
         bool direction;
         bool processed; // For nearest neighbor
@@ -25,6 +26,9 @@ class Edge {
 
 
 
+        bool isVisited() const;
+
+        void setVisited(bool visited);
 
         int getDest() const;
 

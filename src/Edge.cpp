@@ -35,3 +35,12 @@ bool Edge::getProcessed() const {
 void Edge::setProcessed(bool p) {
     this->processed = p;
 }
+
+bool Edge::isVisited() const {
+    return visited;
+}
+
+void Edge::setVisited(bool visited) {
+    this->visited = visited;
+}
+
