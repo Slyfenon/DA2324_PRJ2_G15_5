@@ -120,9 +120,14 @@ void Interface::mainMenu() {
 
     int option = readOption(4);
 
+    double cost;
+    long duration;
     switch(option) {
         case 1:
-            printBacktracking();
+            //printBacktracking();
+            manager.christofidesTSP(duration, cost);
+            std::cout << "Cost: " << cost << std::endl;
+            std::cout << "Duration: " << duration << " ms" << std::endl;
             break;
         case 2:
             triangularHeuristicMenu();

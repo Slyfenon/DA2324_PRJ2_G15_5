@@ -36,5 +36,13 @@ public:
     double haversineDistance(Vertex *v1, Vertex *v2);
 
     double calculateCost(std::vector<Vertex *> &preorder);
+
+    std::vector<int> christofidesTSP(long &duration, double &cost);
+
+    std::vector<int> shortenToHamiltonianCircuit(const std::vector<int> &eulerianCircuit);
+
+    void findEulerianCircuit(std::vector<int> &eulerianCircuit, Graph *eulerianGraph);
+
+    void createEulerianGraph(Graph &eulerianGraph, std::vector<Edge *> &MST, std::vector<Edge *> &perfectEdges);
 };
 #endif //DA_PROJ2_MANAGER_H
