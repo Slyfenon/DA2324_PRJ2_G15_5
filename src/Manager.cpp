@@ -1,7 +1,9 @@
 #include <chrono>
 #include <iostream>
 #include <stack>
+#include <queue>
 #include <climits>
+#include <cmath>
 #include "Manager.h"
 #include "MutablePriorityQueue.h"
 
@@ -121,18 +123,6 @@ std::vector<int> Manager::backtracking(long &duration, double &cost) {
     return bestPath;
 }
 
-struct PrimVertexInfo {
-    int id;
-    double key;
-    int parent;
-};
-
-struct CompareVertexKeys {
-    bool operator()(const PrimVertexInfo& v1, const PrimVertexInfo& v2) {
-        return v1.key > v2.key;
-    }
-};
-
 
 void Manager::preOrderWalk(std::vector<Edge*> MST, Vertex* v, std::vector<Vertex*> &preOrder) {
     v->setVisited(true);
@@ -197,9 +187,11 @@ std::vector<Edge*> Manager::primMST() {
 
 }
 
-void Manager::triangularInequality() {
+void Manager::triangularInequality(long &duration, double &cost) {
     std::vector<Edge*> MSTTree;
     std::vector<Vertex*> preOrder;
+
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     for(auto v : graph->getVertexSet()){
         v.second->setVisited(false);
     }
@@ -213,16 +205,12 @@ void Manager::triangularInequality() {
     preOrderWalk(MSTTree, root, preOrder);
 
     preOrder.push_back(root);
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 
-    int count = 0;
-    for(auto v : preOrder){
-        count++;
-        std::cout << v->getId() << " ";
-    }
-    std::cout << std::endl;
-    std::cout << count <<std::endl;
+
+    cost = calculateCost(preOrder);
 }
-
 
 Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
     vertex->setDistance(vertex->getDistance() + 1);
@@ -308,4 +296,57 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
 void Manager::resetGraph() {
     delete this->graph;
     graph = new Graph();
+}
+
+bool Manager::checkConnected(Vertex* v1, Vertex* v2 ){
+    for(Edge* edge : v1->getAdj()){
+        if(edge->getDest() == v2->getId()){
+            return true;
+        }
+    }
+    return false;
+}
+
+double Manager::calculateCost(std::vector<Vertex *> &preorder) {
+
+    double cost = 0;
+    for(int i = 0; i < preorder.size() - 1; i++){
+        Vertex* v1 = preorder[i];
+        Vertex* v2 = preorder[(i+1)];
+
+        if(checkConnected(v1, v2)) {
+            for (Edge *edge: v1->getAdj()) {
+                if (edge->getDest() == v2->getId()) {
+                    cost += edge->getWeight();
+                    break;
+                }
+            }
+        }
+        else{
+            cost += haversineDistance(v1, v2);
+        }
+    }
+    return cost;
+}
+
+double convertToRadians(double degree){
+    return degree * (M_PI/180);
+}
+double Manager::haversineDistance(Vertex* v1, Vertex* v2){
+    double lat1 = v1->getCoord()->getLatitude();
+    double lon1 = v1->getCoord()->getLongitude();
+    double lat2 = v2->getCoord()->getLatitude();
+    double lon2 = v2->getCoord()->getLongitude();
+
+    double earthRadius = 6371e3;
+    double phi1 = convertToRadians(lat1);
+    double phi2 = convertToRadians(lat2);
+    double deltaLat = convertToRadians(lat2 - lat1);
+    double deltaLon = convertToRadians(lon2 - lon1);
+
+    double a = sin(deltaLat / 2) * sin(deltaLat / 2) + cos(phi1) * cos(phi2) * sin(deltaLon / 2) * sin(deltaLon / 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1-a));
+
+    return earthRadius * c;
+
 }
