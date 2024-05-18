@@ -233,8 +233,37 @@ Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
     return non_visited == nullptr ? visited : non_visited;
 }
 
+std::vector<std::pair<int,int>> Manager::convertBacktrack(std::vector<int> path) {
+    std::unordered_set<int> visited;
+    std::vector<std::pair<int,int>> result;
+    auto it = path.begin();
+    int backtrack_start = -1, prev;
+
+    while(it != path.end()) {
+        int node = *it;
+        if (visited.find(node) == visited.end()) {
+            if (backtrack_start != -1) {
+                result.push_back({backtrack_start, node});
+                backtrack_start = -1;
+            }
+            visited.insert(node);
+            prev = node;
+            it++;
+        }
+        else {
+            if (backtrack_start == -1) {
+                backtrack_start = prev;
+            }
+            prev = node;
+            it = path.erase(it);
+        }
+    }
+
+    return result;
+}
+
 // Nearest neighbor heuristic
-std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost) {
+std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost, std::vector<std::pair<int,int>> backtracks) {
     std::vector<int> result;
     cost = 0;
     int cities = graph->getVertexSet().size(), visited = 0;
@@ -259,18 +288,19 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
             visited++;
         }
         Edge* shortest = findShortestEdge(current, src, visited == cities);
+        cost += shortest->getWeight();
         shortest->setVisited(true);
         shortest->getReverse()->setVisited(true);
         current = graph->findVertex(shortest->getDest());
         current->setPath(shortest);
-        cost += shortest->getWeight();
     } while (current != src);
+
+    backtracks = convertBacktrack(result);
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 
     return result;
-
 }
 
 void Manager::resetGraph() {

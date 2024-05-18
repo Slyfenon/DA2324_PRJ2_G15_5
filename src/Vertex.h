@@ -75,6 +75,9 @@ class Vertex {
          * @return Vector containing Edges that have the source vertex equal to the caller.
          */
         const std::vector<Edge*> &getAdj() const;
+
+        Edge* findEdge(int to) const;
+
         friend class Graph;
 };
 

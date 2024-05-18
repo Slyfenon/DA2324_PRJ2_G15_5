@@ -60,3 +60,11 @@ bool Vertex::operator<(Vertex &vertex) const {
     return this->distance < vertex.distance;
 }
 
+Edge *Vertex::findEdge(int to) const {
+    for (Edge* edge : this->getAdj()) {
+        if (edge->getDest() == to) return edge;
+    }
+
+    return nullptr;
+}
+

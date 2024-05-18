@@ -305,11 +305,11 @@ void Interface::printRealWorldHeuristic(int option) {
     header();
 
     cout << GREEN << BOLD << "\tRunning Nearest Neighbor Heuristic..." << RESET << endl;
-    long duration; double cost;
-    std::vector<int> path = manager.realWorldHeuristic(option, duration, cost);
+    long duration; double cost; std::vector<std::pair<int, int>> backtracks;
+    std::vector<int> path = manager.realWorldHeuristic(option, duration, cost, backtracks);
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
-
+    
     if (path.empty()) cout << RED << BOLD << "\tNo path found!" << RESET << endl;
     else if (path.size() < 10 || readPath()) printPath(path);
 
@@ -343,10 +343,10 @@ void Interface::printOtherHeuristic(bool compare) {
     clear();
     header();
 
-    long duration; double cost;
+    long duration; double cost; std::vector<std::pair<int, int>> backtracks;
 
     cout << GREEN << BOLD << "\tRunning ???? Heuristic..." << RESET << endl;
-    std::vector<int> path = manager.realWorldHeuristic(0, duration, cost); // manager.otherHeuristic
+    std::vector<int> path = manager.realWorldHeuristic(0, duration, cost, backtracks); // manager.otherHeuristic
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
 
