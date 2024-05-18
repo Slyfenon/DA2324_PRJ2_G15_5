@@ -125,7 +125,6 @@ void Interface::mainMenu() {
             printBacktracking();
             break;
         case 2:
-            manager.triangularInequality();
             triangularHeuristicMenu();
             break;
         case 3:
@@ -248,7 +247,7 @@ void Interface::otherHeuristicMenu() {
 
     cout << "\tWhat would you like to" << BOLD << BLUE <<  " do?\n" << RESET << endl
          << BOLD << BLUE << "\t[1]" << RESET << " - Run ??? Heuristics Algorithm" << endl
-         << BOLD << BLUE << "\t[2]" << RESET << " - Run Comparison with Backtracking Algorithm" << endl
+         << BOLD << BLUE << "\t[2]" << RESET << " - Run Comparison with Triangular Inequality Algorithm" << endl
          << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
 
     footer();
@@ -324,7 +323,7 @@ void Interface::printTriangularInequality(bool compare) {
     long duration; double cost;
 
     cout << GREEN << BOLD << "\tRunning Triangular Inequality Heuristic..." << RESET << endl;
-    manager.triangularInequality();
+    manager.triangularInequality(duration, cost);
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
 
@@ -351,8 +350,8 @@ void Interface::printOtherHeuristic(bool compare) {
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
 
     if (compare) {
-        cout << GREEN << BOLD << "\n\n\tRunning Backtracking Algorithm..." << RESET << endl;
-        manager.backtracking(duration, cost);
+        cout << GREEN << BOLD << "\n\n\tRunning Triangular Inequality Algorithm..." << RESET << endl;
+        manager.triangularInequality(duration, cost);
         cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
         cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
     } else {
