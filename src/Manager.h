@@ -24,6 +24,8 @@ public:
     void loadExtraGraph(int option);
     void loadRealGraph(int option);
     std::vector<int> realWorldHeuristic(int source, long &duration, double &cost);
+    Edge* findFarthestEdge(Vertex* start);
+    Edge* findEdge(Vertex* start, Vertex* end);
     std::vector<int> otherHeuristic(int source, long &duration, double &cost);
 
     void resetGraph();
