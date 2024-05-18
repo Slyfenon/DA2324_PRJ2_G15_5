@@ -253,8 +253,8 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
     Vertex* current = src;
 
     do {
-        result.push_back(current->getId());
         if (!current->isVisited()) {
+            result.push_back(current->getId());
             current->setVisited(true);
             visited++;
         }
