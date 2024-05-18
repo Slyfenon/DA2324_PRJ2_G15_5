@@ -4,6 +4,7 @@
 #include <queue>
 #include <climits>
 #include <cmath>
+#include <set>
 #include "Manager.h"
 #include "MutablePriorityQueue.h"
 
@@ -233,7 +234,7 @@ Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
     return non_visited == nullptr ? visited : non_visited;
 }
 
-std::vector<std::pair<int,int>> Manager::convertBacktrack(std::vector<int> path) {
+std::vector<std::pair<int,int>> Manager::convertBacktrack(std::vector<int> &path) {
     std::unordered_set<int> visited;
     std::vector<std::pair<int,int>> result;
     auto it = path.begin();
@@ -263,7 +264,7 @@ std::vector<std::pair<int,int>> Manager::convertBacktrack(std::vector<int> path)
 }
 
 // Nearest neighbor heuristic
-std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost, std::vector<std::pair<int,int>> backtracks) {
+std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost, std::vector<std::pair<int,int>> &backtracks) {
     std::vector<int> result;
     cost = 0;
     int cities = graph->getVertexSet().size(), visited = 0;
@@ -274,7 +275,6 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
             edge->setVisited(false);
         }
     }
-
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
@@ -288,6 +288,13 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
             visited++;
         }
         Edge* shortest = findShortestEdge(current, src, visited == cities);
+        if (!shortest) {
+            result.clear();
+            std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+            duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+            cost = 0;
+            break;
+        }
         cost += shortest->getWeight();
         shortest->setVisited(true);
         shortest->getReverse()->setVisited(true);
@@ -360,3 +367,156 @@ double Manager::haversineDistance(Vertex* v1, Vertex* v2){
     return earthRadius * c;
 
 }
+
+
+void Manager::findEulerianCircuit(std::vector<int>& eulerianCircuit, Graph *eulerianGraph) {
+    std::unordered_map<int, Vertex*> vertexSet = eulerianGraph->getVertexSet();
+    std::vector<int> currCircuit;
+    currCircuit.push_back(0);
+
+    while (eulerianCircuit.size() != eulerianGraph->getNumberOfEdges() + 1) {
+        int currVertex = currCircuit.back();
+        bool found = false;
+
+        for (auto edge : vertexSet[currVertex]->getAdj()) {
+            if (!edge->getVisited()) {
+                edge->setVisited(true);
+                found = true;
+
+                int next = edge->getOrig() == currVertex ? edge->getDest() : edge->getOrig();
+                currCircuit.push_back(next);
+                break;
+            }
+        }
+
+
+        if(!found) {
+            if (eulerianCircuit.empty()) {
+                eulerianCircuit = currCircuit;
+            } else {
+                auto it = std::find(eulerianCircuit.begin(), eulerianCircuit.end(), *currCircuit.begin());
+                eulerianCircuit.insert(it + 1, currCircuit.begin() + 1, currCircuit.end());
+            }
+
+            for (auto vertex: eulerianCircuit) {
+                if (std::any_of(vertexSet[vertex]->getAdj().begin(), vertexSet[vertex]->getAdj().end(),[](Edge *edge) {
+                    return !edge->getVisited(); })) {
+                    currCircuit = {vertex};
+                    break;
+                }
+            }
+        }
+    }
+}
+
+std::vector<int> Manager::shortenToHamiltonianCircuit(const std::vector<int>& eulerianCircuit) {
+    std::vector<int> hamiltonianCircuit;
+    std::unordered_set<int> visited;
+
+    for (int vertex : eulerianCircuit) {
+        if (visited.find(vertex) == visited.end()) {
+            hamiltonianCircuit.push_back(vertex);
+            visited.insert(vertex);
+        }
+    }
+
+    if (hamiltonianCircuit.front() != hamiltonianCircuit.back()) {
+        hamiltonianCircuit.push_back(hamiltonianCircuit.front());
+    }
+
+    return hamiltonianCircuit;
+}
+
+void Manager::createEulerianGraph(Graph &eulerianGraph, std::vector<Edge *> &MST, std::vector<Edge *> &perfectEdges) {
+
+    for (auto v: graph->getVertexSet()) {
+        eulerianGraph.addVertex(v.first);
+    }
+
+    for (auto edge: MST) {
+        eulerianGraph.addEdge(edge->getOrig(), edge->getDest(), edge->getWeight());
+    }
+
+    for (auto edge: perfectEdges) {
+        eulerianGraph.addEdge(edge->getOrig(), edge->getDest(), edge->getWeight());
+    }
+
+}
+
+auto compareEdges = [](Edge *a, Edge* b) {return a != b && a->getWeight() >= b->getWeight();};
+
+std::vector<int> Manager::christofidesTSP(long &duration, double &cost) {
+        std::vector<int> result;
+         std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+
+    // Step 1: Compute Minimum Spanning Tree
+        std::vector<Edge *> MST = primMST();
+
+        // Step 2: Identify Odd-Degree Vertices
+        std::vector<Vertex *> oddDegreeVertices;
+        for (const auto &vertex: graph->getVertexSet()) {
+            if ((vertex.second->getAdj().size()) % 2 != 1) {
+                oddDegreeVertices.push_back(vertex.second);
+            }
+        }
+
+        // Step 3: Find Minimum Weight Perfect Matching
+        std::priority_queue<Edge *, std::vector<Edge *>, decltype(compareEdges)> minWeightEdgeHeap(compareEdges);
+        for (auto vertex: oddDegreeVertices) {
+            for (auto edge: vertex->getAdj()) {
+                int next = edge->getOrig() == vertex->getId() ? edge->getDest() : edge->getOrig();
+                if (!edge->getVisited() &&
+                    std::find(oddDegreeVertices.begin(), oddDegreeVertices.end(), graph->findVertex(next)) !=
+                    oddDegreeVertices.end()) {
+                    minWeightEdgeHeap.push(edge);
+                    edge->setVisited(true);
+                }
+            }
+        }
+
+        // Step 4: Find Perfect Edges
+        std::vector<Edge *> perfectEdges;
+        while (perfectEdges.size() != oddDegreeVertices.size() / 2 && !minWeightEdgeHeap.empty()) {
+            Edge *edge = minWeightEdgeHeap.top();
+            minWeightEdgeHeap.pop();
+            if (!graph->findVertex(edge->getOrig())->isVisited() && !graph->findVertex(edge->getDest())->isVisited()) {
+                perfectEdges.push_back(edge);
+                graph->findVertex(edge->getOrig())->setVisited(true);
+                graph->findVertex(edge->getDest())->setVisited(true);
+            }
+        }
+
+        // Step 5: Create euleriangraph
+        Graph eulerianGraph;
+        createEulerianGraph(eulerianGraph, MST, perfectEdges);
+
+
+        // Step 6: Find Eulerian Circuit
+        std::vector<int> eulerianCircuit;
+        findEulerianCircuit(eulerianCircuit, &eulerianGraph);
+
+        // Step 7: Shorten Circuit to Hamiltonian Circuit
+        result = shortenToHamiltonianCircuit(eulerianCircuit);
+
+        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+
+        // Step 8: Calculate cost
+        cost = 0;
+        for (size_t i = 0; i < result.size() - 1; i++) {
+            Vertex *v1 = graph->findVertex(result[i]);
+            Vertex *v2 = graph->findVertex(result[i + 1]);
+            if (checkConnected(v1, v2)) {
+                for (Edge *edge: v1->getAdj()) {
+                    if (edge->getDest() == v2->getId()) {
+                        cost += edge->getWeight();
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+}
+
+
+

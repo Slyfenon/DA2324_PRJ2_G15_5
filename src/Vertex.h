@@ -27,15 +27,35 @@ class Vertex {
 
         bool operator<(Vertex & vertex) const; // // required by MutablePriorityQueue
 
+        /**
+         * Getter for the id attribute.
+         * @return
+         */
+        virtual int getId() const;
 
-    virtual int getId() const;
-
+        /**
+         * Setter for the label attribute.
+         * @param label
+         */
         void setLabel(const std::string &label);
+
+        /**
+         * Getter for the label attribute.
+         * @return Label of the vertex.
+         */
         std::string getLabel() const;
 
+        /**
+         * Setter for the distance attribute.
+         * @param distance
+         */
         void setDistance(double distance);
-        double getDistance() const;
 
+        /**
+         * Getter for the distance attribute.
+         * @return Distance of the vertex.
+         */
+        double getDistance() const;
 
         /**
          * Checks visited attribute.
@@ -67,7 +87,15 @@ class Vertex {
          */
         std::vector<Edge *> getIncoming() const;
 
+        /**
+         * Setter for the Coordinate of the vertex.
+         * @param coord
+         */
         void setCoord(Coordinate *coord);
+        /**
+         * Getter for the Coordinate of the vertex.
+         * @return Coordinate of the vertex.
+         */
         Coordinate *getCoord() const;
 
         /**
@@ -75,8 +103,6 @@ class Vertex {
          * @return Vector containing Edges that have the source vertex equal to the caller.
          */
         const std::vector<Edge*> &getAdj() const;
-
-        Edge* findEdge(int to) const;
 
         friend class Graph;
 };

@@ -120,9 +120,14 @@ void Interface::mainMenu() {
 
     int option = readOption(4);
 
+    double cost;
+    long duration;
     switch(option) {
         case 1:
-            printBacktracking();
+            //printBacktracking();
+            manager.christofidesTSP(duration, cost);
+            std::cout << "Cost: " << cost << std::endl;
+            std::cout << "Duration: " << duration << " ms" << std::endl;
             break;
         case 2:
             triangularHeuristicMenu();
@@ -307,9 +312,22 @@ void Interface::printRealWorldHeuristic(int option) {
     cout << GREEN << BOLD << "\tRunning Nearest Neighbor Heuristic..." << RESET << endl;
     long duration; double cost; std::vector<std::pair<int, int>> backtracks;
     std::vector<int> path = manager.realWorldHeuristic(option, duration, cost, backtracks);
+
+    if (!backtracks.empty() || path.empty()) {
+        cout << RED << BOLD << "\n\tBacktracks detected or no path found!" << RESET
+             << GREEN << BOLD << "\n\n\\tRunning Christofides..." << RESET << endl;
+        if (!backtracks.empty())
+            cout << YELLOW << BOLD << "\n\tThe creation of the following routes could improve the tour: " << RESET << endl;
+        for (auto pair : backtracks) {
+            cout << BOLD << "\n\t" << pair.first << " ---> " << pair.second;
+        }
+        path = manager.christofidesTSP(duration, cost);
+    }
+
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
-    
+
+
     if (path.empty()) cout << RED << BOLD << "\tNo path found!" << RESET << endl;
     else if (path.size() < 10 || readPath()) printPath(path);
 

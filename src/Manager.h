@@ -22,7 +22,7 @@ public:
     std::vector<Edge *> primMST();
     void loadExtraGraph(int option);
     void loadRealGraph(int option);
-    std::vector<int> realWorldHeuristic(int source, long &duration, double &cost, std::vector<std::pair<int,int>> backtracks);
+    std::vector<int> realWorldHeuristic(int source, long &duration, double &cost, std::vector<std::pair<int,int>> &backtracks);
 
     void resetGraph();
 
@@ -37,6 +37,13 @@ public:
 
     double calculateCost(std::vector<Vertex *> &preorder);
 
-    std::vector<std::pair<int, int>> convertBacktrack(std::vector<int> path);
+    std::vector<std::pair<int, int>> convertBacktrack(std::vector<int> &path);
+    std::vector<int> christofidesTSP(long &duration, double &cost);
+
+    std::vector<int> shortenToHamiltonianCircuit(const std::vector<int> &eulerianCircuit);
+
+    void findEulerianCircuit(std::vector<int> &eulerianCircuit, Graph *eulerianGraph);
+
+    void createEulerianGraph(Graph &eulerianGraph, std::vector<Edge *> &MST, std::vector<Edge *> &perfectEdges);
 };
 #endif //DA_PROJ2_MANAGER_H
