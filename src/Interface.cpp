@@ -345,7 +345,7 @@ void Interface::printOtherHeuristic(bool compare) {
     long duration; double cost;
 
     cout << GREEN << BOLD << "\tRunning ???? Heuristic..." << RESET << endl;
-    std::vector<int> path = manager.realWorldHeuristic(0, duration, cost); // manager.otherHeuristic
+    std::vector<int> path = manager.otherHeuristic(0, duration, cost); // manager.otherHeuristic
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
 
