@@ -7,6 +7,7 @@
 #include <set>
 #include "Manager.h"
 #include "MutablePriorityQueue.h"
+#include "UFDS.h"
 
 bool Manager::validateVertex(const std::string &option) {
     for (const char &c : option) {
@@ -23,7 +24,7 @@ bool Manager::validateNodeNumber(const std::string &option) {
             || (stoi(option) % 25 == 0 && stoi(option) < 100)));
 }
 
-void checkAndUpdateBestPath(const std::vector<int>& path, std::vector<int>& bestPath, double& minCost, double currentCost, int firstVertex, Graph* graph) {
+void checkAndUpdateBestPath(const std::vector<int>& path, std::vector<int>& bestPath, double& minCost, double& currentCost, int& firstVertex, Graph* graph) {
 
     for (Edge* edge : graph->findVertex(path.back())->getAdj()) {
         Vertex* first = graph->findVertex(edge->getDest());
@@ -33,7 +34,7 @@ void checkAndUpdateBestPath(const std::vector<int>& path, std::vector<int>& best
                 minCost = cycleCost;
                 bestPath = path;
             }
-            break;
+            return;
         }
     }
 }
@@ -49,7 +50,7 @@ void Manager::tsp_backtracking(std::vector<int> &path, std::vector<int> &bestPat
 
     for (Edge* edge : graph->findVertex(lastVertex)->getAdj()) {
         Vertex* nextVertex = graph->findVertex(edge->getDest());
-        if (!nextVertex->isVisited()) {
+        if (!nextVertex->isVisited() && currentCost + edge->getWeight() < minCost){
             double nextCost = currentCost + edge->getWeight();
             path.push_back(nextVertex->getId());
             nextVertex->setVisited(true);
@@ -141,6 +142,33 @@ void Manager::preOrderWalk(std::vector<Edge*> MST, Vertex* v, std::vector<Vertex
             }
         }
     }
+}
+std::vector<Edge*> Manager::kruskalMST() {
+    std::vector<Edge*> MST;
+
+    std::vector<Edge*> allEdges;
+    for (const auto& vertex : graph->getVertexSet()) {
+        for (Edge* edge : vertex.second->getAdj()) {
+            allEdges.push_back(edge);
+        }
+    }
+
+    std::sort(allEdges.begin(), allEdges.end(), [](Edge* a, Edge* b) {
+        return a->getWeight() < b->getWeight();
+    });
+
+    UFDS ds(graph->getVertexSet().size());
+
+    for (Edge* edge : allEdges) {
+        int u = edge->getOrig();
+        int v = edge->getDest();
+        if (ds.findSet(u) != ds.findSet(v)) {
+            MST.push_back(edge);
+            ds.linkSets(u, v);
+        }
+    }
+
+    return MST;
 }
 
 
@@ -425,10 +453,10 @@ void Manager::createEulerianGraph(Graph &eulerianGraph, std::vector<Edge *> &MST
 auto compareEdges = [](Edge *a, Edge* b) {return a != b && a->getWeight() >= b->getWeight();};
 
 std::vector<int> Manager::christofidesTSP(long &duration, double &cost) {
-        std::vector<int> result;
+         std::vector<int> result;
          std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
-    // Step 1: Compute Minimum Spanning Tree
+        // Step 1: Compute Minimum Spanning Tree
         std::vector<Edge *> MST = primMST();
 
         // Step 2: Identify Odd-Degree Vertices

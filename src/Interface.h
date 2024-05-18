@@ -45,6 +45,8 @@ public:
     void printTriangularInequality(bool compare);
     void printOtherHeuristic(bool compare);
     void printPath(std::vector<int> path);
+
+    void christofidesMenu();
 };
 
 

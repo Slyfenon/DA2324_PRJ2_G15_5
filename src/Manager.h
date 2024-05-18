@@ -29,6 +29,7 @@ public:
     static bool validateNodeNumber(const std::string &option);
     bool validateVertex(const std::string &option);
 
+
     void triangularInequality(long &duration, double &cost);
 
     bool checkConnected(Vertex *v1, Vertex *v2);
@@ -44,5 +45,7 @@ public:
     void findEulerianCircuit(std::vector<int> &eulerianCircuit, Graph *eulerianGraph);
 
     void createEulerianGraph(Graph &eulerianGraph, std::vector<Edge *> &MST, std::vector<Edge *> &perfectEdges);
+
+    std::vector<Edge *> kruskalMST();
 };
 #endif //DA_PROJ2_MANAGER_H

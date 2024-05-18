@@ -114,20 +114,18 @@ void Interface::mainMenu() {
          << BOLD << BLUE << "\t[2]" << RESET << " - Triangular Approximantion Heuristic" << endl
          << BOLD << BLUE << "\t[3]" << RESET << " - ??? Heuristic" << endl
          << BOLD << BLUE << "\t[4]" << RESET << " - Arbitrary Starting Point" << endl
+         << BOLD << BLUE << "\t[5]" << RESET << " - Christofides Algorithm" << endl
          << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
 
     footer();
 
-    int option = readOption(4);
+    int option = readOption(5);
 
     double cost;
     long duration;
     switch(option) {
         case 1:
-            //printBacktracking();
-            manager.christofidesTSP(duration, cost);
-            std::cout << "Cost: " << cost << std::endl;
-            std::cout << "Duration: " << duration << " ms" << std::endl;
+            printBacktracking();
             break;
         case 2:
             triangularHeuristicMenu();
@@ -137,6 +135,9 @@ void Interface::mainMenu() {
             break;
         case 4:
             realWorldGraphsMenu();
+            break;
+        case 5:
+            christofidesMenu();
             break;
         case 0:
             manager.resetGraph();
@@ -270,6 +271,21 @@ void Interface::otherHeuristicMenu() {
     }
 
     otherHeuristicMenu();
+}
+
+void Interface::christofidesMenu() {
+    clear();
+    header();
+
+    cout << GREEN << BOLD << "\tRunning Christofides Algorithm..." << RESET << endl;
+    long duration; double cost;
+    manager.christofidesTSP(duration, cost);
+    cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
+    cout << BOLD << YELLOW << "\tTour Cost: " << RESET << cost << endl;
+
+    footer();
+    inputWait();
+    mainMenu();
 }
 
 void Interface::realWorldGraphsMenu() {
