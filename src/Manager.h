@@ -11,7 +11,7 @@ private:
     Graph *graph = new Graph();
     Parser *parser;
 
-    Edge *findShortestEdge(Vertex *vertex, Vertex *src, bool final);
+    Edge *findShortestEdge(Vertex *vertex, Vertex* src, bool final);
 
 public:
     Graph* getGraph() const;

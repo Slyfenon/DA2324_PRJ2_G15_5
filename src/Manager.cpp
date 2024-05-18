@@ -18,7 +18,7 @@ bool Manager::validateNodeNumber(const std::string &option) {
     for (const char &c : option) {
         if (!isdigit(c)) return false;
     }
-    return ((0 < stoi(option) && stoi(option) <= 900) && (stoi(option) % 100 == 0
+    return ((0 <= stoi(option) && stoi(option) <= 900) && (stoi(option) % 100 == 0
             || (stoi(option) % 25 == 0 && stoi(option) < 100)));
 }
 
@@ -213,84 +213,64 @@ void Manager::triangularInequality(long &duration, double &cost) {
 }
 
 Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
-    vertex->setDistance(vertex->getDistance() + 1);
-    if (final) {
-        for (Edge* edge : vertex->getAdj()) {
-            if (edge->getDest() == src->getId()) return edge;
-        }
-        return nullptr;
-    } else {
-        Edge* result = nullptr; double min_cost = INF;
-        for (Edge* edge : vertex->getAdj()) {
-            if (!edge->getProcessed() && edge->getWeight() < min_cost
-                && edge->getDest() != src->getId() && !graph->findVertex(edge->getDest())->isVisited()) {
-                if (graph->findVertex(edge->getDest())->getDistance() < 10) return edge;
-                result = edge;
-                min_cost = edge->getWeight();
+    Edge* non_visited = nullptr, *visited = nullptr;
+    double min_non_visited = INF; double min_visited = INF;
+    for (Edge* edge : vertex->getAdj()) {
+        if (!edge->getVisited()) {
+            if (final && edge->getDest() == src->getId()) {
+                return edge;
+            }
+            if (graph->findVertex(edge->getDest())->isVisited()) {
+                visited = min_visited < edge->getWeight() ? visited : edge;
+                min_visited = min_visited < edge->getWeight() ? min_visited : edge->getWeight();
+            } else {
+                non_visited = min_non_visited < edge->getWeight() ? non_visited : edge;
+                min_non_visited = min_non_visited < edge->getWeight() ? min_non_visited : edge->getWeight();
             }
         }
-        return result;
     }
+
+    return non_visited == nullptr ? visited : non_visited;
 }
 
-// Tweaked nearest neighbor heuristic
+// Nearest neighbor heuristic
 std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost) {
     std::vector<int> result;
-    std::stack<Vertex*> processing; int stack_size = 0;
+    cost = 0;
+    int cities = graph->getVertexSet().size(), visited = 0;
+
     for (auto vertex : graph->getVertexSet()) {
         vertex.second->setVisited(false);
-        vertex.second->setDistance(0);
         for (Edge* edge : vertex.second->getAdj()) {
-            edge->setProcessed(false);
+            edge->setVisited(false);
         }
     }
+
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
     Vertex* src = graph->findVertex(source);
-    processing.push(src);
-    stack_size++;
+    Vertex* current = src;
 
-    while (!src->isVisited()) {
-        Vertex* v = processing.top();
-
-        if (v->getDistance() >= v->getAdj().size()) {
-            cost = 0;
-            std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-            duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
-            return result;
+    do {
+        result.push_back(current->getId());
+        if (!current->isVisited()) {
+            current->setVisited(true);
+            visited++;
         }
-
-        if (!v->isVisited() && v->getId() != src->getId()) {
-            v->setVisited(true);
-        }
-        Edge* shortest = findShortestEdge(v, src, stack_size == graph->getVertexSet().size());
-        if (shortest) {
-            graph->findVertex(shortest->getDest())->setPath(shortest);
-            shortest->setProcessed(true);
-            if (shortest->getDest() == src->getId()) src->setVisited(true);
-            else {
-                processing.push(graph->findVertex(shortest->getDest()));
-                stack_size++;
-                for (Edge* edge : graph->findVertex(shortest->getDest())->getAdj()) edge->setProcessed(false);
-            }
-        } else {
-            v->setVisited(false);
-            processing.pop();
-            stack_size--;
-        }
-    }
+        Edge* shortest = findShortestEdge(current, src, visited == cities);
+        shortest->setVisited(true);
+        shortest->getReverse()->setVisited(true);
+        current = graph->findVertex(shortest->getDest());
+        current->setPath(shortest);
+        cost += shortest->getWeight();
+    } while (current != src);
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-
-    Vertex* curr = src; cost = 0;
-    do {
-        result.push_back(curr->getId());
-        cost += curr->getPath()->getWeight();
-        curr = graph->findVertex(curr->getPath()->getOrig());
-    } while (curr->getId() != src->getId());
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+
     return result;
+
 }
 
 void Manager::resetGraph() {
