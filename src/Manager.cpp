@@ -113,7 +113,7 @@ std::vector<int> Manager::backtracking(long &duration, double &cost) {
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     tsp_backtracking(path, bestPath, minCost, 0.0);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
     cost = minCost;
     return bestPath;
 }
@@ -282,7 +282,7 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
         if (!shortest) {
             result.clear();
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-            duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+            duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
             cost = 0;
             break;
         }
@@ -392,6 +392,7 @@ std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cos
     duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
     return res;
 }
+
 
 void Manager::resetGraph() {
     delete this->graph;
@@ -582,7 +583,7 @@ std::vector<int> Manager::christofidesTSP(long &duration, double &cost, int sour
         result = shortenToHamiltonianCircuit(eulerianCircuit);
 
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
 
         // Step 8: Calculate cost
         cost = 0;
