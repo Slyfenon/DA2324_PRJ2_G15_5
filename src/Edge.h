@@ -10,8 +10,8 @@ class Edge {
         int origin;
         int dest;
         double weight;
-        bool direction;
-        bool processed; // For nearest neighbor
+        bool visited;
+        Edge* reverse;
 
     public:
 
@@ -22,9 +22,6 @@ class Edge {
          * @param w Weight of the vertex.
          */
         Edge(const int &s, const int &d, double &w);
-
-
-
 
         int getDest() const;
 
@@ -47,11 +44,13 @@ class Edge {
          * Getter for the direction of the Edge.
          * @return 0 for bidirectional and  1 for unidirectional.
          */
-        bool getDirection() const;
+        bool getVisited() const;
 
-        bool getProcessed() const;
+        void setVisited(bool b);
 
-        void setProcessed(bool p);
+        Edge* getReverse() const;
+
+        void setReverse(Edge* edge);
 };
 
 

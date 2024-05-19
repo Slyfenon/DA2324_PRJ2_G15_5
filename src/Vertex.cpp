@@ -59,4 +59,3 @@ double Vertex::getDistance() const {
 bool Vertex::operator<(Vertex &vertex) const {
     return this->distance < vertex.distance;
 }
-

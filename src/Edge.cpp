@@ -4,7 +4,6 @@ Edge::Edge(const int &s, const int &d, double &w) {
     this->origin = s;
     this->dest = d;
     this->weight = w;
-    this->direction = direction;
 }
 
 
@@ -24,14 +23,18 @@ void Edge::setWeight(double weight) {
     this->weight = weight;
 }
 
-bool Edge::getDirection() const {
-    return direction;
+Edge *Edge::getReverse() const {
+    return this->reverse;
 }
 
-bool Edge::getProcessed() const {
-    return processed;
+void Edge::setReverse(Edge *edge) {
+    this->reverse = edge;
 }
 
-void Edge::setProcessed(bool p) {
-    this->processed = p;
+bool Edge::getVisited() const {
+    return this->visited;
+}
+
+void Edge::setVisited(bool b) {
+    this->visited = b;
 }

@@ -25,6 +25,8 @@ public:
      */
     Vertex* findVertex(const int &id) const;
 
+    int getNumberOfEdges() const;
+
 
     /**
      * Removes the vertex from the vertex set, his adjacent Edges and his incoming Edges.
@@ -57,11 +59,8 @@ public:
      */
     std::unordered_map<int, Vertex *> getVertexSet() const;
 
-    /**
-     * Setter for the VertexSet
-     * @param v The new vector of vertexes to be set as the VertexSet
-     */
-    void setVertexSet(std::vector<Vertex*> &v);
+
+    void setVertexSet(std::unordered_map<int, Vertex*> &v);
 
     /**
      * Adds a new Vertex to the Vertex Set verifying if it already exists.

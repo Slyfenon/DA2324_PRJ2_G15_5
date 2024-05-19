@@ -35,9 +35,9 @@ Edge* Graph::addEdge(const int &sourc, const int& dest, double w) {
     return newEdge;
 }
 
-//void Graph::setVertexSet(std::vector<Vertex *> &v) {
- //   this->vertexSet = v;
- //   }
+void Graph::setVertexSet(std::unordered_map<int, Vertex*> &v) {
+    this->vertexSet = v;
+}
 
 void Graph::deleteEdge(const int &s, Edge *Edge) const{
     Vertex *dest = findVertex(Edge->getDest());
@@ -105,6 +105,14 @@ bool Graph::removeVertex(const int &in) {
 
     return true;
 
+}
+
+int Graph::getNumberOfEdges() const {
+    int count = 0;
+    for (auto it = vertexSet.begin(); it != vertexSet.end(); it++) {
+        count += it->second->adj.size();
+    }
+    return count;
 }
 
 

@@ -50,9 +50,10 @@ public:
     /**
      * @brief Finds a Minimum Spanning Tree (MST) of the graph using Prim's algorithm.
      * @complexity O(|E| * log|V|), where |V| and |E| are the number or vertices and edges in the graph respectively.
+     * @param source - The source vertex for the MST
      * @return A vector of edges, representing a MST of the graph.
      */
-    std::vector<Edge *> primMST();
+    std::vector<Edge *> primMST(int source);
 
     /**
      * @brief Invokes the parser for a specific graph in the "Extra Graph" section.
@@ -74,9 +75,10 @@ public:
      * @param source - Source vertex.
      * @param duration - Duration of the computation.
      * @param cost - Minimal cost of the best path found.
+     * @param backtrack - Distance travelled to vertices already visited
      * @return A vector of integers, representing the vertex IDs, ordered in the way they're visited in the best path found.
      */
-    std::vector<int> realWorldHeuristic(int source, long &duration, double &cost);
+    std::vector<int> realWorldHeuristic(int source, long &duration, double &cost, double &backtrack);
 
     /**
      * @brief Finds, if possible, the shortest edge adjacent to a vertex.
@@ -170,5 +172,15 @@ public:
      * @return The cost of the transversal
      */
     double calculateCost(std::vector<Vertex *> &preorder);
+
+    double convertBacktrack(std::vector<int> &path);
+
+    std::vector<int> christofidesTSP(long &duration, double &cost, int source);
+
+    std::vector<int> shortenToHamiltonianCircuit(const std::vector<int> &eulerianCircuit);
+
+    void findEulerianCircuit(std::vector<int> &eulerianCircuit, Graph *eulerianGraph, int source);
+
+    void createEulerianGraph(Graph &eulerianGraph, std::vector<Edge *> &MST, std::vector<Edge *> &perfectEdges);
 };
 #endif //DA_PROJ2_MANAGER_H

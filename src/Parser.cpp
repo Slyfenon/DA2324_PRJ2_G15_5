@@ -36,8 +36,10 @@ void Parser::readToyGraph(const std::string& fileName, Graph* graph) {
         if (!tourism) {
             graph->addVertex(stoi(origin));
             graph->addVertex(stoi(dest));
-            graph->addEdge(stoi(origin), stoi(dest), stod(dist));
-            graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+            Edge* a = graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+            Edge* b = graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+
+            a->setReverse(b); b->setReverse(a);
         } else {
             graph->addVertex(stoi(origin));
             graph->addVertex(stoi(dest));
@@ -45,8 +47,10 @@ void Parser::readToyGraph(const std::string& fileName, Graph* graph) {
             v->setLabel(originLabel);
             v = graph->findVertex(stoi(dest));
             v->setLabel(destLabel);
-            graph->addEdge(stoi(origin), stoi(dest), stod(dist));
-            graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+            Edge* a = graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+            Edge* b = graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+
+            a->setReverse(b); b->setReverse(a);
         }
     }
 
@@ -91,8 +95,10 @@ void Parser::readExtraGraph(Graph *graph, int option) {
         getline(iss, dest, ',');
         getline(iss, dist, '\r');
 
-        graph->addEdge(stoi(origin), stoi(dest), stod(dist));
-        graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+        Edge* a = graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+        Edge* b = graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+
+        a->setReverse(b); b->setReverse(a);
     }
     inputFile.close();
 }
@@ -131,8 +137,10 @@ void Parser::readRealGraph(Graph *graph, const std::string& graphNumber){
         getline(iss, dest, ',');
         getline(iss, dist, '\r');
 
-        graph->addEdge(stoi(origin), stoi(dest), stod(dist));
-        graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+        Edge* a = graph->addEdge(stoi(origin), stoi(dest), stod(dist));
+        Edge* b = graph->addEdge(stoi(dest), stoi(origin), stod(dist));
+
+        a->setReverse(b); b->setReverse(a);
     }
     inputFile.close();
 }
