@@ -344,7 +344,6 @@ std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cos
     int cnt = 2;
     while (cnt != graph->getVertexSet().size()){
         cnt++;
-        std::cout << cnt << std::endl;
         w = findFarthestVertex(w);
 
         int min = INT_MAX;
