@@ -1,23 +1,71 @@
-\doxysection{Parser Class Reference}
-\hypertarget{classParser}{}\label{classParser}\index{Parser@{Parser}}
-\doxysubsubsection*{Public Member Functions}
+\hypertarget{classParser}{}\doxysection{Parser Class Reference}
+\label{classParser}\index{Parser@{Parser}}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classParser_a63770a5a61e2fde2f8264b28cf10c1dd}\label{classParser_a63770a5a61e2fde2f8264b28cf10c1dd} 
-void {\bfseries read\+Toy\+Graph} (const std\+::string \&file\+Name, \mbox{\hyperlink{classGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph)
-\item 
-\Hypertarget{classParser_ae5301366bd9cef2a4a63915b6f94445c}\label{classParser_ae5301366bd9cef2a4a63915b6f94445c} 
-void {\bfseries read\+Extra\+Graph} (\mbox{\hyperlink{classGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, int option)
-\item 
-\Hypertarget{classParser_a5d0ce87330851a36616f0e9eb302f158}\label{classParser_a5d0ce87330851a36616f0e9eb302f158} 
-void {\bfseries read\+Real\+Graph} (\mbox{\hyperlink{classGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, std\+::string \&graph\+Number)
-\item 
-\Hypertarget{classParser_a0608c20b76b1326bed4ddacef3017b9b}\label{classParser_a0608c20b76b1326bed4ddacef3017b9b} 
-void {\bfseries read\+Real\+Graph} (\mbox{\hyperlink{classGraph}{Graph}} \texorpdfstring{$\ast$}{*}graph, const std\+::string \&graph\+Number)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classParser_a63770a5a61e2fde2f8264b28cf10c1dd}{read\+Toy\+Graph}} (const std\+::string \&file\+Name, \mbox{\hyperlink{classGraph}{Graph}} $\ast$graph)
+\begin{DoxyCompactList}\small\item\em Reads a toy graph from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParser_ae5301366bd9cef2a4a63915b6f94445c}{read\+Extra\+Graph}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph, int option)
+\begin{DoxyCompactList}\small\item\em Reads an extra graph from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classParser_a0608c20b76b1326bed4ddacef3017b9b}{read\+Real\+Graph}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph, const std\+::string \&graph\+Number)
+\begin{DoxyCompactList}\small\item\em Reads a real graph from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classParser_ae5301366bd9cef2a4a63915b6f94445c}\label{classParser_ae5301366bd9cef2a4a63915b6f94445c}} 
+\index{Parser@{Parser}!readExtraGraph@{readExtraGraph}}
+\index{readExtraGraph@{readExtraGraph}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{readExtraGraph()}{readExtraGraph()}}
+{\footnotesize\ttfamily void Parser\+::read\+Extra\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{graph,  }\item[{int}]{option }\end{DoxyParamCaption})}
+
+
+
+Reads an extra graph from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & \mbox{\hyperlink{classGraph}{Graph}} to store the read data. \\
+\hline
+{\em option} & Option to choose the file to be read. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classParser_a0608c20b76b1326bed4ddacef3017b9b}\label{classParser_a0608c20b76b1326bed4ddacef3017b9b}} 
+\index{Parser@{Parser}!readRealGraph@{readRealGraph}}
+\index{readRealGraph@{readRealGraph}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{readRealGraph()}{readRealGraph()}}
+{\footnotesize\ttfamily void Parser\+::read\+Real\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{graph,  }\item[{const std\+::string \&}]{graph\+Number }\end{DoxyParamCaption})}
+
+
+
+Reads a real graph from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & \mbox{\hyperlink{classGraph}{Graph}} to store the read data. \\
+\hline
+{\em graph\+Number} & Number of the graph to be read. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classParser_a63770a5a61e2fde2f8264b28cf10c1dd}\label{classParser_a63770a5a61e2fde2f8264b28cf10c1dd}} 
+\index{Parser@{Parser}!readToyGraph@{readToyGraph}}
+\index{readToyGraph@{readToyGraph}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{readToyGraph()}{readToyGraph()}}
+{\footnotesize\ttfamily void Parser\+::read\+Toy\+Graph (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{graph }\end{DoxyParamCaption})}
+
+
+
+Reads a toy graph from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & Name of the file to be read. \\
+\hline
+{\em graph} & \mbox{\hyperlink{classGraph}{Graph}} to store the read data. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/oxi-\/moron/\+LEIC/\+DA/\+DA2324\+\_\+\+PRJ2\+\_\+\+G15\+\_\+5/src/Parser.\+h\item 
-/home/oxi-\/moron/\+LEIC/\+DA/\+DA2324\+\_\+\+PRJ2\+\_\+\+G15\+\_\+5/src/Parser.\+cpp\end{DoxyCompactItemize}
+/home/nuno/\+Desktop/\+DA/da\+\_\+proj2/src/Parser.\+h\item 
+/home/nuno/\+Desktop/\+DA/da\+\_\+proj2/src/Parser.\+cpp\end{DoxyCompactItemize}

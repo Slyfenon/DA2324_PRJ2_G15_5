@@ -1,85 +1,87 @@
-\doxysection{Graph Class Reference}
-\hypertarget{classGraph}{}\label{classGraph}\index{Graph@{Graph}}
-\doxysubsubsection*{Public Member Functions}
+\hypertarget{classGraph}{}\doxysection{Graph Class Reference}
+\label{classGraph}\index{Graph@{Graph}}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraph_a089f7fc73ea9976295d387846ad36c69}{find\+Vertex}} (const int \&id) const
+\mbox{\hyperlink{classVertex}{Vertex}} $\ast$ \mbox{\hyperlink{classGraph_a089f7fc73ea9976295d387846ad36c69}{find\+Vertex}} (const int \&id) const
+\item 
+int \mbox{\hyperlink{classGraph_ad0f1867d0b68ccd3682f75f7fd237ddb}{get\+Number\+Of\+Edges}} () const
 \item 
 bool \mbox{\hyperlink{classGraph_ad1d6b5aeb4fd53f6a3b366afd51cb8cc}{remove\+Vertex}} (const int \&in)
 \item 
-\mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGraph_a67b444a82cad309257f39fcf6db99435}{add\+Edge}} (const int \&sourc, const int \&dest, double w)
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classGraph_a67b444a82cad309257f39fcf6db99435}{add\+Edge}} (const int \&sourc, const int \&dest, double w)
 \item 
 bool \mbox{\hyperlink{classGraph_a7a5c1d9d236c0adb8bb3a97dfde7e0bb}{remove\+Edge}} (const int \&sourc, const int \&dest)
 \item 
-std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGraph_a34dc8268e703217705d6ba9ac8b02170}{get\+Vertex\+Set}} () const
+std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classGraph_a34dc8268e703217705d6ba9ac8b02170}{get\+Vertex\+Set}} () const
 \item 
-void \mbox{\hyperlink{classGraph_a0018b7a69553714b00b710757298e998}{set\+Vertex\+Set}} (std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&v)
+void \mbox{\hyperlink{classGraph_ac772d4d948164866cfe8446125366d5e}{set\+Vertex\+Set}} (std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&v)
 \item 
 bool \mbox{\hyperlink{classGraph_ad354c018724ef3f137a0b8554089105e}{add\+Vertex}} (const int \&id)
 \item 
-void \mbox{\hyperlink{classGraph_a701bffcaefccfb2862be14afc1346756}{delete\+Edge}} (const int \&s, \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{Edge}}) const
+void \mbox{\hyperlink{classGraph_a701bffcaefccfb2862be14afc1346756}{delete\+Edge}} (const int \&s, \mbox{\hyperlink{classEdge}{Edge}} $\ast$\mbox{\hyperlink{classEdge}{Edge}}) const
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Protected Attributes}
+\doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classGraph_a55d78e00ae4aa7d512693320db4cd94f}\label{classGraph_a55d78e00ae4aa7d512693320db4cd94f} 
-std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries vertex\+Set}
+\mbox{\Hypertarget{classGraph_a55d78e00ae4aa7d512693320db4cd94f}\label{classGraph_a55d78e00ae4aa7d512693320db4cd94f}} 
+std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ {\bfseries vertex\+Set}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classGraph_a67b444a82cad309257f39fcf6db99435}\label{classGraph_a67b444a82cad309257f39fcf6db99435} 
+\mbox{\Hypertarget{classGraph_a67b444a82cad309257f39fcf6db99435}\label{classGraph_a67b444a82cad309257f39fcf6db99435}} 
 \index{Graph@{Graph}!addEdge@{addEdge}}
 \index{addEdge@{addEdge}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const int \&}]{sourc,  }\item[{const int \&}]{dest,  }\item[{double}]{w }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const int \&}]{sourc,  }\item[{const int \&}]{dest,  }\item[{double}]{w }\end{DoxyParamCaption})}
 
-Adds a \doxylink{classEdge}{Edge} connecting tow vertexes, checks if the vertexes exists first. 
+Adds a \mbox{\hyperlink{classEdge}{Edge}} connecting tow vertexes, checks if the vertexes exists first. 
 \begin{DoxyParams}{Parameters}
 {\em sourc} & Source vertex. \\
 \hline
 {\em dest} & Destination vertex. \\
 \hline
-{\em w} & Weight of the \doxylink{classEdge}{Edge}. \\
+{\em w} & Weight of the \mbox{\hyperlink{classEdge}{Edge}}. \\
 \hline
 {\em direction} & Direction of the edge \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The new \doxylink{classEdge}{Edge} created or nullptr if one of the vertexes not found. 
+The new \mbox{\hyperlink{classEdge}{Edge}} created or nullptr if one of the vertexes not found. 
 \end{DoxyReturn}
-\Hypertarget{classGraph_ad354c018724ef3f137a0b8554089105e}\label{classGraph_ad354c018724ef3f137a0b8554089105e} 
+\mbox{\Hypertarget{classGraph_ad354c018724ef3f137a0b8554089105e}\label{classGraph_ad354c018724ef3f137a0b8554089105e}} 
 \index{Graph@{Graph}!addVertex@{addVertex}}
 \index{addVertex@{addVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
 {\footnotesize\ttfamily bool Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const int \&}]{id }\end{DoxyParamCaption})}
 
-Adds a new \doxylink{classVertex}{Vertex} to the \doxylink{classVertex}{Vertex} Set verifying if it already exists. 
+Adds a new \mbox{\hyperlink{classVertex}{Vertex}} to the \mbox{\hyperlink{classVertex}{Vertex}} Set verifying if it already exists. 
 \begin{DoxyParams}{Parameters}
-{\em code} & Code of the \doxylink{classVertex}{Vertex} to be removed. \\
+{\em code} & Code of the \mbox{\hyperlink{classVertex}{Vertex}} to be removed. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 True if it successfully removes, False otherwise. 
 \end{DoxyReturn}
-\Hypertarget{classGraph_a701bffcaefccfb2862be14afc1346756}\label{classGraph_a701bffcaefccfb2862be14afc1346756} 
+\mbox{\Hypertarget{classGraph_a701bffcaefccfb2862be14afc1346756}\label{classGraph_a701bffcaefccfb2862be14afc1346756}} 
 \index{Graph@{Graph}!deleteEdge@{deleteEdge}}
 \index{deleteEdge@{deleteEdge}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{deleteEdge()}{deleteEdge()}}
-{\footnotesize\ttfamily void Graph\+::delete\+Edge (\begin{DoxyParamCaption}\item[{const int \&}]{s,  }\item[{\mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*}}]{Edge }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily void Graph\+::delete\+Edge (\begin{DoxyParamCaption}\item[{const int \&}]{s,  }\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{Edge }\end{DoxyParamCaption}) const}
 
 Removes all incoming Edges. 
 \begin{DoxyParams}{Parameters}
-{\em s} & \doxylink{classVertex}{Vertex} code. \\
+{\em s} & \mbox{\hyperlink{classVertex}{Vertex}} code. \\
 \hline
-{\em \doxylink{classEdge}{Edge}} & \\
+{\em \mbox{\hyperlink{classEdge}{Edge}}} & \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classGraph_a089f7fc73ea9976295d387846ad36c69}\label{classGraph_a089f7fc73ea9976295d387846ad36c69} 
+\mbox{\Hypertarget{classGraph_a089f7fc73ea9976295d387846ad36c69}\label{classGraph_a089f7fc73ea9976295d387846ad36c69}} 
 \index{Graph@{Graph}!findVertex@{findVertex}}
 \index{findVertex@{findVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{findVertex()}{findVertex()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} Graph\+::find\+Vertex (\begin{DoxyParamCaption}\item[{const int \&}]{id }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ Graph\+::find\+Vertex (\begin{DoxyParamCaption}\item[{const int \&}]{id }\end{DoxyParamCaption}) const}
 
 Searches for the vertex code in vertex set. 
 \begin{DoxyParams}{Parameters}
@@ -87,24 +89,33 @@ Searches for the vertex code in vertex set.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Corresponding \doxylink{classVertex}{Vertex} if it finds the code in the vertex set, nullptr otherwise. Complexity\+: O(v), where v in the number of vertexes in vertex set. 
+Corresponding \mbox{\hyperlink{classVertex}{Vertex}} if it finds the code in the vertex set, nullptr otherwise. Complexity\+: O(v), where v in the number of vertexes in vertex set. 
 \end{DoxyReturn}
-\Hypertarget{classGraph_a34dc8268e703217705d6ba9ac8b02170}\label{classGraph_a34dc8268e703217705d6ba9ac8b02170} 
+\mbox{\Hypertarget{classGraph_ad0f1867d0b68ccd3682f75f7fd237ddb}\label{classGraph_ad0f1867d0b68ccd3682f75f7fd237ddb}} 
+\index{Graph@{Graph}!getNumberOfEdges@{getNumberOfEdges}}
+\index{getNumberOfEdges@{getNumberOfEdges}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNumberOfEdges()}{getNumberOfEdges()}}
+{\footnotesize\ttfamily int Graph\+::get\+Number\+Of\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for the number of vertexes in the vertex set. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a34dc8268e703217705d6ba9ac8b02170}\label{classGraph_a34dc8268e703217705d6ba9ac8b02170}} 
 \index{Graph@{Graph}!getVertexSet@{getVertexSet}}
 \index{getVertexSet@{getVertexSet}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{getVertexSet()}{getVertexSet()}}
-{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ Graph\+::get\+Vertex\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ Graph\+::get\+Vertex\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Getter for the Vertex\+Set. \begin{DoxyReturn}{Returns}
 Vector of Vertexes corresponding to the Vertex\+Set. 
 \end{DoxyReturn}
-\Hypertarget{classGraph_a7a5c1d9d236c0adb8bb3a97dfde7e0bb}\label{classGraph_a7a5c1d9d236c0adb8bb3a97dfde7e0bb} 
+\mbox{\Hypertarget{classGraph_a7a5c1d9d236c0adb8bb3a97dfde7e0bb}\label{classGraph_a7a5c1d9d236c0adb8bb3a97dfde7e0bb}} 
 \index{Graph@{Graph}!removeEdge@{removeEdge}}
 \index{removeEdge@{removeEdge}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
 {\footnotesize\ttfamily bool Graph\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const int \&}]{sourc,  }\item[{const int \&}]{dest }\end{DoxyParamCaption})}
 
-Removes an \doxylink{classEdge}{Edge} connecting two vertexes. 
+Removes an \mbox{\hyperlink{classEdge}{Edge}} connecting two vertexes. 
 \begin{DoxyParams}{Parameters}
 {\em sourc} & Source vertex. \\
 \hline
@@ -114,7 +125,7 @@ Removes an \doxylink{classEdge}{Edge} connecting two vertexes.
 \begin{DoxyReturn}{Returns}
 True if successfully remover, False otherwise. 
 \end{DoxyReturn}
-\Hypertarget{classGraph_ad1d6b5aeb4fd53f6a3b366afd51cb8cc}\label{classGraph_ad1d6b5aeb4fd53f6a3b366afd51cb8cc} 
+\mbox{\Hypertarget{classGraph_ad1d6b5aeb4fd53f6a3b366afd51cb8cc}\label{classGraph_ad1d6b5aeb4fd53f6a3b366afd51cb8cc}} 
 \index{Graph@{Graph}!removeVertex@{removeVertex}}
 \index{removeVertex@{removeVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{removeVertex()}{removeVertex()}}
@@ -128,20 +139,20 @@ Removes the vertex from the vertex set, his adjacent Edges and his incoming Edge
 \begin{DoxyReturn}{Returns}
 True if successfully removed, False otherwise. 
 \end{DoxyReturn}
-\Hypertarget{classGraph_a0018b7a69553714b00b710757298e998}\label{classGraph_a0018b7a69553714b00b710757298e998} 
+\mbox{\Hypertarget{classGraph_ac772d4d948164866cfe8446125366d5e}\label{classGraph_ac772d4d948164866cfe8446125366d5e}} 
 \index{Graph@{Graph}!setVertexSet@{setVertexSet}}
 \index{setVertexSet@{setVertexSet}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{setVertexSet()}{setVertexSet()}}
-{\footnotesize\ttfamily void Graph\+::set\+Vertex\+Set (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&}]{v }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Graph\+::set\+Vertex\+Set (\begin{DoxyParamCaption}\item[{std\+::unordered\+\_\+map$<$ int, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&}]{v }\end{DoxyParamCaption})}
 
-Setter for the Vertex\+Set 
+Setter for the Vertex\+Set. 
 \begin{DoxyParams}{Parameters}
-{\em v} & The new vector of vertexes to be set as the Vertex\+Set \\
+{\em v} & Vector of Vertexes to be set as the new Vertex\+Set. \\
 \hline
 \end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/oxi-\/moron/\+LEIC/\+DA/\+DA2324\+\_\+\+PRJ2\+\_\+\+G15\+\_\+5/src/Graph.\+h\item 
-/home/oxi-\/moron/\+LEIC/\+DA/\+DA2324\+\_\+\+PRJ2\+\_\+\+G15\+\_\+5/src/Graph.\+cpp\end{DoxyCompactItemize}
+/home/nuno/\+Desktop/\+DA/da\+\_\+proj2/src/Graph.\+h\item 
+/home/nuno/\+Desktop/\+DA/da\+\_\+proj2/src/Graph.\+cpp\end{DoxyCompactItemize}

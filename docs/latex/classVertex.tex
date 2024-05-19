@@ -1,87 +1,132 @@
-\doxysection{Vertex Class Reference}
-\hypertarget{classVertex}{}\label{classVertex}\index{Vertex@{Vertex}}
-\doxysubsubsection*{Public Member Functions}
+\hypertarget{classVertex}{}\doxysection{Vertex Class Reference}
+\label{classVertex}\index{Vertex@{Vertex}}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classVertex_affd1344777acb951a65019bb56fccc1b}\label{classVertex_affd1344777acb951a65019bb56fccc1b} 
-{\bfseries Vertex} (const int \&id)
+\mbox{\hyperlink{classVertex_affd1344777acb951a65019bb56fccc1b}{Vertex}} (const int \&id)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classVertex}{Vertex}} constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_ad4ccd48170a1530ec1db5eb306357a74}{operator$<$}} (\mbox{\hyperlink{classVertex}{Vertex}} \&vertex) const
+\begin{DoxyCompactList}\small\item\em Compares two vertexes by their distance. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classVertex_a75b6b4a4afc26affea59fdae48aa30b1}{get\+Id}} () const
 \item 
-\Hypertarget{classVertex_ad4ccd48170a1530ec1db5eb306357a74}\label{classVertex_ad4ccd48170a1530ec1db5eb306357a74} 
-bool {\bfseries operator$<$} (\mbox{\hyperlink{classVertex}{Vertex}} \&vertex) const
+void \mbox{\hyperlink{classVertex_abbfcedeca19a457bd0378964e6cdb44f}{set\+Label}} (const std\+::string \&label)
 \item 
-\Hypertarget{classVertex_a75b6b4a4afc26affea59fdae48aa30b1}\label{classVertex_a75b6b4a4afc26affea59fdae48aa30b1} 
-virtual int {\bfseries get\+Id} () const
+std\+::string \mbox{\hyperlink{classVertex_a1ff2a015ab75a07d45110e54974883d7}{get\+Label}} () const
 \item 
-\Hypertarget{classVertex_abbfcedeca19a457bd0378964e6cdb44f}\label{classVertex_abbfcedeca19a457bd0378964e6cdb44f} 
-void {\bfseries set\+Label} (const std\+::string \&label)
+void \mbox{\hyperlink{classVertex_aa1aebd234860e5b8165e0bdb6be5222e}{set\+Distance}} (double distance)
 \item 
-\Hypertarget{classVertex_a1ff2a015ab75a07d45110e54974883d7}\label{classVertex_a1ff2a015ab75a07d45110e54974883d7} 
-std\+::string {\bfseries get\+Label} () const
-\item 
-\Hypertarget{classVertex_aa1aebd234860e5b8165e0bdb6be5222e}\label{classVertex_aa1aebd234860e5b8165e0bdb6be5222e} 
-void {\bfseries set\+Distance} (double distance)
-\item 
-\Hypertarget{classVertex_a027ec4f44cde7ec1b6481854a2980127}\label{classVertex_a027ec4f44cde7ec1b6481854a2980127} 
-double {\bfseries get\+Distance} () const
+double \mbox{\hyperlink{classVertex_a027ec4f44cde7ec1b6481854a2980127}{get\+Distance}} () const
 \item 
 bool \mbox{\hyperlink{classVertex_aa4bd82105b85ee53a917391f4811cd8a}{is\+Visited}} () const
 \item 
 void \mbox{\hyperlink{classVertex_a3c6d6c2254850a647d3a27007ef940f6}{set\+Visited}} (bool v)
 \item 
-\mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classVertex_a6e120e57da6af94892fae44e05868794}{get\+Path}} () const
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classVertex_a6e120e57da6af94892fae44e05868794}{get\+Path}} () const
 \item 
-void \mbox{\hyperlink{classVertex_abe4bc30005eec65e775d0cd51f456460}{set\+Path}} (\mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*}path)
+void \mbox{\hyperlink{classVertex_abe4bc30005eec65e775d0cd51f456460}{set\+Path}} (\mbox{\hyperlink{classEdge}{Edge}} $\ast$path)
 \item 
-std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classVertex_a84b20dae22321e5a729606885357b015}{get\+Incoming}} () const
+std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{classVertex_a84b20dae22321e5a729606885357b015}{get\+Incoming}} () const
 \item 
-\Hypertarget{classVertex_a975814f4e1c7b37007f9166553633f94}\label{classVertex_a975814f4e1c7b37007f9166553633f94} 
-void {\bfseries set\+Coord} (\mbox{\hyperlink{classCoordinate}{Coordinate}} \texorpdfstring{$\ast$}{*}coord)
+void \mbox{\hyperlink{classVertex_a975814f4e1c7b37007f9166553633f94}{set\+Coord}} (\mbox{\hyperlink{classCoordinate}{Coordinate}} $\ast$coord)
 \item 
-\Hypertarget{classVertex_aed16258e398b8ed3bd1885b2ba8b743b}\label{classVertex_aed16258e398b8ed3bd1885b2ba8b743b} 
-\mbox{\hyperlink{classCoordinate}{Coordinate}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Coord} () const
+\mbox{\hyperlink{classCoordinate}{Coordinate}} $\ast$ \mbox{\hyperlink{classVertex_aed16258e398b8ed3bd1885b2ba8b743b}{get\+Coord}} () const
 \item 
-const std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{classVertex_adf6a6d9b03e3d80eedbc9185662eff8f}{get\+Adj}} () const
+const std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \& \mbox{\hyperlink{classVertex_adf6a6d9b03e3d80eedbc9185662eff8f}{get\+Adj}} () const
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Friends}
+\doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classVertex_a271836f2eb9fe5e1f97ce4209b36c66a}\label{classVertex_a271836f2eb9fe5e1f97ce4209b36c66a} 
+\mbox{\Hypertarget{classVertex_a271836f2eb9fe5e1f97ce4209b36c66a}\label{classVertex_a271836f2eb9fe5e1f97ce4209b36c66a}} 
 class {\bfseries Graph}
 \item 
-\Hypertarget{classVertex_a6e8dd99e4d0d0f5083b2fb64743a8953}\label{classVertex_a6e8dd99e4d0d0f5083b2fb64743a8953} 
+\mbox{\Hypertarget{classVertex_a6e8dd99e4d0d0f5083b2fb64743a8953}\label{classVertex_a6e8dd99e4d0d0f5083b2fb64743a8953}} 
 class {\bfseries Mutable\+Priority\+Queue$<$ Vertex $>$}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classVertex_affd1344777acb951a65019bb56fccc1b}\label{classVertex_affd1344777acb951a65019bb56fccc1b}} 
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{Vertex()}{Vertex()}}
+{\footnotesize\ttfamily Vertex\+::\+Vertex (\begin{DoxyParamCaption}\item[{const int \&}]{id }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classVertex}{Vertex}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Id of the vertex. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classVertex_adf6a6d9b03e3d80eedbc9185662eff8f}\label{classVertex_adf6a6d9b03e3d80eedbc9185662eff8f} 
+\mbox{\Hypertarget{classVertex_adf6a6d9b03e3d80eedbc9185662eff8f}\label{classVertex_adf6a6d9b03e3d80eedbc9185662eff8f}} 
 \index{Vertex@{Vertex}!getAdj@{getAdj}}
 \index{getAdj@{getAdj}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{getAdj()}{getAdj()}}
-{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ \& Vertex\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \& Vertex\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Getter for a vector of Edges that correspond to the Edges leaving the vertex. \begin{DoxyReturn}{Returns}
 Vector containing Edges that have the source vertex equal to the caller. 
 \end{DoxyReturn}
-\Hypertarget{classVertex_a84b20dae22321e5a729606885357b015}\label{classVertex_a84b20dae22321e5a729606885357b015} 
+\mbox{\Hypertarget{classVertex_aed16258e398b8ed3bd1885b2ba8b743b}\label{classVertex_aed16258e398b8ed3bd1885b2ba8b743b}} 
+\index{Vertex@{Vertex}!getCoord@{getCoord}}
+\index{getCoord@{getCoord}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getCoord()}{getCoord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCoordinate}{Coordinate}} $\ast$ Vertex\+::get\+Coord (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for the \mbox{\hyperlink{classCoordinate}{Coordinate}} of the vertex. \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classCoordinate}{Coordinate}} of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a027ec4f44cde7ec1b6481854a2980127}\label{classVertex_a027ec4f44cde7ec1b6481854a2980127}} 
+\index{Vertex@{Vertex}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily double Vertex\+::get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for the distance attribute. \begin{DoxyReturn}{Returns}
+Distance of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a75b6b4a4afc26affea59fdae48aa30b1}\label{classVertex_a75b6b4a4afc26affea59fdae48aa30b1}} 
+\index{Vertex@{Vertex}!getId@{getId}}
+\index{getId@{getId}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Vertex\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Getter for the id attribute. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a84b20dae22321e5a729606885357b015}\label{classVertex_a84b20dae22321e5a729606885357b015}} 
 \index{Vertex@{Vertex}!getIncoming@{getIncoming}}
 \index{getIncoming@{getIncoming}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{getIncoming()}{getIncoming()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ Vertex\+::get\+Incoming (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ Vertex\+::get\+Incoming (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Getter for a vector of Edges that correspond to the Edges incoming to the vertex. \begin{DoxyReturn}{Returns}
 Vector containing Edges that have the source vertex equal to the caller. 
 \end{DoxyReturn}
-\Hypertarget{classVertex_a6e120e57da6af94892fae44e05868794}\label{classVertex_a6e120e57da6af94892fae44e05868794} 
+\mbox{\Hypertarget{classVertex_a1ff2a015ab75a07d45110e54974883d7}\label{classVertex_a1ff2a015ab75a07d45110e54974883d7}} 
+\index{Vertex@{Vertex}!getLabel@{getLabel}}
+\index{getLabel@{getLabel}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getLabel()}{getLabel()}}
+{\footnotesize\ttfamily std\+::string Vertex\+::get\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for the label attribute. \begin{DoxyReturn}{Returns}
+Label of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a6e120e57da6af94892fae44e05868794}\label{classVertex_a6e120e57da6af94892fae44e05868794}} 
 \index{Vertex@{Vertex}!getPath@{getPath}}
 \index{getPath@{getPath}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} Vertex\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Vertex\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Getter for the vertex path. \begin{DoxyReturn}{Returns}
 Pipe corresponding to the path of the vertex. 
 \end{DoxyReturn}
-\Hypertarget{classVertex_aa4bd82105b85ee53a917391f4811cd8a}\label{classVertex_aa4bd82105b85ee53a917391f4811cd8a} 
+\mbox{\Hypertarget{classVertex_aa4bd82105b85ee53a917391f4811cd8a}\label{classVertex_aa4bd82105b85ee53a917391f4811cd8a}} 
 \index{Vertex@{Vertex}!isVisited@{isVisited}}
 \index{isVisited@{isVisited}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{isVisited()}{isVisited()}}
@@ -90,18 +135,69 @@ Pipe corresponding to the path of the vertex.
 Checks visited attribute. \begin{DoxyReturn}{Returns}
 True if vertex is visited or false otherwise. 
 \end{DoxyReturn}
-\Hypertarget{classVertex_abe4bc30005eec65e775d0cd51f456460}\label{classVertex_abe4bc30005eec65e775d0cd51f456460} 
+\mbox{\Hypertarget{classVertex_ad4ccd48170a1530ec1db5eb306357a74}\label{classVertex_ad4ccd48170a1530ec1db5eb306357a74}} 
+\index{Vertex@{Vertex}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Vertex\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} \&}]{vertex }\end{DoxyParamCaption}) const}
+
+
+
+Compares two vertexes by their distance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & \mbox{\hyperlink{classVertex}{Vertex}} to be compared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the distance of the caller is less than the distance of the vertex, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a975814f4e1c7b37007f9166553633f94}\label{classVertex_a975814f4e1c7b37007f9166553633f94}} 
+\index{Vertex@{Vertex}!setCoord@{setCoord}}
+\index{setCoord@{setCoord}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setCoord()}{setCoord()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Coord (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCoordinate}{Coordinate}} $\ast$}]{coord }\end{DoxyParamCaption})}
+
+Setter for the \mbox{\hyperlink{classCoordinate}{Coordinate}} of the vertex. 
+\begin{DoxyParams}{Parameters}
+{\em coord} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_aa1aebd234860e5b8165e0bdb6be5222e}\label{classVertex_aa1aebd234860e5b8165e0bdb6be5222e}} 
+\index{Vertex@{Vertex}!setDistance@{setDistance}}
+\index{setDistance@{setDistance}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setDistance()}{setDistance()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Distance (\begin{DoxyParamCaption}\item[{double}]{distance }\end{DoxyParamCaption})}
+
+Setter for the distance attribute. 
+\begin{DoxyParams}{Parameters}
+{\em distance} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_abbfcedeca19a457bd0378964e6cdb44f}\label{classVertex_abbfcedeca19a457bd0378964e6cdb44f}} 
+\index{Vertex@{Vertex}!setLabel@{setLabel}}
+\index{setLabel@{setLabel}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setLabel()}{setLabel()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Label (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{label }\end{DoxyParamCaption})}
+
+Setter for the label attribute. 
+\begin{DoxyParams}{Parameters}
+{\em label} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_abe4bc30005eec65e775d0cd51f456460}\label{classVertex_abe4bc30005eec65e775d0cd51f456460}} 
 \index{Vertex@{Vertex}!setPath@{setPath}}
 \index{setPath@{setPath}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{setPath()}{setPath()}}
-{\footnotesize\ttfamily void Vertex\+::set\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Vertex\+::set\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{path }\end{DoxyParamCaption})}
 
 Setter for the vertex path. 
 \begin{DoxyParams}{Parameters}
-{\em path} & \doxylink{classEdge}{Edge} to be set as path of the vertex. \\
+{\em path} & \mbox{\hyperlink{classEdge}{Edge}} to be set as path of the vertex. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classVertex_a3c6d6c2254850a647d3a27007ef940f6}\label{classVertex_a3c6d6c2254850a647d3a27007ef940f6} 
+\mbox{\Hypertarget{classVertex_a3c6d6c2254850a647d3a27007ef940f6}\label{classVertex_a3c6d6c2254850a647d3a27007ef940f6}} 
 \index{Vertex@{Vertex}!setVisited@{setVisited}}
 \index{setVisited@{setVisited}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{setVisited()}{setVisited()}}
@@ -116,5 +212,5 @@ Setter for visited attribute.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/oxi-\/moron/\+LEIC/\+DA/\+DA2324\+\_\+\+PRJ2\+\_\+\+G15\+\_\+5/src/Vertex.\+h\item 
-/home/oxi-\/moron/\+LEIC/\+DA/\+DA2324\+\_\+\+PRJ2\+\_\+\+G15\+\_\+5/src/Vertex.\+cpp\end{DoxyCompactItemize}
+/home/nuno/\+Desktop/\+DA/da\+\_\+proj2/src/Vertex.\+h\item 
+/home/nuno/\+Desktop/\+DA/da\+\_\+proj2/src/Vertex.\+cpp\end{DoxyCompactItemize}

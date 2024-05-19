@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['manager_0',['Manager',['../classManager.html',1,'']]],
-  ['mutablepriorityqueue_1',['MutablePriorityQueue',['../classMutablePriorityQueue.html',1,'']]]
+  ['manager_39',['Manager',['../classManager.html',1,'']]],
+  ['mutablepriorityqueue_40',['MutablePriorityQueue',['../classMutablePriorityQueue.html',1,'']]]
 ];

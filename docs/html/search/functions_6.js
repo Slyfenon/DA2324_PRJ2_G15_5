@@ -1,9 +1,19 @@
 var searchData=
 [
-  ['getadj_0',['getAdj',['../classVertex.html#adf6a6d9b03e3d80eedbc9185662eff8f',1,'Vertex']]],
-  ['getdirection_1',['getDirection',['../classEdge.html#ac9d587cf9f340f97350a288e82dff04e',1,'Edge']]],
-  ['getincoming_2',['getIncoming',['../classVertex.html#a84b20dae22321e5a729606885357b015',1,'Vertex']]],
-  ['getpath_3',['getPath',['../classVertex.html#a6e120e57da6af94892fae44e05868794',1,'Vertex']]],
-  ['getvertexset_4',['getVertexSet',['../classGraph.html#a34dc8268e703217705d6ba9ac8b02170',1,'Graph']]],
-  ['getweight_5',['getWeight',['../classEdge.html#a1caaffca117bab3ff5b7387623a356f8',1,'Edge']]]
+  ['getadj_93',['getAdj',['../classVertex.html#adf6a6d9b03e3d80eedbc9185662eff8f',1,'Vertex']]],
+  ['getcoord_94',['getCoord',['../classVertex.html#aed16258e398b8ed3bd1885b2ba8b743b',1,'Vertex']]],
+  ['getdest_95',['getDest',['../classEdge.html#abaec2509b4b51681298960b180b06e25',1,'Edge']]],
+  ['getdistance_96',['getDistance',['../classVertex.html#a027ec4f44cde7ec1b6481854a2980127',1,'Vertex']]],
+  ['getid_97',['getId',['../classVertex.html#a75b6b4a4afc26affea59fdae48aa30b1',1,'Vertex']]],
+  ['getincoming_98',['getIncoming',['../classVertex.html#a84b20dae22321e5a729606885357b015',1,'Vertex']]],
+  ['getlabel_99',['getLabel',['../classVertex.html#a1ff2a015ab75a07d45110e54974883d7',1,'Vertex']]],
+  ['getlatitude_100',['getLatitude',['../classCoordinate.html#a864e4dc23d8f0e2cdf8510557bdd946d',1,'Coordinate']]],
+  ['getlongitude_101',['getLongitude',['../classCoordinate.html#ac49dfc528b35bb76e376ea696213e8a4',1,'Coordinate']]],
+  ['getnumberofedges_102',['getNumberOfEdges',['../classGraph.html#ad0f1867d0b68ccd3682f75f7fd237ddb',1,'Graph']]],
+  ['getorig_103',['getOrig',['../classEdge.html#ae31cdd47358cb6af9a9fafba8eca6c1a',1,'Edge']]],
+  ['getpath_104',['getPath',['../classVertex.html#a6e120e57da6af94892fae44e05868794',1,'Vertex']]],
+  ['getreverse_105',['getReverse',['../classEdge.html#a756d2d246aa5445d0f396626c7d4fd56',1,'Edge']]],
+  ['getvertexset_106',['getVertexSet',['../classGraph.html#a34dc8268e703217705d6ba9ac8b02170',1,'Graph']]],
+  ['getvisited_107',['getVisited',['../classEdge.html#a23f2335498dd519408e27acca941317c',1,'Edge']]],
+  ['getweight_108',['getWeight',['../classEdge.html#a1caaffca117bab3ff5b7387623a356f8',1,'Edge']]]
 ];

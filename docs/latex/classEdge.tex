@@ -1,32 +1,30 @@
-\doxysection{Edge Class Reference}
-\hypertarget{classEdge}{}\label{classEdge}\index{Edge@{Edge}}
-\doxysubsubsection*{Public Member Functions}
+\hypertarget{classEdge}{}\doxysection{Edge Class Reference}
+\label{classEdge}\index{Edge@{Edge}}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classEdge_a109d86a49b9a89422d3db1d6e5204569}{Edge}} (const int \&s, const int \&d, double \&w)
-\begin{DoxyCompactList}\small\item\em \doxylink{classEdge}{Edge} constructor. \end{DoxyCompactList}\item 
-\Hypertarget{classEdge_abaec2509b4b51681298960b180b06e25}\label{classEdge_abaec2509b4b51681298960b180b06e25} 
-int {\bfseries get\+Dest} () const
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classEdge}{Edge}} constructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEdge_abaec2509b4b51681298960b180b06e25}{get\+Dest}} () const
 \item 
-\Hypertarget{classEdge_ae31cdd47358cb6af9a9fafba8eca6c1a}\label{classEdge_ae31cdd47358cb6af9a9fafba8eca6c1a} 
-int {\bfseries get\+Orig} () const
+int \mbox{\hyperlink{classEdge_ae31cdd47358cb6af9a9fafba8eca6c1a}{get\+Orig}} () const
 \item 
 double \mbox{\hyperlink{classEdge_a1caaffca117bab3ff5b7387623a356f8}{get\+Weight}} () const
 \item 
 void \mbox{\hyperlink{classEdge_a452013a3525db6e2dbbbcb614acf728b}{set\+Weight}} (double weight)
 \item 
-bool \mbox{\hyperlink{classEdge_ac9d587cf9f340f97350a288e82dff04e}{get\+Direction}} () const
+bool \mbox{\hyperlink{classEdge_a23f2335498dd519408e27acca941317c}{get\+Visited}} () const
 \item 
-\Hypertarget{classEdge_a2cf344a0f7fb053d2b608af113ff9c4d}\label{classEdge_a2cf344a0f7fb053d2b608af113ff9c4d} 
-bool {\bfseries get\+Processed} () const
+void \mbox{\hyperlink{classEdge_a4d6fea33b64494807ec1d7a7db0dde1d}{set\+Visited}} (bool b)
 \item 
-\Hypertarget{classEdge_a2f3e1a30c35a9d81bcae58793bc801de}\label{classEdge_a2f3e1a30c35a9d81bcae58793bc801de} 
-void {\bfseries set\+Processed} (bool p)
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classEdge_a756d2d246aa5445d0f396626c7d4fd56}{get\+Reverse}} () const
+\item 
+void \mbox{\hyperlink{classEdge_a5f2115d329fdf018c85176765148da5c}{set\+Reverse}} (\mbox{\hyperlink{classEdge}{Edge}} $\ast$edge)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classEdge_a109d86a49b9a89422d3db1d6e5204569}\label{classEdge_a109d86a49b9a89422d3db1d6e5204569} 
+\mbox{\Hypertarget{classEdge_a109d86a49b9a89422d3db1d6e5204569}\label{classEdge_a109d86a49b9a89422d3db1d6e5204569}} 
 \index{Edge@{Edge}!Edge@{Edge}}
 \index{Edge@{Edge}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{Edge()}{Edge()}}
@@ -34,7 +32,7 @@ void {\bfseries set\+Processed} (bool p)
 
 
 
-\doxylink{classEdge}{Edge} constructor. 
+\mbox{\hyperlink{classEdge}{Edge}} constructor. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -48,31 +46,80 @@ void {\bfseries set\+Processed} (bool p)
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classEdge_ac9d587cf9f340f97350a288e82dff04e}\label{classEdge_ac9d587cf9f340f97350a288e82dff04e} 
-\index{Edge@{Edge}!getDirection@{getDirection}}
-\index{getDirection@{getDirection}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
-{\footnotesize\ttfamily bool Edge\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\Hypertarget{classEdge_abaec2509b4b51681298960b180b06e25}\label{classEdge_abaec2509b4b51681298960b180b06e25}} 
+\index{Edge@{Edge}!getDest@{getDest}}
+\index{getDest@{getDest}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily int Edge\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Getter for the direction of the \doxylink{classEdge}{Edge}. \begin{DoxyReturn}{Returns}
+Getter for the destination of the \mbox{\hyperlink{classEdge}{Edge}}. \begin{DoxyReturn}{Returns}
+destination of the \mbox{\hyperlink{classEdge}{Edge}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEdge_ae31cdd47358cb6af9a9fafba8eca6c1a}\label{classEdge_ae31cdd47358cb6af9a9fafba8eca6c1a}} 
+\index{Edge@{Edge}!getOrig@{getOrig}}
+\index{getOrig@{getOrig}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getOrig()}{getOrig()}}
+{\footnotesize\ttfamily int Edge\+::get\+Orig (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for the origin of the \mbox{\hyperlink{classEdge}{Edge}}. \begin{DoxyReturn}{Returns}
+origin of the \mbox{\hyperlink{classEdge}{Edge}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEdge_a756d2d246aa5445d0f396626c7d4fd56}\label{classEdge_a756d2d246aa5445d0f396626c7d4fd56}} 
+\index{Edge@{Edge}!getReverse@{getReverse}}
+\index{getReverse@{getReverse}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getReverse()}{getReverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Edge\+::get\+Reverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for the reverse \mbox{\hyperlink{classEdge}{Edge}}. \begin{DoxyReturn}{Returns}
+reverse \mbox{\hyperlink{classEdge}{Edge}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEdge_a23f2335498dd519408e27acca941317c}\label{classEdge_a23f2335498dd519408e27acca941317c}} 
+\index{Edge@{Edge}!getVisited@{getVisited}}
+\index{getVisited@{getVisited}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getVisited()}{getVisited()}}
+{\footnotesize\ttfamily bool Edge\+::get\+Visited (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Getter for the direction of the \mbox{\hyperlink{classEdge}{Edge}}. \begin{DoxyReturn}{Returns}
 0 for bidirectional and 1 for unidirectional. 
 \end{DoxyReturn}
-\Hypertarget{classEdge_a1caaffca117bab3ff5b7387623a356f8}\label{classEdge_a1caaffca117bab3ff5b7387623a356f8} 
+\mbox{\Hypertarget{classEdge_a1caaffca117bab3ff5b7387623a356f8}\label{classEdge_a1caaffca117bab3ff5b7387623a356f8}} 
 \index{Edge@{Edge}!getWeight@{getWeight}}
 \index{getWeight@{getWeight}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{getWeight()}{getWeight()}}
 {\footnotesize\ttfamily double Edge\+::get\+Weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Getter for the weight of the \doxylink{classEdge}{Edge}. \begin{DoxyReturn}{Returns}
-weight of the \doxylink{classEdge}{Edge}. 
+Getter for the weight of the \mbox{\hyperlink{classEdge}{Edge}}. \begin{DoxyReturn}{Returns}
+weight of the \mbox{\hyperlink{classEdge}{Edge}}. 
 \end{DoxyReturn}
-\Hypertarget{classEdge_a452013a3525db6e2dbbbcb614acf728b}\label{classEdge_a452013a3525db6e2dbbbcb614acf728b} 
+\mbox{\Hypertarget{classEdge_a5f2115d329fdf018c85176765148da5c}\label{classEdge_a5f2115d329fdf018c85176765148da5c}} 
+\index{Edge@{Edge}!setReverse@{setReverse}}
+\index{setReverse@{setReverse}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{setReverse()}{setReverse()}}
+{\footnotesize\ttfamily void Edge\+::set\+Reverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+
+Setter for the reverse \mbox{\hyperlink{classEdge}{Edge}}. 
+\begin{DoxyParams}{Parameters}
+{\em edge} & \mbox{\hyperlink{classEdge}{Edge}} to be set as reverse. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEdge_a4d6fea33b64494807ec1d7a7db0dde1d}\label{classEdge_a4d6fea33b64494807ec1d7a7db0dde1d}} 
+\index{Edge@{Edge}!setVisited@{setVisited}}
+\index{setVisited@{setVisited}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{setVisited()}{setVisited()}}
+{\footnotesize\ttfamily void Edge\+::set\+Visited (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})}
+
+Set edge visited status. 
+\begin{DoxyParams}{Parameters}
+{\em b} & Status to be set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEdge_a452013a3525db6e2dbbbcb614acf728b}\label{classEdge_a452013a3525db6e2dbbbcb614acf728b}} 
 \index{Edge@{Edge}!setWeight@{setWeight}}
 \index{setWeight@{setWeight}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{setWeight()}{setWeight()}}
 {\footnotesize\ttfamily void Edge\+::set\+Weight (\begin{DoxyParamCaption}\item[{double}]{weight }\end{DoxyParamCaption})}
 
-Setter for the weight of the \doxylink{classEdge}{Edge}. 
+Setter for the weight of the \mbox{\hyperlink{classEdge}{Edge}}. 
 \begin{DoxyParams}{Parameters}
 {\em weight} & weight to be set. \\
 \hline
@@ -81,5 +128,5 @@ Setter for the weight of the \doxylink{classEdge}{Edge}.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/oxi-\/moron/\+LEIC/\+DA/\+DA2324\+\_\+\+PRJ2\+\_\+\+G15\+\_\+5/src/Edge.\+h\item 
-/home/oxi-\/moron/\+LEIC/\+DA/\+DA2324\+\_\+\+PRJ2\+\_\+\+G15\+\_\+5/src/Edge.\+cpp\end{DoxyCompactItemize}
+/home/nuno/\+Desktop/\+DA/da\+\_\+proj2/src/Edge.\+h\item 
+/home/nuno/\+Desktop/\+DA/da\+\_\+proj2/src/Edge.\+cpp\end{DoxyCompactItemize}
