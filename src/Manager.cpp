@@ -599,6 +599,3 @@ std::vector<int> Manager::christofidesTSP(long &duration, double &cost, int sour
         }
         return result;
 }
-
-
-
