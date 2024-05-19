@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['findvertex_0',['findVertex',['../classGraph.html#a089f7fc73ea9976295d387846ad36c69',1,'Graph']]]
+  ['deleteedge_0',['deleteEdge',['../classGraph.html#a701bffcaefccfb2862be14afc1346756',1,'Graph']]]
 ];
