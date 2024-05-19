@@ -298,6 +298,17 @@ Vertex* Manager::findFarthestVertex(Vertex* start) {
             res = e->getDest();
         }
     }
+    if (max == 0) {
+        for (auto v : graph->getVertexSet()) {
+            if (!v.second->isVisited()) {
+                double d = haversineDistance(start, v.second);
+                if (d > max) {
+                    max = d;
+                    res = v.second->getId();
+                }
+            }
+        }
+    }
     return graph->findVertex(res);
 }
 
@@ -307,7 +318,7 @@ Edge* Manager::findEdge(Vertex* start, Vertex* end) {
             return e;
         }
     }
-    return nullptr;
+    return graph->addEdge(start->getId(), end->getId(), haversineDistance(start, end));
 }
 
 std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cost) {
@@ -333,13 +344,17 @@ std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cos
     int cnt = 2;
     while (cnt != graph->getVertexSet().size()){
         cnt++;
+        std::cout << cnt << std::endl;
         w = findFarthestVertex(w);
 
         int min = INT_MAX;
         Vertex* prec = nullptr;
         Vertex* current = src;
         do {
-            double cena = findEdge(current, w)->getWeight() + findEdge(w, graph->findVertex(current->getPath()->getDest()))->getWeight() - current->getPath()->getWeight();
+            auto e1 = findEdge(current, w);
+            auto e2 = findEdge(w, graph->findVertex(current->getPath()->getDest()));
+
+            double cena = e1->getWeight() + e2->getWeight() - current->getPath()->getWeight();
             if (cena < min) {
                 min = cena;
                 prec = current;
