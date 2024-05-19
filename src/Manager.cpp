@@ -234,26 +234,27 @@ Edge* Manager::findShortestEdge(Vertex* vertex, Vertex* src, bool final) {
     return non_visited == nullptr ? visited : non_visited;
 }
 
-std::vector<std::pair<int,int>> Manager::convertBacktrack(std::vector<int> &path) {
+double Manager::convertBacktrack(std::vector<int> &path) {
     std::unordered_set<int> visited;
-    std::vector<std::pair<int,int>> result;
+    double result = 0, prev;
     auto it = path.begin();
-    int backtrack_start = -1, prev;
+    bool backtracking = false;
 
     while(it != path.end()) {
         int node = *it;
         if (visited.find(node) == visited.end()) {
-            if (backtrack_start != -1) {
-                result.push_back({backtrack_start, node});
-                backtrack_start = -1;
+            if (!backtracking) {
+                backtracking = true;
             }
             visited.insert(node);
             prev = node;
             it++;
         }
         else {
-            if (backtrack_start == -1) {
-                backtrack_start = prev;
+            if (backtracking) {
+                for (Edge* edge : graph->findVertex(prev)->getAdj()) {
+                    if (edge->getDest() == node) result += edge->getWeight();
+                }
             }
             prev = node;
             it = path.erase(it);
@@ -264,7 +265,7 @@ std::vector<std::pair<int,int>> Manager::convertBacktrack(std::vector<int> &path
 }
 
 // Nearest neighbor heuristic
-std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost, std::vector<std::pair<int,int>> &backtracks) {
+std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double &cost, double &backtrack) {
     std::vector<int> result;
     cost = 0;
     int cities = graph->getVertexSet().size(), visited = 0;
@@ -282,8 +283,8 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
     Vertex* current = src;
 
     do {
+        result.push_back(current->getId());
         if (!current->isVisited()) {
-            result.push_back(current->getId());
             current->setVisited(true);
             visited++;
         }
@@ -302,7 +303,7 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
         current->setPath(shortest);
     } while (current != src);
 
-    backtracks = convertBacktrack(result);
+    backtrack = convertBacktrack(result);
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();

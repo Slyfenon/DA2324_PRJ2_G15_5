@@ -22,7 +22,7 @@ public:
     std::vector<Edge *> primMST();
     void loadExtraGraph(int option);
     void loadRealGraph(int option);
-    std::vector<int> realWorldHeuristic(int source, long &duration, double &cost, std::vector<std::pair<int,int>> &backtracks);
+    std::vector<int> realWorldHeuristic(int source, long &duration, double &cost, double &backtrack);
 
     void resetGraph();
 
@@ -37,7 +37,7 @@ public:
 
     double calculateCost(std::vector<Vertex *> &preorder);
 
-    std::vector<std::pair<int, int>> convertBacktrack(std::vector<int> &path);
+    double convertBacktrack(std::vector<int> &path);
     std::vector<int> christofidesTSP(long &duration, double &cost);
 
     std::vector<int> shortenToHamiltonianCircuit(const std::vector<int> &eulerianCircuit);
