@@ -207,7 +207,7 @@ void Manager::triangularInequality(long &duration, double &cost) {
 
     preOrder.push_back(root);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
 
 
     cost = calculateCost(preOrder);
@@ -293,7 +293,6 @@ Vertex* Manager::findFarthestVertex(Vertex* start) {
     int res;
     double max = 0;
     for (auto e : start->getAdj()) {
-        double a = e->getWeight();
         if (e->getWeight() > max && !graph->findVertex(e->getDest())->isVisited()) {
             max = e->getWeight();
             res = e->getDest();
@@ -320,71 +319,46 @@ std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cos
         }
     }
 
-    Vertex* src = graph->findVertex(source);
-
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
-    Vertex* v = src;
-    std::unordered_set<Vertex*> visited;
-    visited.insert(v);
-    v->setVisited(true);
-    Vertex* w = findFarthestVertex(v);
-    Edge* subTour = findEdge(v, w);
-    v->setPath(subTour);
+    Vertex* src = graph->findVertex(source);
+    src->setVisited(true);
 
+    Vertex* w = findFarthestVertex(src);
+    src->setPath(findEdge(src, w));
+    w->setPath(findEdge(w, src));
 
-    w->setPath(findEdge(w, v));
-    v = w;
-    visited.insert(v);
-    v->setVisited(true);
+    w->setVisited(true);
 
-    while (visited.size() != graph->getVertexSet().size()){
-
-        w = findFarthestVertex(v);
-        subTour = findEdge(v, w);
+    int cnt = 2;
+    while (cnt != graph->getVertexSet().size()){
+        cnt++;
+        w = findFarthestVertex(w);
 
         int min = INT_MAX;
         Vertex* prec = nullptr;
-        for (auto u : visited) {
-            Edge* oldTour = u->getPath();
-            u->setPath(findEdge(u, w));
-            w->setPath(findEdge(w, graph->findVertex(oldTour->getDest())));
-
-            Vertex* current = src;
-            int c = 0;
-            do {
-                c += current->getPath()->getWeight();
-                current = graph->findVertex(current->getPath()->getDest());
-            } while (current->getId() != source);
-
-            u->setPath(oldTour);
-            w->setPath(nullptr);
-
-            if (c < min) {
-                min = c;
-                prec = u;
-            }
-        }
-
         Vertex* current = src;
         do {
-            if (current == prec) {
-                Edge* oldTour = current->getPath();
-                current->setPath(findEdge(current, w));
-                w->setPath(findEdge(w, graph->findVertex(oldTour->getDest())));
-                break;
+            double cena = findEdge(current, w)->getWeight() + findEdge(w, graph->findVertex(current->getPath()->getDest()))->getWeight() - current->getPath()->getWeight();
+            if (cena < min) {
+                min = cena;
+                prec = current;
             }
             current = graph->findVertex(current->getPath()->getDest());
+            if (min < current->getPath()->getWeight() * 0.15) break;
         } while (current->getId() != source);
 
-        v = w;
-        visited.insert(v);
-        v->setVisited(true);
+        Edge* oldTour = prec->getPath();
+        prec->setPath(findEdge(prec, w));
+        w->setPath(findEdge(w, graph->findVertex(oldTour->getDest())));
+
+        w->setVisited(true);
     }
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    Vertex* current = src; cost = 0;
+    Vertex* current = src;
+    cost = 0;
     do {
         res.push_back(current->getId());
         cost += current->getPath()->getWeight();

@@ -83,7 +83,6 @@ void Parser::readExtraGraph(Graph *graph, int option) {
     inputFile.close();
 
     inputFile.open("../data/extra/edges_" + std::to_string(option) + ".csv");
-    getline(inputFile, line);
     while(getline(inputFile, line)) {
         iss.clear();
         iss.str(line);
