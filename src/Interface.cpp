@@ -325,6 +325,7 @@ void Interface::printRealWorldHeuristic(int option) {
     if (path.empty()) cout << RED << BOLD << "\n\tNo path found!" << RESET << endl;
     else if (path.size() < 10 || readPath()) {
         printPath(path);
+        cout << "\n";
         printPath(path2);
     }
 

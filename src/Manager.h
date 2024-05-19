@@ -31,7 +31,7 @@ public:
 
     /**
      * Wrapper function for the backtracking algorithm. Initializes the graph and organizes the cost and duration metrics of the algorithm.
-     * @complexity O(|V| * |V|!), where |V| is the number of vertices in the graph.
+     * @complexity O(|V|!), where |V| is the number of vertices in the graph.
      * @param duration - Duration of the computation.
      * @param cost - Minimal cost of the best path found.
      * @return A vector of integers, representing the vertex IDs, ordered in the way they're visited in the best path found.
@@ -40,7 +40,7 @@ public:
 
     /**
      * @brief Performs a pre-order traversal of the vertices in the Minimum Spanning Tree (MST).
-     * @complexity O(?).
+     * @complexity O(|V + E| * |E|), where |V| and |E| are the number or vertices and edges in the graph respectively.
      * @param MST - Minimum Spanning Tree, represented as a vector of edges.
      * @param v - Current vertex being visited.
      * @param preOrder - Pre-order transversal sequence, represented as a vector of vertices.
@@ -71,7 +71,7 @@ public:
 
     /**
      * @brief Employs an heuristic approach to solve the Traveling Salesman Problem in a real world context.
-     * @complexity O(|V| + |E| + |V| * d), where |V| and |E| are the number of vertices and edges of the graph respectively, and d the maximum degree of a vertex in the graph.
+     * @complexity O(|E| * d), where |E| is the number of edges of the graph, and d the maximum degree of a vertex in the graph.
      * @param source - Source vertex.
      * @param duration - Duration of the computation.
      * @param cost - Minimal cost of the best path found.
@@ -141,7 +141,7 @@ public:
 
     /**
      * @brief Employs the Triangular Inequality Heuristic approach to solve the Traveling Salesman Problem.
-     * @complexity O((|V| + |E|) * log|V|), where |V| and |E| are the number of vertices and edges on the graph respectively.
+     * @complexity O(|V + E| * |E|), where |V| and |E| are the number or vertices and edges in the graph respectively.
      * @param duration - Duration of the computation.
      * @param cost - Minimal cost of the best path found.
      */
@@ -173,14 +173,49 @@ public:
      */
     double calculateCost(std::vector<Vertex *> &preorder);
 
+    /**
+     * @brief Calculates the distance travelled to cities already visited in the Real-World Heuristic.
+     * @complexity O(|V| + |E|), where |V| and |E| are the number of vertices and edges on the graph respectively.
+     * @param path - The TSP modified tour given by the heuristic.
+     * @return - The distance to cities already included in the modified tour.
+     */
     double convertBacktrack(std::vector<int> &path);
 
+    /**
+     * @brief Computes a solution for TSP using the Christofides-Serdyukov Algorithm.
+     * @complexity O(|V|^3), where |V| is the number of vertices in the graph.
+     * @param duration - Duration of the computation.
+     * @param cost - Minimal cost of the best path found.
+     * @param source - Source vertex of the tour.
+     * @return A vector of integers, representing the vertex IDs, ordered in the way they're visited in the best path found.
+     */
     std::vector<int> christofidesTSP(long &duration, double &cost, int source);
 
+    /**
+     * @brief Shortens the Eulerian circuit to a Hamiltonian circuit, which is required for the Christofides algorithm.
+     * @complexity O(n), where n is the number of nodes in the Eulerian circuit
+     * @param eulerianCircuit - Eulerian circuit to be shortened.
+     * @return A vector of integers, representing the vertex IDs of the Hamiltonian circuit.
+     */
     std::vector<int> shortenToHamiltonianCircuit(const std::vector<int> &eulerianCircuit);
 
+    /**
+     * @brief Finds the Eulerian circuit from an Eulerian graph.
+     * @complexity O(|V| + |E|), where |V| and |E| are the number of vertices and edges on the graph respectively.
+     * @param eulerianCircuit - Vector which will contain the Eulerian circuit once the function returns.
+     * @param eulerianGraph - The Eulerian graph in which to find the tour.
+     * @param source - The source of the Eulerian circuit.
+     */
     void findEulerianCircuit(std::vector<int> &eulerianCircuit, Graph *eulerianGraph, int source);
 
+    /**
+     * @brief Creates an Eulerian graph required for the Christofides algorithm.
+     * @complexity O((5 * |V|) / 2), where |V| and p are the number of vertices in the graph and number of
+     * perfect matching edges respectively.
+     * @param eulerianGraph - The Eulerian Graph to be created when the function returns.
+     * @param MST - Minimum-Cost Spanning Tree needed to create the graph.
+     * @param perfectEdges - Vector of edges that form a minimum-weight perfect matching needed to create the graph.
+     */
     void createEulerianGraph(Graph &eulerianGraph, std::vector<Edge *> &MST, std::vector<Edge *> &perfectEdges);
 };
 #endif //DA_PROJ2_MANAGER_H
