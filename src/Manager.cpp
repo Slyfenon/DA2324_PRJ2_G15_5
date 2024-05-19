@@ -3,6 +3,7 @@
 #include <stack>
 #include <queue>
 #include <climits>
+#include <set>
 #include <cmath>
 #include <set>
 #include "Manager.h"
@@ -58,13 +59,6 @@ void Manager::tsp_backtracking(std::vector<int> &path, std::vector<int> &bestPat
             nextVertex->setVisited(false);
         }
     }
-}
-
-
-
-
-Graph *Manager::getGraph() const {
-    return graph;
 }
 
 void Manager::loadToyGraph(int option) {
@@ -124,7 +118,6 @@ std::vector<int> Manager::backtracking(long &duration, double &cost) {
     return bestPath;
 }
 
-
 void Manager::preOrderWalk(std::vector<Edge*> MST, Vertex* v, std::vector<Vertex*> &preOrder) {
     v->setVisited(true);
     preOrder.push_back(v);
@@ -143,9 +136,7 @@ void Manager::preOrderWalk(std::vector<Edge*> MST, Vertex* v, std::vector<Vertex
     }
 }
 
-
-
-std::vector<Edge*> Manager::primMST() {
+std::vector<Edge*> Manager::primMST(int source) {
     std::vector<Edge*> MST;
    for(auto v :graph->getVertexSet()){
        v.second->setDistance(std::numeric_limits<double>::max());
@@ -153,7 +144,7 @@ std::vector<Edge*> Manager::primMST() {
        v.second->setVisited(false);
    }
 
-   Vertex* root = graph->getVertexSet().find(0)->second;
+   Vertex* root = graph->getVertexSet().find(source)->second;
    root->setDistance(0);
 
    MutablePriorityQueue<Vertex> queue;
@@ -185,7 +176,6 @@ std::vector<Edge*> Manager::primMST() {
         }
     }
     return MST;
-
 }
 
 void Manager::triangularInequality(long &duration, double &cost) {
@@ -197,7 +187,7 @@ void Manager::triangularInequality(long &duration, double &cost) {
         v.second->setVisited(false);
     }
 
-    MSTTree = primMST();
+    MSTTree = primMST(0);
     for(auto v : graph->getVertexSet()){
         v.second->setVisited(false);
     }
@@ -207,7 +197,7 @@ void Manager::triangularInequality(long &duration, double &cost) {
 
     preOrder.push_back(root);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
 
 
     cost = calculateCost(preOrder);
@@ -311,6 +301,97 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
     return result;
 }
 
+Vertex* Manager::findFarthestVertex(Vertex* start) {
+    int res;
+    double max = 0;
+    for (auto e : start->getAdj()) {
+        if (e->getWeight() > max && !graph->findVertex(e->getDest())->isVisited()) {
+            max = e->getWeight();
+            res = e->getDest();
+        }
+    }
+    if (max == 0) {
+        for (auto v : graph->getVertexSet()) {
+            if (!v.second->isVisited()) {
+                double d = haversineDistance(start, v.second);
+                if (d > max) {
+                    max = d;
+                    res = v.second->getId();
+                }
+            }
+        }
+    }
+    return graph->findVertex(res);
+}
+
+Edge* Manager::findEdge(Vertex* start, Vertex* end) {
+    for (auto e : start->getAdj()) {
+        if (e->getDest() == end->getId()) {
+            return e;
+        }
+    }
+    return graph->addEdge(start->getId(), end->getId(), haversineDistance(start, end));
+}
+
+std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cost) {
+    std::vector<int> res = {};
+    for (auto vertex : graph->getVertexSet()) {
+        vertex.second->setVisited(false);
+    }
+
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+
+    Vertex* src = graph->findVertex(source);
+    src->setVisited(true);
+
+    Vertex* w = findFarthestVertex(src);
+    src->setPath(findEdge(src, w));
+    w->setPath(findEdge(w, src));
+
+    w->setVisited(true);
+
+    int cnt = 2;
+    while (cnt != graph->getVertexSet().size()){
+        cnt++;
+        w = findFarthestVertex(w);
+
+        int min = INT_MAX;
+        Vertex* prec = nullptr;
+        Vertex* current = src;
+        do {
+            auto e1 = findEdge(current, w);
+            auto e2 = findEdge(w, graph->findVertex(current->getPath()->getDest()));
+
+            double cena = e1->getWeight() + e2->getWeight() - current->getPath()->getWeight();
+            if (cena < min) {
+                min = cena;
+                prec = current;
+            }
+            current = graph->findVertex(current->getPath()->getDest());
+            if (min < current->getPath()->getWeight() * 0.15) break;
+        } while (current->getId() != source);
+
+        Edge* oldTour = prec->getPath();
+        prec->setPath(findEdge(prec, w));
+        w->setPath(findEdge(w, graph->findVertex(oldTour->getDest())));
+
+        w->setVisited(true);
+    }
+
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+
+    Vertex* current = src;
+    cost = 0;
+    do {
+        res.push_back(current->getId());
+        cost += current->getPath()->getWeight();
+        current = graph->findVertex(current->getPath()->getDest());
+    } while (current->getId() != source);
+
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
+    return res;
+}
+
 void Manager::resetGraph() {
     delete this->graph;
     graph = new Graph();
@@ -370,10 +451,10 @@ double Manager::haversineDistance(Vertex* v1, Vertex* v2){
 }
 
 
-void Manager::findEulerianCircuit(std::vector<int>& eulerianCircuit, Graph *eulerianGraph) {
+void Manager::findEulerianCircuit(std::vector<int>& eulerianCircuit, Graph *eulerianGraph, int source) {
     std::unordered_map<int, Vertex*> vertexSet = eulerianGraph->getVertexSet();
     std::vector<int> currCircuit;
-    currCircuit.push_back(0);
+    currCircuit.push_back(source);
 
     while (eulerianCircuit.size() != eulerianGraph->getNumberOfEdges() + 1) {
         int currVertex = currCircuit.back();
@@ -446,12 +527,12 @@ void Manager::createEulerianGraph(Graph &eulerianGraph, std::vector<Edge *> &MST
 
 auto compareEdges = [](Edge *a, Edge* b) {return a != b && a->getWeight() >= b->getWeight();};
 
-std::vector<int> Manager::christofidesTSP(long &duration, double &cost) {
+std::vector<int> Manager::christofidesTSP(long &duration, double &cost, int source) {
         std::vector<int> result;
          std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
     // Step 1: Compute Minimum Spanning Tree
-        std::vector<Edge *> MST = primMST();
+        std::vector<Edge *> MST = primMST(source);
 
         // Step 2: Identify Odd-Degree Vertices
         std::vector<Vertex *> oddDegreeVertices;
@@ -494,7 +575,7 @@ std::vector<int> Manager::christofidesTSP(long &duration, double &cost) {
 
         // Step 6: Find Eulerian Circuit
         std::vector<int> eulerianCircuit;
-        findEulerianCircuit(eulerianCircuit, &eulerianGraph);
+        findEulerianCircuit(eulerianCircuit, &eulerianGraph, source);
 
         // Step 7: Shorten Circuit to Hamiltonian Circuit
         result = shortenToHamiltonianCircuit(eulerianCircuit);

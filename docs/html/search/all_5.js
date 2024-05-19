@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['getadj_0',['getAdj',['../classVertex.html#adf6a6d9b03e3d80eedbc9185662eff8f',1,'Vertex']]],
-  ['getdirection_1',['getDirection',['../classEdge.html#ac9d587cf9f340f97350a288e82dff04e',1,'Edge']]],
-  ['getincoming_2',['getIncoming',['../classVertex.html#a84b20dae22321e5a729606885357b015',1,'Vertex']]],
-  ['getpath_3',['getPath',['../classVertex.html#a6e120e57da6af94892fae44e05868794',1,'Vertex']]],
-  ['getvertexset_4',['getVertexSet',['../classGraph.html#a34dc8268e703217705d6ba9ac8b02170',1,'Graph']]],
-  ['getweight_5',['getWeight',['../classEdge.html#a1caaffca117bab3ff5b7387623a356f8',1,'Edge']]],
-  ['graph_6',['Graph',['../classGraph.html',1,'']]]
+  ['findedge_0',['findEdge',['../classManager.html#a895364f44bb327454c12478b1a3eac61',1,'Manager']]],
+  ['findfarthestvertex_1',['findFarthestVertex',['../classManager.html#a413e6d91bde804e5fab43dc9da5f482b',1,'Manager']]],
+  ['findshortestedge_2',['findShortestEdge',['../classManager.html#a71db9ab5f24f9186c480dfb146787dc2',1,'Manager']]],
+  ['findvertex_3',['findVertex',['../classGraph.html#a089f7fc73ea9976295d387846ad36c69',1,'Graph']]]
 ];

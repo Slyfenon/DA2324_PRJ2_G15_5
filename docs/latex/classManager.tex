@@ -3,48 +3,446 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classManager_ab1d20d37fe54190c329c5c3e4bd505c2}\label{classManager_ab1d20d37fe54190c329c5c3e4bd505c2} 
-\mbox{\hyperlink{classGraph}{Graph}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Graph} () const
+void \mbox{\hyperlink{classManager_a1fe26b5dde160291bf67b4df53e49fe3}{load\+Toy\+Graph}} (int option)
+\begin{DoxyCompactList}\small\item\em Invokes the parser for a specific graph in the "{}\+Toy Graph"{} section. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a7419ecbfd86d5993c6a8074e380abe73}{tsp\+\_\+backtracking}} (std\+::vector$<$ int $>$ \&path, std\+::vector$<$ int $>$ \&best\+Path, double \&min\+Cost, double current\+Cost)
+\begin{DoxyCompactList}\small\item\em Employs a backtracking approach to solve the Traveling Salesman Problem. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classManager_a64e0a1092615115c5db15b0f340f265d}{backtracking}} (long \&duration, double \&cost)
 \item 
-\Hypertarget{classManager_a1fe26b5dde160291bf67b4df53e49fe3}\label{classManager_a1fe26b5dde160291bf67b4df53e49fe3} 
-void {\bfseries load\+Toy\+Graph} (int option)
-\item 
-\Hypertarget{classManager_a75b5e1aea7e35b7a0d050fd29e89c840}\label{classManager_a75b5e1aea7e35b7a0d050fd29e89c840} 
-void {\bfseries tsp\+\_\+backtracking} (std\+::vector$<$ int $>$ \&path, std\+::vector$<$ int $>$ \&best\+Path, double \&min\+Cost, double sum\+Cost)
-\item 
-\Hypertarget{classManager_a64e0a1092615115c5db15b0f340f265d}\label{classManager_a64e0a1092615115c5db15b0f340f265d} 
-std\+::vector$<$ int $>$ {\bfseries backtracking} (long \&duration, double \&cost)
-\item 
-\Hypertarget{classManager_a4c3fdac4ef4e103745cd24c5c54d3856}\label{classManager_a4c3fdac4ef4e103745cd24c5c54d3856} 
-void {\bfseries triangular\+Inequality} ()
-\item 
-\Hypertarget{classManager_a95b9cc1d3092ea830c2bf744218b730e}\label{classManager_a95b9cc1d3092ea830c2bf744218b730e} 
-void {\bfseries pre\+Order\+Walk} (std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ MST, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}v, std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&pre\+Order)
-\item 
-\Hypertarget{classManager_a01f9b3a275e7b0c450cb9f014be8a61b}\label{classManager_a01f9b3a275e7b0c450cb9f014be8a61b} 
-std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries prim\+MST} ()
-\item 
-\Hypertarget{classManager_aa1b324748a1e8e1d47184bf9614dd769}\label{classManager_aa1b324748a1e8e1d47184bf9614dd769} 
-void {\bfseries load\+Extra\+Graph} (int option)
-\item 
-\Hypertarget{classManager_a56e2ff5b677ff7cc3ae203067512bec5}\label{classManager_a56e2ff5b677ff7cc3ae203067512bec5} 
-void {\bfseries load\+Real\+Graph} (int option)
-\item 
-\Hypertarget{classManager_a57ed468241c09f8fee2cd296893bd064}\label{classManager_a57ed468241c09f8fee2cd296893bd064} 
-std\+::vector$<$ int $>$ {\bfseries real\+World\+Heuristic} (int source, long \&duration, double \&cost)
-\item 
-\Hypertarget{classManager_a6b28e6723d6c47a59bae1a714fc21f05}\label{classManager_a6b28e6723d6c47a59bae1a714fc21f05} 
-void {\bfseries reset\+Graph} ()
-\item 
-\Hypertarget{classManager_a85e708d529508e4c6b3e892361464116}\label{classManager_a85e708d529508e4c6b3e892361464116} 
-bool {\bfseries validate\+Vertex} (const std\+::string \&option)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classManager_a95b9cc1d3092ea830c2bf744218b730e}{pre\+Order\+Walk}} (std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ MST, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}v, std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&pre\+Order)
+\begin{DoxyCompactList}\small\item\em Performs a pre-\/order traversal of the vertices in the Minimum Spanning Tree (MST). \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classManager_a01f9b3a275e7b0c450cb9f014be8a61b}{prim\+MST}} ()
+\begin{DoxyCompactList}\small\item\em Finds a Minimum Spanning Tree (MST) of the graph using Prim\textquotesingle{}s algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_aa1b324748a1e8e1d47184bf9614dd769}{load\+Extra\+Graph}} (int option)
+\begin{DoxyCompactList}\small\item\em Invokes the parser for a specific graph in the "{}\+Extra Graph"{} section. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a56e2ff5b677ff7cc3ae203067512bec5}{load\+Real\+Graph}} (int option)
+\begin{DoxyCompactList}\small\item\em Invokes the parser for a specific graph in the "{}\+Real World Graph"{} section. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classManager_a57ed468241c09f8fee2cd296893bd064}{real\+World\+Heuristic}} (int source, long \&duration, double \&cost)
+\begin{DoxyCompactList}\small\item\em Employs an heuristic approach to solve the Traveling Salesman Problem in a real world context. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classManager_a71db9ab5f24f9186c480dfb146787dc2}{find\+Shortest\+Edge}} (\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}vertex, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}src, bool final)
+\begin{DoxyCompactList}\small\item\em Finds, if possible, the shortest edge adjacent to a vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classManager_a413e6d91bde804e5fab43dc9da5f482b}{find\+Farthest\+Vertex}} (\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}start)
+\begin{DoxyCompactList}\small\item\em Finds the farthest away, unvisited vertex from a given vertex in the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classManager_a895364f44bb327454c12478b1a3eac61}{find\+Edge}} (\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}start, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}end)
+\begin{DoxyCompactList}\small\item\em Finds (or creates) an edge between two vertices. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{classManager_a35a70352d9a3f8ce0830f97547b3a1f9}{other\+Heuristic}} (int source, long \&duration, double \&cost)
+\begin{DoxyCompactList}\small\item\em Employs another heuristic approach (Farthest Insertion Heuristic) to solve the Traveling Salesman Problem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a6b28e6723d6c47a59bae1a714fc21f05}{reset\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Resets the graph to an initial, empty state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classManager_a85e708d529508e4c6b3e892361464116}{validate\+Vertex}} (const std\+::string \&option)
+\begin{DoxyCompactList}\small\item\em Validates an input string as a vertex option. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_afbe3c3ef90f9789462976774457cced4}{triangular\+Inequality}} (long \&duration, double \&cost)
+\begin{DoxyCompactList}\small\item\em Employs the Triangular Inequality Heuristic approach to solve the Traveling Salesman Problem. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classManager_a5586cb2a3935dfa67cb3b45c4e6de7bf}{check\+Connected}} (\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}v1, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}v2)
+\begin{DoxyCompactList}\small\item\em Verifies if two vertices are connected. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classManager_aba8e3aad02018f091d7b62fe0514c377}{haversine\+Distance}} (\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}v1, \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}v2)
+\begin{DoxyCompactList}\small\item\em Computes the distance between two vertices using the Haversine formula. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classManager_af3281349d86dcc63937346805a867202}{calculate\+Cost}} (std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&preorder)
+\begin{DoxyCompactList}\small\item\em Calculates the total cost of a given pre-\/order transversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+static bool \mbox{\hyperlink{classManager_a7890be13859f359d0c311060890cea68}{validate\+Node\+Number}} (const std\+::string \&option)
+\begin{DoxyCompactList}\small\item\em Validates an input string as a node number option. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classManager_a64e0a1092615115c5db15b0f340f265d}\label{classManager_a64e0a1092615115c5db15b0f340f265d} 
+\index{Manager@{Manager}!backtracking@{backtracking}}
+\index{backtracking@{backtracking}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{backtracking()}{backtracking()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Manager\+::backtracking (\begin{DoxyParamCaption}\item[{long \&}]{duration,  }\item[{double \&}]{cost }\end{DoxyParamCaption})}
+
+Wrapper function for the backtracking algorithm. Initializes the graph and organizes the cost and duration metrics of the algorithm. \begin{DoxyParagraph}{Time Complexity\+: O(\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} \texorpdfstring{$\ast$}{*} \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|}!), where \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} is the number of vertices in the graph.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & -\/ Duration of the computation. \\
+\hline
+{\em cost} & -\/ Minimal cost of the best path found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of integers, representing the vertex IDs, ordered in the way they\textquotesingle{}re visited in the best path found. 
+\end{DoxyReturn}
+\Hypertarget{classManager_af3281349d86dcc63937346805a867202}\label{classManager_af3281349d86dcc63937346805a867202} 
+\index{Manager@{Manager}!calculateCost@{calculateCost}}
+\index{calculateCost@{calculateCost}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{calculateCost()}{calculateCost()}}
+{\footnotesize\ttfamily double Manager\+::calculate\+Cost (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&}]{preorder }\end{DoxyParamCaption})}
+
+
+
+Calculates the total cost of a given pre-\/order transversal. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} + \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|}), where \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} and \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|} are the number of vertices and edges on the graph respectively.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em preorder} & -\/ The pre-\/order transversal sequence, represented as a vector of vertices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cost of the transversal 
+\end{DoxyReturn}
+\Hypertarget{classManager_a5586cb2a3935dfa67cb3b45c4e6de7bf}\label{classManager_a5586cb2a3935dfa67cb3b45c4e6de7bf} 
+\index{Manager@{Manager}!checkConnected@{checkConnected}}
+\index{checkConnected@{checkConnected}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{checkConnected()}{checkConnected()}}
+{\footnotesize\ttfamily bool Manager\+::check\+Connected (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{v1,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{v2 }\end{DoxyParamCaption})}
+
+
+
+Verifies if two vertices are connected. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(d), where d is the degree of the origin vertex.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em v1} & -\/ Origin vertex. \\
+\hline
+{\em v2} & -\/ Destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if vertices are connected, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classManager_a895364f44bb327454c12478b1a3eac61}\label{classManager_a895364f44bb327454c12478b1a3eac61} 
+\index{Manager@{Manager}!findEdge@{findEdge}}
+\index{findEdge@{findEdge}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{findEdge()}{findEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} Manager\+::find\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{start,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{end }\end{DoxyParamCaption})}
+
+
+
+Finds (or creates) an edge between two vertices. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(d) where d is the degree of the starting vertex.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & -\/ Origin vertex. \\
+\hline
+{\em end} & -\/ Destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The edge between the two vertices (whether newly added or not). 
+\end{DoxyReturn}
+\Hypertarget{classManager_a413e6d91bde804e5fab43dc9da5f482b}\label{classManager_a413e6d91bde804e5fab43dc9da5f482b} 
+\index{Manager@{Manager}!findFarthestVertex@{findFarthestVertex}}
+\index{findFarthestVertex@{findFarthestVertex}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{findFarthestVertex()}{findFarthestVertex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} Manager\+::find\+Farthest\+Vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{start }\end{DoxyParamCaption})}
+
+
+
+Finds the farthest away, unvisited vertex from a given vertex in the graph. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(d + \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|}), where d is the degree of the given vertex, and \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} the number of vertices in the graph.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & -\/ Starting vertex from which to find the farthest vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The farthest unvisited vertex. 
+\end{DoxyReturn}
+\Hypertarget{classManager_a71db9ab5f24f9186c480dfb146787dc2}\label{classManager_a71db9ab5f24f9186c480dfb146787dc2} 
+\index{Manager@{Manager}!findShortestEdge@{findShortestEdge}}
+\index{findShortestEdge@{findShortestEdge}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{findShortestEdge()}{findShortestEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} Manager\+::find\+Shortest\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{vertex,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{src,  }\item[{bool}]{final }\end{DoxyParamCaption})}
+
+
+
+Finds, if possible, the shortest edge adjacent to a vertex. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(d), where d the maximum degree of a vertex in the graph.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & -\/ \doxylink{classVertex}{Vertex} for which to find the shortest adjacent edge. \\
+\hline
+{\em src} & -\/ Source vertex. \\
+\hline
+{\em final} & -\/ Boolean value. Indicates whether the edge connects back to the source vertex or not. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The shortest edge adjacent to the vertex (or nullptr if none is found). 
+\end{DoxyReturn}
+\Hypertarget{classManager_aba8e3aad02018f091d7b62fe0514c377}\label{classManager_aba8e3aad02018f091d7b62fe0514c377} 
+\index{Manager@{Manager}!haversineDistance@{haversineDistance}}
+\index{haversineDistance@{haversineDistance}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{haversineDistance()}{haversineDistance()}}
+{\footnotesize\ttfamily double Manager\+::haversine\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{v1,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{v2 }\end{DoxyParamCaption})}
+
+
+
+Computes the distance between two vertices using the Haversine formula. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(1).}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em v1} & -\/ Origin vertex. \\
+\hline
+{\em v2} & -\/ Destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two vertices. 
+\end{DoxyReturn}
+\Hypertarget{classManager_aa1b324748a1e8e1d47184bf9614dd769}\label{classManager_aa1b324748a1e8e1d47184bf9614dd769} 
+\index{Manager@{Manager}!loadExtraGraph@{loadExtraGraph}}
+\index{loadExtraGraph@{loadExtraGraph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{loadExtraGraph()}{loadExtraGraph()}}
+{\footnotesize\ttfamily void Manager\+::load\+Extra\+Graph (\begin{DoxyParamCaption}\item[{int}]{option }\end{DoxyParamCaption})}
+
+
+
+Invokes the parser for a specific graph in the "{}\+Extra Graph"{} section. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(1).}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em option} & -\/ Number of the option. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classManager_a56e2ff5b677ff7cc3ae203067512bec5}\label{classManager_a56e2ff5b677ff7cc3ae203067512bec5} 
+\index{Manager@{Manager}!loadRealGraph@{loadRealGraph}}
+\index{loadRealGraph@{loadRealGraph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{loadRealGraph()}{loadRealGraph()}}
+{\footnotesize\ttfamily void Manager\+::load\+Real\+Graph (\begin{DoxyParamCaption}\item[{int}]{option }\end{DoxyParamCaption})}
+
+
+
+Invokes the parser for a specific graph in the "{}\+Real World Graph"{} section. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(1).}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em option} & -\/ Number of the option. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classManager_a1fe26b5dde160291bf67b4df53e49fe3}\label{classManager_a1fe26b5dde160291bf67b4df53e49fe3} 
+\index{Manager@{Manager}!loadToyGraph@{loadToyGraph}}
+\index{loadToyGraph@{loadToyGraph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{loadToyGraph()}{loadToyGraph()}}
+{\footnotesize\ttfamily void Manager\+::load\+Toy\+Graph (\begin{DoxyParamCaption}\item[{int}]{option }\end{DoxyParamCaption})}
+
+
+
+Invokes the parser for a specific graph in the "{}\+Toy Graph"{} section. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(1).}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em option} & -\/ Number of the option. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classManager_a35a70352d9a3f8ce0830f97547b3a1f9}\label{classManager_a35a70352d9a3f8ce0830f97547b3a1f9} 
+\index{Manager@{Manager}!otherHeuristic@{otherHeuristic}}
+\index{otherHeuristic@{otherHeuristic}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{otherHeuristic()}{otherHeuristic()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Manager\+::other\+Heuristic (\begin{DoxyParamCaption}\item[{int}]{source,  }\item[{long \&}]{duration,  }\item[{double \&}]{cost }\end{DoxyParamCaption})}
+
+
+
+Employs another heuristic approach (Farthest Insertion Heuristic) to solve the Traveling Salesman Problem. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} + \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|} + \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|}²), where \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} and \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|} are the number of vertices and edges on the graph respectively.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em source} & -\/ Source vertex. \\
+\hline
+{\em duration} & -\/ Duration of the computation. \\
+\hline
+{\em cost} & -\/ Minimal cost of the best path found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of integers, representing the vertex IDs, ordered in the way they\textquotesingle{}re visited in the best path found. 
+\end{DoxyReturn}
+\Hypertarget{classManager_a95b9cc1d3092ea830c2bf744218b730e}\label{classManager_a95b9cc1d3092ea830c2bf744218b730e} 
+\index{Manager@{Manager}!preOrderWalk@{preOrderWalk}}
+\index{preOrderWalk@{preOrderWalk}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{preOrderWalk()}{preOrderWalk()}}
+{\footnotesize\ttfamily void Manager\+::pre\+Order\+Walk (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$}]{MST,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{v,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} \texorpdfstring{$\ast$}{*} $>$ \&}]{pre\+Order }\end{DoxyParamCaption})}
+
+
+
+Performs a pre-\/order traversal of the vertices in the Minimum Spanning Tree (MST). 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(?).}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em MST} & -\/ Minimum Spanning Tree, represented as a vector of edges. \\
+\hline
+{\em v} & -\/ Current vertex being visited. \\
+\hline
+{\em pre\+Order} & -\/ Pre-\/order transversal sequence, represented as a vector of vertices. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classManager_a01f9b3a275e7b0c450cb9f014be8a61b}\label{classManager_a01f9b3a275e7b0c450cb9f014be8a61b} 
+\index{Manager@{Manager}!primMST@{primMST}}
+\index{primMST@{primMST}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{primMST()}{primMST()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classEdge}{Edge}} \texorpdfstring{$\ast$}{*} $>$ Manager\+::prim\+MST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds a Minimum Spanning Tree (MST) of the graph using Prim\textquotesingle{}s algorithm. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(\texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|} \texorpdfstring{$\ast$}{*} log\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|}), where \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} and \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|} are the number or vertices and edges in the graph respectively.}
+
+\end{DoxyParagraph}
+\begin{DoxyReturn}{Returns}
+A vector of edges, representing a MST of the graph. 
+\end{DoxyReturn}
+\Hypertarget{classManager_a57ed468241c09f8fee2cd296893bd064}\label{classManager_a57ed468241c09f8fee2cd296893bd064} 
+\index{Manager@{Manager}!realWorldHeuristic@{realWorldHeuristic}}
+\index{realWorldHeuristic@{realWorldHeuristic}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{realWorldHeuristic()}{realWorldHeuristic()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Manager\+::real\+World\+Heuristic (\begin{DoxyParamCaption}\item[{int}]{source,  }\item[{long \&}]{duration,  }\item[{double \&}]{cost }\end{DoxyParamCaption})}
+
+
+
+Employs an heuristic approach to solve the Traveling Salesman Problem in a real world context. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} + \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|} + \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} \texorpdfstring{$\ast$}{*} d), where \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} and \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|} are the number of vertices and edges of the graph respectively, and d the maximum degree of a vertex in the graph.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em source} & -\/ Source vertex. \\
+\hline
+{\em duration} & -\/ Duration of the computation. \\
+\hline
+{\em cost} & -\/ Minimal cost of the best path found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of integers, representing the vertex IDs, ordered in the way they\textquotesingle{}re visited in the best path found. 
+\end{DoxyReturn}
+\Hypertarget{classManager_a6b28e6723d6c47a59bae1a714fc21f05}\label{classManager_a6b28e6723d6c47a59bae1a714fc21f05} 
+\index{Manager@{Manager}!resetGraph@{resetGraph}}
+\index{resetGraph@{resetGraph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{resetGraph()}{resetGraph()}}
+{\footnotesize\ttfamily void Manager\+::reset\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the graph to an initial, empty state. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(1).}
+
+\end{DoxyParagraph}
+\Hypertarget{classManager_afbe3c3ef90f9789462976774457cced4}\label{classManager_afbe3c3ef90f9789462976774457cced4} 
+\index{Manager@{Manager}!triangularInequality@{triangularInequality}}
+\index{triangularInequality@{triangularInequality}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{triangularInequality()}{triangularInequality()}}
+{\footnotesize\ttfamily void Manager\+::triangular\+Inequality (\begin{DoxyParamCaption}\item[{long \&}]{duration,  }\item[{double \&}]{cost }\end{DoxyParamCaption})}
+
+
+
+Employs the Triangular Inequality Heuristic approach to solve the Traveling Salesman Problem. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O((\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} + \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|}) \texorpdfstring{$\ast$}{*} log\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|}), where \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} and \texorpdfstring{$\vert$}{|}\+E\texorpdfstring{$\vert$}{|} are the number of vertices and edges on the graph respectively.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & -\/ Duration of the computation. \\
+\hline
+{\em cost} & -\/ Minimal cost of the best path found. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classManager_a7419ecbfd86d5993c6a8074e380abe73}\label{classManager_a7419ecbfd86d5993c6a8074e380abe73} 
+\index{Manager@{Manager}!tsp\_backtracking@{tsp\_backtracking}}
+\index{tsp\_backtracking@{tsp\_backtracking}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{tsp\_backtracking()}{tsp\_backtracking()}}
+{\footnotesize\ttfamily void Manager\+::tsp\+\_\+backtracking (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{path,  }\item[{std\+::vector$<$ int $>$ \&}]{best\+Path,  }\item[{double \&}]{min\+Cost,  }\item[{double}]{current\+Cost }\end{DoxyParamCaption})}
+
+
+
+Employs a backtracking approach to solve the Traveling Salesman Problem. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(\texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|}!), where \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} is the number of vertices in the graph.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em path} & -\/ Current path being explored. \\
+\hline
+{\em best\+Path} & -\/ Best path found so far. \\
+\hline
+{\em min\+Cost} & -\/ Minimum cost of the best path found so far. \\
+\hline
+{\em current\+Cost} & -\/ Cost of the current path being explored. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classManager_a7890be13859f359d0c311060890cea68}\label{classManager_a7890be13859f359d0c311060890cea68} 
-static bool {\bfseries validate\+Node\+Number} (const std\+::string \&option)
-\end{DoxyCompactItemize}
+\index{Manager@{Manager}!validateNodeNumber@{validateNodeNumber}}
+\index{validateNodeNumber@{validateNodeNumber}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{validateNodeNumber()}{validateNodeNumber()}}
+{\footnotesize\ttfamily bool Manager\+::validate\+Node\+Number (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{option }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Validates an input string as a node number option. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(n) where n is the number of characters in the given string.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em option} & -\/ Input string to be validated as a valid option. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the input string is valid, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classManager_a85e708d529508e4c6b3e892361464116}\label{classManager_a85e708d529508e4c6b3e892361464116} 
+\index{Manager@{Manager}!validateVertex@{validateVertex}}
+\index{validateVertex@{validateVertex}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{validateVertex()}{validateVertex()}}
+{\footnotesize\ttfamily bool Manager\+::validate\+Vertex (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{option }\end{DoxyParamCaption})}
+
+
+
+Validates an input string as a vertex option. 
+
+\begin{DoxyParagraph}{Time Complexity\+: O(n) where n is the number of characters in the given string.}
+
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+{\em option} & -\/ Input string to be validated as a valid option. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the input string is valid, false otherwise. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

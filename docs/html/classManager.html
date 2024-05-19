@@ -81,49 +81,653 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab1d20d37fe54190c329c5c3e4bd505c2" id="r_ab1d20d37fe54190c329c5c3e4bd505c2"><td class="memItemLeft" align="right" valign="top"><a id="ab1d20d37fe54190c329c5c3e4bd505c2" name="ab1d20d37fe54190c329c5c3e4bd505c2"></a>
-<a class="el" href="classGraph.html">Graph</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getGraph</b> () const</td></tr>
-<tr class="separator:ab1d20d37fe54190c329c5c3e4bd505c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fe26b5dde160291bf67b4df53e49fe3" id="r_a1fe26b5dde160291bf67b4df53e49fe3"><td class="memItemLeft" align="right" valign="top"><a id="a1fe26b5dde160291bf67b4df53e49fe3" name="a1fe26b5dde160291bf67b4df53e49fe3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadToyGraph</b> (int option)</td></tr>
+<tr class="memitem:a1fe26b5dde160291bf67b4df53e49fe3" id="r_a1fe26b5dde160291bf67b4df53e49fe3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fe26b5dde160291bf67b4df53e49fe3">loadToyGraph</a> (int option)</td></tr>
+<tr class="memdesc:a1fe26b5dde160291bf67b4df53e49fe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes the parser for a specific graph in the "Toy Graph" section.  <br /></td></tr>
 <tr class="separator:a1fe26b5dde160291bf67b4df53e49fe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75b5e1aea7e35b7a0d050fd29e89c840" id="r_a75b5e1aea7e35b7a0d050fd29e89c840"><td class="memItemLeft" align="right" valign="top"><a id="a75b5e1aea7e35b7a0d050fd29e89c840" name="a75b5e1aea7e35b7a0d050fd29e89c840"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>tsp_backtracking</b> (std::vector&lt; int &gt; &amp;path, std::vector&lt; int &gt; &amp;bestPath, double &amp;minCost, double sumCost)</td></tr>
-<tr class="separator:a75b5e1aea7e35b7a0d050fd29e89c840"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64e0a1092615115c5db15b0f340f265d" id="r_a64e0a1092615115c5db15b0f340f265d"><td class="memItemLeft" align="right" valign="top"><a id="a64e0a1092615115c5db15b0f340f265d" name="a64e0a1092615115c5db15b0f340f265d"></a>
-std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>backtracking</b> (long &amp;duration, double &amp;cost)</td></tr>
+<tr class="memitem:a7419ecbfd86d5993c6a8074e380abe73" id="r_a7419ecbfd86d5993c6a8074e380abe73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7419ecbfd86d5993c6a8074e380abe73">tsp_backtracking</a> (std::vector&lt; int &gt; &amp;path, std::vector&lt; int &gt; &amp;bestPath, double &amp;minCost, double currentCost)</td></tr>
+<tr class="memdesc:a7419ecbfd86d5993c6a8074e380abe73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Employs a backtracking approach to solve the Traveling Salesman Problem.  <br /></td></tr>
+<tr class="separator:a7419ecbfd86d5993c6a8074e380abe73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e0a1092615115c5db15b0f340f265d" id="r_a64e0a1092615115c5db15b0f340f265d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64e0a1092615115c5db15b0f340f265d">backtracking</a> (long &amp;duration, double &amp;cost)</td></tr>
 <tr class="separator:a64e0a1092615115c5db15b0f340f265d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c3fdac4ef4e103745cd24c5c54d3856" id="r_a4c3fdac4ef4e103745cd24c5c54d3856"><td class="memItemLeft" align="right" valign="top"><a id="a4c3fdac4ef4e103745cd24c5c54d3856" name="a4c3fdac4ef4e103745cd24c5c54d3856"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>triangularInequality</b> ()</td></tr>
-<tr class="separator:a4c3fdac4ef4e103745cd24c5c54d3856"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95b9cc1d3092ea830c2bf744218b730e" id="r_a95b9cc1d3092ea830c2bf744218b730e"><td class="memItemLeft" align="right" valign="top"><a id="a95b9cc1d3092ea830c2bf744218b730e" name="a95b9cc1d3092ea830c2bf744218b730e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>preOrderWalk</b> (std::vector&lt; <a class="el" href="classEdge.html">Edge</a> * &gt; MST, <a class="el" href="classVertex.html">Vertex</a> *v, std::vector&lt; <a class="el" href="classVertex.html">Vertex</a> * &gt; &amp;preOrder)</td></tr>
+<tr class="memitem:a95b9cc1d3092ea830c2bf744218b730e" id="r_a95b9cc1d3092ea830c2bf744218b730e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95b9cc1d3092ea830c2bf744218b730e">preOrderWalk</a> (std::vector&lt; <a class="el" href="classEdge.html">Edge</a> * &gt; MST, <a class="el" href="classVertex.html">Vertex</a> *v, std::vector&lt; <a class="el" href="classVertex.html">Vertex</a> * &gt; &amp;preOrder)</td></tr>
+<tr class="memdesc:a95b9cc1d3092ea830c2bf744218b730e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a pre-order traversal of the vertices in the Minimum Spanning Tree (MST).  <br /></td></tr>
 <tr class="separator:a95b9cc1d3092ea830c2bf744218b730e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01f9b3a275e7b0c450cb9f014be8a61b" id="r_a01f9b3a275e7b0c450cb9f014be8a61b"><td class="memItemLeft" align="right" valign="top"><a id="a01f9b3a275e7b0c450cb9f014be8a61b" name="a01f9b3a275e7b0c450cb9f014be8a61b"></a>
-std::vector&lt; <a class="el" href="classEdge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>primMST</b> ()</td></tr>
+<tr class="memitem:a01f9b3a275e7b0c450cb9f014be8a61b" id="r_a01f9b3a275e7b0c450cb9f014be8a61b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classEdge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01f9b3a275e7b0c450cb9f014be8a61b">primMST</a> ()</td></tr>
+<tr class="memdesc:a01f9b3a275e7b0c450cb9f014be8a61b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a Minimum Spanning Tree (MST) of the graph using Prim's algorithm.  <br /></td></tr>
 <tr class="separator:a01f9b3a275e7b0c450cb9f014be8a61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1b324748a1e8e1d47184bf9614dd769" id="r_aa1b324748a1e8e1d47184bf9614dd769"><td class="memItemLeft" align="right" valign="top"><a id="aa1b324748a1e8e1d47184bf9614dd769" name="aa1b324748a1e8e1d47184bf9614dd769"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadExtraGraph</b> (int option)</td></tr>
+<tr class="memitem:aa1b324748a1e8e1d47184bf9614dd769" id="r_aa1b324748a1e8e1d47184bf9614dd769"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1b324748a1e8e1d47184bf9614dd769">loadExtraGraph</a> (int option)</td></tr>
+<tr class="memdesc:aa1b324748a1e8e1d47184bf9614dd769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes the parser for a specific graph in the "Extra Graph" section.  <br /></td></tr>
 <tr class="separator:aa1b324748a1e8e1d47184bf9614dd769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56e2ff5b677ff7cc3ae203067512bec5" id="r_a56e2ff5b677ff7cc3ae203067512bec5"><td class="memItemLeft" align="right" valign="top"><a id="a56e2ff5b677ff7cc3ae203067512bec5" name="a56e2ff5b677ff7cc3ae203067512bec5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadRealGraph</b> (int option)</td></tr>
+<tr class="memitem:a56e2ff5b677ff7cc3ae203067512bec5" id="r_a56e2ff5b677ff7cc3ae203067512bec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56e2ff5b677ff7cc3ae203067512bec5">loadRealGraph</a> (int option)</td></tr>
+<tr class="memdesc:a56e2ff5b677ff7cc3ae203067512bec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invokes the parser for a specific graph in the "Real World Graph" section.  <br /></td></tr>
 <tr class="separator:a56e2ff5b677ff7cc3ae203067512bec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57ed468241c09f8fee2cd296893bd064" id="r_a57ed468241c09f8fee2cd296893bd064"><td class="memItemLeft" align="right" valign="top"><a id="a57ed468241c09f8fee2cd296893bd064" name="a57ed468241c09f8fee2cd296893bd064"></a>
-std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>realWorldHeuristic</b> (int source, long &amp;duration, double &amp;cost)</td></tr>
+<tr class="memitem:a57ed468241c09f8fee2cd296893bd064" id="r_a57ed468241c09f8fee2cd296893bd064"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57ed468241c09f8fee2cd296893bd064">realWorldHeuristic</a> (int source, long &amp;duration, double &amp;cost)</td></tr>
+<tr class="memdesc:a57ed468241c09f8fee2cd296893bd064"><td class="mdescLeft">&#160;</td><td class="mdescRight">Employs an heuristic approach to solve the Traveling Salesman Problem in a real world context.  <br /></td></tr>
 <tr class="separator:a57ed468241c09f8fee2cd296893bd064"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b28e6723d6c47a59bae1a714fc21f05" id="r_a6b28e6723d6c47a59bae1a714fc21f05"><td class="memItemLeft" align="right" valign="top"><a id="a6b28e6723d6c47a59bae1a714fc21f05" name="a6b28e6723d6c47a59bae1a714fc21f05"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resetGraph</b> ()</td></tr>
+<tr class="memitem:a71db9ab5f24f9186c480dfb146787dc2" id="r_a71db9ab5f24f9186c480dfb146787dc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEdge.html">Edge</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71db9ab5f24f9186c480dfb146787dc2">findShortestEdge</a> (<a class="el" href="classVertex.html">Vertex</a> *vertex, <a class="el" href="classVertex.html">Vertex</a> *src, bool final)</td></tr>
+<tr class="memdesc:a71db9ab5f24f9186c480dfb146787dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds, if possible, the shortest edge adjacent to a vertex.  <br /></td></tr>
+<tr class="separator:a71db9ab5f24f9186c480dfb146787dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413e6d91bde804e5fab43dc9da5f482b" id="r_a413e6d91bde804e5fab43dc9da5f482b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classVertex.html">Vertex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a413e6d91bde804e5fab43dc9da5f482b">findFarthestVertex</a> (<a class="el" href="classVertex.html">Vertex</a> *start)</td></tr>
+<tr class="memdesc:a413e6d91bde804e5fab43dc9da5f482b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the farthest away, unvisited vertex from a given vertex in the graph.  <br /></td></tr>
+<tr class="separator:a413e6d91bde804e5fab43dc9da5f482b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a895364f44bb327454c12478b1a3eac61" id="r_a895364f44bb327454c12478b1a3eac61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEdge.html">Edge</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a895364f44bb327454c12478b1a3eac61">findEdge</a> (<a class="el" href="classVertex.html">Vertex</a> *start, <a class="el" href="classVertex.html">Vertex</a> *end)</td></tr>
+<tr class="memdesc:a895364f44bb327454c12478b1a3eac61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds (or creates) an edge between two vertices.  <br /></td></tr>
+<tr class="separator:a895364f44bb327454c12478b1a3eac61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a70352d9a3f8ce0830f97547b3a1f9" id="r_a35a70352d9a3f8ce0830f97547b3a1f9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35a70352d9a3f8ce0830f97547b3a1f9">otherHeuristic</a> (int source, long &amp;duration, double &amp;cost)</td></tr>
+<tr class="memdesc:a35a70352d9a3f8ce0830f97547b3a1f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Employs another heuristic approach (Farthest Insertion Heuristic) to solve the Traveling Salesman Problem.  <br /></td></tr>
+<tr class="separator:a35a70352d9a3f8ce0830f97547b3a1f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b28e6723d6c47a59bae1a714fc21f05" id="r_a6b28e6723d6c47a59bae1a714fc21f05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b28e6723d6c47a59bae1a714fc21f05">resetGraph</a> ()</td></tr>
+<tr class="memdesc:a6b28e6723d6c47a59bae1a714fc21f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the graph to an initial, empty state.  <br /></td></tr>
 <tr class="separator:a6b28e6723d6c47a59bae1a714fc21f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85e708d529508e4c6b3e892361464116" id="r_a85e708d529508e4c6b3e892361464116"><td class="memItemLeft" align="right" valign="top"><a id="a85e708d529508e4c6b3e892361464116" name="a85e708d529508e4c6b3e892361464116"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>validateVertex</b> (const std::string &amp;option)</td></tr>
+<tr class="memitem:a85e708d529508e4c6b3e892361464116" id="r_a85e708d529508e4c6b3e892361464116"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85e708d529508e4c6b3e892361464116">validateVertex</a> (const std::string &amp;option)</td></tr>
+<tr class="memdesc:a85e708d529508e4c6b3e892361464116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates an input string as a vertex option.  <br /></td></tr>
 <tr class="separator:a85e708d529508e4c6b3e892361464116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbe3c3ef90f9789462976774457cced4" id="r_afbe3c3ef90f9789462976774457cced4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbe3c3ef90f9789462976774457cced4">triangularInequality</a> (long &amp;duration, double &amp;cost)</td></tr>
+<tr class="memdesc:afbe3c3ef90f9789462976774457cced4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Employs the Triangular Inequality Heuristic approach to solve the Traveling Salesman Problem.  <br /></td></tr>
+<tr class="separator:afbe3c3ef90f9789462976774457cced4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5586cb2a3935dfa67cb3b45c4e6de7bf" id="r_a5586cb2a3935dfa67cb3b45c4e6de7bf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5586cb2a3935dfa67cb3b45c4e6de7bf">checkConnected</a> (<a class="el" href="classVertex.html">Vertex</a> *v1, <a class="el" href="classVertex.html">Vertex</a> *v2)</td></tr>
+<tr class="memdesc:a5586cb2a3935dfa67cb3b45c4e6de7bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies if two vertices are connected.  <br /></td></tr>
+<tr class="separator:a5586cb2a3935dfa67cb3b45c4e6de7bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba8e3aad02018f091d7b62fe0514c377" id="r_aba8e3aad02018f091d7b62fe0514c377"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba8e3aad02018f091d7b62fe0514c377">haversineDistance</a> (<a class="el" href="classVertex.html">Vertex</a> *v1, <a class="el" href="classVertex.html">Vertex</a> *v2)</td></tr>
+<tr class="memdesc:aba8e3aad02018f091d7b62fe0514c377"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the distance between two vertices using the Haversine formula.  <br /></td></tr>
+<tr class="separator:aba8e3aad02018f091d7b62fe0514c377"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3281349d86dcc63937346805a867202" id="r_af3281349d86dcc63937346805a867202"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3281349d86dcc63937346805a867202">calculateCost</a> (std::vector&lt; <a class="el" href="classVertex.html">Vertex</a> * &gt; &amp;preorder)</td></tr>
+<tr class="memdesc:af3281349d86dcc63937346805a867202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the total cost of a given pre-order transversal.  <br /></td></tr>
+<tr class="separator:af3281349d86dcc63937346805a867202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a7890be13859f359d0c311060890cea68" id="r_a7890be13859f359d0c311060890cea68"><td class="memItemLeft" align="right" valign="top"><a id="a7890be13859f359d0c311060890cea68" name="a7890be13859f359d0c311060890cea68"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>validateNodeNumber</b> (const std::string &amp;option)</td></tr>
+<tr class="memitem:a7890be13859f359d0c311060890cea68" id="r_a7890be13859f359d0c311060890cea68"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7890be13859f359d0c311060890cea68">validateNodeNumber</a> (const std::string &amp;option)</td></tr>
+<tr class="memdesc:a7890be13859f359d0c311060890cea68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates an input string as a node number option.  <br /></td></tr>
 <tr class="separator:a7890be13859f359d0c311060890cea68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a64e0a1092615115c5db15b0f340f265d" name="a64e0a1092615115c5db15b0f340f265d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64e0a1092615115c5db15b0f340f265d">&#9670;&#160;</a></span>backtracking()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; int &gt; Manager::backtracking </td>
+          <td>(</td>
+          <td class="paramtype">long &amp;</td>          <td class="paramname"><span class="paramname"><em>duration</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>cost</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wrapper function for the backtracking algorithm. Initializes the graph and organizes the cost and duration metrics of the algorithm. </p><dl class="section user"><dt>Time Complexity: O(|V| * |V|!), where |V| is the number of vertices in the graph.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">duration</td><td>- Duration of the computation. </td></tr>
+    <tr><td class="paramname">cost</td><td>- Minimal cost of the best path found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of integers, representing the vertex IDs, ordered in the way they're visited in the best path found. </dd></dl>
+
+</div>
+</div>
+<a id="af3281349d86dcc63937346805a867202" name="af3281349d86dcc63937346805a867202"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3281349d86dcc63937346805a867202">&#9670;&#160;</a></span>calculateCost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Manager::calculateCost </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classVertex.html">Vertex</a> * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>preorder</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the total cost of a given pre-order transversal. </p>
+<dl class="section user"><dt>Time Complexity: O(|V| + |E|), where |V| and |E| are the number of vertices and edges on the graph respectively.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">preorder</td><td>- The pre-order transversal sequence, represented as a vector of vertices. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The cost of the transversal </dd></dl>
+
+</div>
+</div>
+<a id="a5586cb2a3935dfa67cb3b45c4e6de7bf" name="a5586cb2a3935dfa67cb3b45c4e6de7bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5586cb2a3935dfa67cb3b45c4e6de7bf">&#9670;&#160;</a></span>checkConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Manager::checkConnected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>v1</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>v2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifies if two vertices are connected. </p>
+<dl class="section user"><dt>Time Complexity: O(d), where d is the degree of the origin vertex.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v1</td><td>- Origin vertex. </td></tr>
+    <tr><td class="paramname">v2</td><td>- Destination vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if vertices are connected, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a895364f44bb327454c12478b1a3eac61" name="a895364f44bb327454c12478b1a3eac61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a895364f44bb327454c12478b1a3eac61">&#9670;&#160;</a></span>findEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEdge.html">Edge</a> * Manager::findEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>start</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>end</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds (or creates) an edge between two vertices. </p>
+<dl class="section user"><dt>Time Complexity: O(d) where d is the degree of the starting vertex.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>- Origin vertex. </td></tr>
+    <tr><td class="paramname">end</td><td>- Destination vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The edge between the two vertices (whether newly added or not). </dd></dl>
+
+</div>
+</div>
+<a id="a413e6d91bde804e5fab43dc9da5f482b" name="a413e6d91bde804e5fab43dc9da5f482b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413e6d91bde804e5fab43dc9da5f482b">&#9670;&#160;</a></span>findFarthestVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classVertex.html">Vertex</a> * Manager::findFarthestVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>start</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the farthest away, unvisited vertex from a given vertex in the graph. </p>
+<dl class="section user"><dt>Time Complexity: O(d + |V|), where d is the degree of the given vertex, and |V| the number of vertices in the graph.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>- Starting vertex from which to find the farthest vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The farthest unvisited vertex. </dd></dl>
+
+</div>
+</div>
+<a id="a71db9ab5f24f9186c480dfb146787dc2" name="a71db9ab5f24f9186c480dfb146787dc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71db9ab5f24f9186c480dfb146787dc2">&#9670;&#160;</a></span>findShortestEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEdge.html">Edge</a> * Manager::findShortestEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>vertex</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>src</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>final</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds, if possible, the shortest edge adjacent to a vertex. </p>
+<dl class="section user"><dt>Time Complexity: O(d), where d the maximum degree of a vertex in the graph.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vertex</td><td>- <a class="el" href="classVertex.html">Vertex</a> for which to find the shortest adjacent edge. </td></tr>
+    <tr><td class="paramname">src</td><td>- Source vertex. </td></tr>
+    <tr><td class="paramname">final</td><td>- Boolean value. Indicates whether the edge connects back to the source vertex or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The shortest edge adjacent to the vertex (or nullptr if none is found). </dd></dl>
+
+</div>
+</div>
+<a id="aba8e3aad02018f091d7b62fe0514c377" name="aba8e3aad02018f091d7b62fe0514c377"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba8e3aad02018f091d7b62fe0514c377">&#9670;&#160;</a></span>haversineDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Manager::haversineDistance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>v1</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>v2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the distance between two vertices using the Haversine formula. </p>
+<dl class="section user"><dt>Time Complexity: O(1).</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v1</td><td>- Origin vertex. </td></tr>
+    <tr><td class="paramname">v2</td><td>- Destination vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The distance between the two vertices. </dd></dl>
+
+</div>
+</div>
+<a id="aa1b324748a1e8e1d47184bf9614dd769" name="aa1b324748a1e8e1d47184bf9614dd769"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1b324748a1e8e1d47184bf9614dd769">&#9670;&#160;</a></span>loadExtraGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::loadExtraGraph </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>option</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Invokes the parser for a specific graph in the "Extra Graph" section. </p>
+<dl class="section user"><dt>Time Complexity: O(1).</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>- Number of the option. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a56e2ff5b677ff7cc3ae203067512bec5" name="a56e2ff5b677ff7cc3ae203067512bec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56e2ff5b677ff7cc3ae203067512bec5">&#9670;&#160;</a></span>loadRealGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::loadRealGraph </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>option</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Invokes the parser for a specific graph in the "Real World Graph" section. </p>
+<dl class="section user"><dt>Time Complexity: O(1).</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>- Number of the option. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1fe26b5dde160291bf67b4df53e49fe3" name="a1fe26b5dde160291bf67b4df53e49fe3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fe26b5dde160291bf67b4df53e49fe3">&#9670;&#160;</a></span>loadToyGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::loadToyGraph </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>option</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Invokes the parser for a specific graph in the "Toy Graph" section. </p>
+<dl class="section user"><dt>Time Complexity: O(1).</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>- Number of the option. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a35a70352d9a3f8ce0830f97547b3a1f9" name="a35a70352d9a3f8ce0830f97547b3a1f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a70352d9a3f8ce0830f97547b3a1f9">&#9670;&#160;</a></span>otherHeuristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; int &gt; Manager::otherHeuristic </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>source</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long &amp;</td>          <td class="paramname"><span class="paramname"><em>duration</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>cost</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Employs another heuristic approach (Farthest Insertion Heuristic) to solve the Traveling Salesman Problem. </p>
+<dl class="section user"><dt>Time Complexity: O(|V| + |E| + |V|²), where |V| and |E| are the number of vertices and edges on the graph respectively.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>- Source vertex. </td></tr>
+    <tr><td class="paramname">duration</td><td>- Duration of the computation. </td></tr>
+    <tr><td class="paramname">cost</td><td>- Minimal cost of the best path found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of integers, representing the vertex IDs, ordered in the way they're visited in the best path found. </dd></dl>
+
+</div>
+</div>
+<a id="a95b9cc1d3092ea830c2bf744218b730e" name="a95b9cc1d3092ea830c2bf744218b730e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95b9cc1d3092ea830c2bf744218b730e">&#9670;&#160;</a></span>preOrderWalk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::preOrderWalk </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classEdge.html">Edge</a> * &gt;</td>          <td class="paramname"><span class="paramname"><em>MST</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *</td>          <td class="paramname"><span class="paramname"><em>v</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classVertex.html">Vertex</a> * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>preOrder</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs a pre-order traversal of the vertices in the Minimum Spanning Tree (MST). </p>
+<dl class="section user"><dt>Time Complexity: O(?).</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">MST</td><td>- Minimum Spanning Tree, represented as a vector of edges. </td></tr>
+    <tr><td class="paramname">v</td><td>- Current vertex being visited. </td></tr>
+    <tr><td class="paramname">preOrder</td><td>- Pre-order transversal sequence, represented as a vector of vertices. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a01f9b3a275e7b0c450cb9f014be8a61b" name="a01f9b3a275e7b0c450cb9f014be8a61b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f9b3a275e7b0c450cb9f014be8a61b">&#9670;&#160;</a></span>primMST()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classEdge.html">Edge</a> * &gt; Manager::primMST </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds a Minimum Spanning Tree (MST) of the graph using Prim's algorithm. </p>
+<dl class="section user"><dt>Time Complexity: O(|E| * log|V|), where |V| and |E| are the number or vertices and edges in the graph respectively.</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of edges, representing a MST of the graph. </dd></dl>
+
+</div>
+</div>
+<a id="a57ed468241c09f8fee2cd296893bd064" name="a57ed468241c09f8fee2cd296893bd064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57ed468241c09f8fee2cd296893bd064">&#9670;&#160;</a></span>realWorldHeuristic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; int &gt; Manager::realWorldHeuristic </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>source</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long &amp;</td>          <td class="paramname"><span class="paramname"><em>duration</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>cost</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Employs an heuristic approach to solve the Traveling Salesman Problem in a real world context. </p>
+<dl class="section user"><dt>Time Complexity: O(|V| + |E| + |V| * d), where |V| and |E| are the number of vertices and edges of the graph respectively, and d the maximum degree of a vertex in the graph.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>- Source vertex. </td></tr>
+    <tr><td class="paramname">duration</td><td>- Duration of the computation. </td></tr>
+    <tr><td class="paramname">cost</td><td>- Minimal cost of the best path found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of integers, representing the vertex IDs, ordered in the way they're visited in the best path found. </dd></dl>
+
+</div>
+</div>
+<a id="a6b28e6723d6c47a59bae1a714fc21f05" name="a6b28e6723d6c47a59bae1a714fc21f05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b28e6723d6c47a59bae1a714fc21f05">&#9670;&#160;</a></span>resetGraph()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::resetGraph </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets the graph to an initial, empty state. </p>
+<dl class="section user"><dt>Time Complexity: O(1).</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="afbe3c3ef90f9789462976774457cced4" name="afbe3c3ef90f9789462976774457cced4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbe3c3ef90f9789462976774457cced4">&#9670;&#160;</a></span>triangularInequality()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::triangularInequality </td>
+          <td>(</td>
+          <td class="paramtype">long &amp;</td>          <td class="paramname"><span class="paramname"><em>duration</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>cost</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Employs the Triangular Inequality Heuristic approach to solve the Traveling Salesman Problem. </p>
+<dl class="section user"><dt>Time Complexity: O((|V| + |E|) * log|V|), where |V| and |E| are the number of vertices and edges on the graph respectively.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">duration</td><td>- Duration of the computation. </td></tr>
+    <tr><td class="paramname">cost</td><td>- Minimal cost of the best path found. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7419ecbfd86d5993c6a8074e380abe73" name="a7419ecbfd86d5993c6a8074e380abe73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7419ecbfd86d5993c6a8074e380abe73">&#9670;&#160;</a></span>tsp_backtracking()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Manager::tsp_backtracking </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>bestPath</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;</td>          <td class="paramname"><span class="paramname"><em>minCost</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>currentCost</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Employs a backtracking approach to solve the Traveling Salesman Problem. </p>
+<dl class="section user"><dt>Time Complexity: O(|V|!), where |V| is the number of vertices in the graph.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>- Current path being explored. </td></tr>
+    <tr><td class="paramname">bestPath</td><td>- Best path found so far. </td></tr>
+    <tr><td class="paramname">minCost</td><td>- Minimum cost of the best path found so far. </td></tr>
+    <tr><td class="paramname">currentCost</td><td>- Cost of the current path being explored. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7890be13859f359d0c311060890cea68" name="a7890be13859f359d0c311060890cea68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7890be13859f359d0c311060890cea68">&#9670;&#160;</a></span>validateNodeNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Manager::validateNodeNumber </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>option</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Validates an input string as a node number option. </p>
+<dl class="section user"><dt>Time Complexity: O(n) where n is the number of characters in the given string.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>- Input string to be validated as a valid option. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the input string is valid, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a85e708d529508e4c6b3e892361464116" name="a85e708d529508e4c6b3e892361464116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85e708d529508e4c6b3e892361464116">&#9670;&#160;</a></span>validateVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Manager::validateVertex </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>option</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Validates an input string as a vertex option. </p>
+<dl class="section user"><dt>Time Complexity: O(n) where n is the number of characters in the given string.</dt><dd></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>- Input string to be validated as a valid option. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the input string is valid, false otherwise. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/oxi-moron/LEIC/DA/DA2324_PRJ2_G15_5/src/<a class="el" href="Manager_8h_source.html">Manager.h</a></li>
 <li>/home/oxi-moron/LEIC/DA/DA2324_PRJ2_G15_5/src/<b>Manager.cpp</b></li>

@@ -112,7 +112,7 @@ void Interface::mainMenu() {
     cout << "\tWhich " << BOLD << BLUE << "TSP Algorithm" << RESET " would you like to run?\n" << endl
          << BOLD << BLUE << "\t[1]" << RESET << " - Backtracking" << endl
          << BOLD << BLUE << "\t[2]" << RESET << " - Triangular Approximantion Heuristic" << endl
-         << BOLD << BLUE << "\t[3]" << RESET << " - ??? Heuristic" << endl
+         << BOLD << BLUE << "\t[3]" << RESET << " - Farthest Insertion Heuristic" << endl
          << BOLD << BLUE << "\t[4]" << RESET << " - Arbitrary Starting Point" << endl
          << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
 
@@ -246,7 +246,7 @@ void Interface::otherHeuristicMenu() {
     header();
 
     cout << "\tWhat would you like to" << BOLD << BLUE <<  " do?\n" << RESET << endl
-         << BOLD << BLUE << "\t[1]" << RESET << " - Run ??? Heuristics Algorithm" << endl
+         << BOLD << BLUE << "\t[1]" << RESET << " - Run Farthest Insertion Heuristics Algorithm" << endl
          << BOLD << BLUE << "\t[2]" << RESET << " - Run Comparison with Triangular Inequality Algorithm" << endl
          << BOLD << RED << "\t[0]" << RESET << " - Back" << endl;
 
@@ -312,18 +312,21 @@ void Interface::printRealWorldHeuristic(int option) {
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << setprecision(10) << cost << endl;
 
-    if (path.empty() || true) {
+    if (path.empty()) {
         cout << BOLD << RED << "\n\n\tNo path found!" << RESET << endl;
     }
 
-    cout << BOLD << GREEN << "\tRunning Christofides..." << RESET << endl;
-    path = manager.christofidesTSP(duration, cost);
+    cout << BOLD << GREEN << "\n\tRunning Christofides..." << RESET << endl;
+    std::vector<int> path2 = manager.christofidesTSP(duration, cost, option);
 
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << setprecision(10) << cost << endl;
 
     if (path.empty()) cout << RED << BOLD << "\n\tNo path found!" << RESET << endl;
-    else if (path.size() < 10 || readPath()) printPath(path);
+    else if (path.size() < 10 || readPath()) {
+        printPath(path);
+        printPath(path2);
+    }
 
     footer();
     inputWait();
@@ -355,10 +358,10 @@ void Interface::printOtherHeuristic(bool compare) {
     clear();
     header();
 
-    long duration; double cost, backtracks;
+    long duration; double cost;
 
-    cout << GREEN << BOLD << "\tRunning ???? Heuristic..." << RESET << endl;
-    std::vector<int> path = manager.realWorldHeuristic(0, duration, cost, backtracks); // manager.otherHeuristic
+    cout << GREEN << BOLD << "\tRunning Farthest Insertion Heuristic..." << RESET << endl;
+    std::vector<int> path = manager.otherHeuristic(0, duration, cost);
     cout << BOLD << YELLOW << "\n\n\tRuntime: " << RESET << duration << " ms" << endl;
     cout << BOLD << YELLOW << "\tTour Cost: " << RESET << setprecision(10) << cost << endl;
 

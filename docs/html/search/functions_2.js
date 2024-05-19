@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['edge_0',['Edge',['../classEdge.html#a109d86a49b9a89422d3db1d6e5204569',1,'Edge']]]
+  ['calculatecost_0',['calculateCost',['../classManager.html#af3281349d86dcc63937346805a867202',1,'Manager']]],
+  ['checkconnected_1',['checkConnected',['../classManager.html#a5586cb2a3935dfa67cb3b45c4e6de7bf',1,'Manager']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['manager_0',['Manager',['../classManager.html',1,'']]],
-  ['mutablepriorityqueue_1',['MutablePriorityQueue',['../classMutablePriorityQueue.html',1,'']]]
+  ['haversinedistance_0',['haversineDistance',['../classManager.html#aba8e3aad02018f091d7b62fe0514c377',1,'Manager']]]
 ];
