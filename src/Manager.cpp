@@ -294,6 +294,7 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
     } while (current != src);
 
     backtrack = convertBacktrack(result);
+    result.push_back(source);
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
@@ -391,7 +392,6 @@ std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cos
     duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
     return res;
 }
-
 
 
 void Manager::resetGraph() {
