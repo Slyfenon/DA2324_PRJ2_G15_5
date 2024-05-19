@@ -26,7 +26,6 @@ public:
      * @param graph Graph to store the read data.
      * @param graphNumber Number of the graph to be read.
      */
-    void readRealGraph(Graph *graph, std::string &graphNumber);
     void readRealGraph(Graph *graph, const std::string &graphNumber);
 };
 
