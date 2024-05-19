@@ -113,7 +113,7 @@ std::vector<int> Manager::backtracking(long &duration, double &cost) {
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     tsp_backtracking(path, bestPath, minCost, 0.0);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
     cost = minCost;
     return bestPath;
 }
@@ -282,7 +282,7 @@ std::vector<int> Manager::realWorldHeuristic(int source, long &duration, double 
         if (!shortest) {
             result.clear();
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-            duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+            duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
             cost = 0;
             break;
         }
@@ -392,99 +392,7 @@ std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cos
     return res;
 }
 
-Vertex* Manager::findFarthestVertex(Vertex* start) {
-    int res;
-    double max = 0;
-    for (auto e : start->getAdj()) {
-        if (e->getWeight() > max && !graph->findVertex(e->getDest())->isVisited()) {
-            max = e->getWeight();
-            res = e->getDest();
-        }
-    }
-    if (max == 0) {
-        for (auto v : graph->getVertexSet()) {
-            if (!v.second->isVisited()) {
-                double d = haversineDistance(start, v.second);
-                if (d > max) {
-                    max = d;
-                    res = v.second->getId();
-                }
-            }
-        }
-    }
-    return graph->findVertex(res);
-}
 
-Edge* Manager::findEdge(Vertex* start, Vertex* end) {
-    for (auto e : start->getAdj()) {
-        if (e->getDest() == end->getId()) {
-            return e;
-        }
-    }
-    return graph->addEdge(start->getId(), end->getId(), haversineDistance(start, end));
-}
-
-std::vector<int> Manager::otherHeuristic(int source, long &duration, double &cost) {
-    std::vector<int> res = {};
-    for (auto vertex : graph->getVertexSet()) {
-        vertex.second->setVisited(false);
-        for (Edge* edge : vertex.second->getAdj()) {
-            edge->setProcessed(false);
-        }
-    }
-
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-
-    Vertex* src = graph->findVertex(source);
-    src->setVisited(true);
-
-    Vertex* w = findFarthestVertex(src);
-    src->setPath(findEdge(src, w));
-    w->setPath(findEdge(w, src));
-
-    w->setVisited(true);
-
-    int cnt = 2;
-    while (cnt != graph->getVertexSet().size()){
-        cnt++;
-        w = findFarthestVertex(w);
-
-        int min = INT_MAX;
-        Vertex* prec = nullptr;
-        Vertex* current = src;
-        do {
-            auto e1 = findEdge(current, w);
-            auto e2 = findEdge(w, graph->findVertex(current->getPath()->getDest()));
-
-            double cena = e1->getWeight() + e2->getWeight() - current->getPath()->getWeight();
-            if (cena < min) {
-                min = cena;
-                prec = current;
-            }
-            current = graph->findVertex(current->getPath()->getDest());
-            if (min < current->getPath()->getWeight() * 0.15) break;
-        } while (current->getId() != source);
-
-        Edge* oldTour = prec->getPath();
-        prec->setPath(findEdge(prec, w));
-        w->setPath(findEdge(w, graph->findVertex(oldTour->getDest())));
-
-        w->setVisited(true);
-    }
-
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-
-    Vertex* current = src;
-    cost = 0;
-    do {
-        res.push_back(current->getId());
-        cost += current->getPath()->getWeight();
-        current = graph->findVertex(current->getPath()->getDest());
-    } while (current->getId() != source);
-
-    duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
-    return res;
-}
 
 void Manager::resetGraph() {
     delete this->graph;
@@ -675,7 +583,7 @@ std::vector<int> Manager::christofidesTSP(long &duration, double &cost, int sour
         result = shortenToHamiltonianCircuit(eulerianCircuit);
 
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+        duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin).count();
 
         // Step 8: Calculate cost
         cost = 0;

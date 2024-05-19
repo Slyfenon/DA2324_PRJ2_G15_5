@@ -22,9 +22,17 @@ class Vertex {
         friend class MutablePriorityQueue<Vertex>;
 
     public:
-
+        /**
+         * @brief Vertex constructor.
+         * @param id Id of the vertex.
+         */
         Vertex(const int& id);
 
+        /**
+         * @brief Compares two vertexes by their distance.
+         * @param vertex Vertex to be compared.
+         * @return True if the distance of the caller is less than the distance of the vertex, false otherwise.
+         */
         bool operator<(Vertex & vertex) const; // // required by MutablePriorityQueue
 
         /**

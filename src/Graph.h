@@ -25,6 +25,10 @@ public:
      */
     Vertex* findVertex(const int &id) const;
 
+    /**
+     * Getter for the number of vertexes in the vertex set.
+     * @return
+     */
     int getNumberOfEdges() const;
 
 
@@ -59,7 +63,10 @@ public:
      */
     std::unordered_map<int, Vertex *> getVertexSet() const;
 
-
+    /**
+     * Setter for the VertexSet.
+     * @param v Vector of Vertexes to be set as the new VertexSet.
+     */
     void setVertexSet(std::unordered_map<int, Vertex*> &v);
 
     /**
