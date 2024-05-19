@@ -15,25 +15,45 @@
 \DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ *graph\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classGraph}{Graph}}();}
 \DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classParser}{Parser}}\ *parser;}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ *findShortestEdge(\mbox{\hyperlink{classVertex}{Vertex}}\ *vertex,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *src,\ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{final});}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}*\ getGraph()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ loadToyGraph(\textcolor{keywordtype}{int}\ option);}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ tsp\_backtracking(std::vector<int>\ \&path,\ std::vector<int>\ \&bestPath,\ \textcolor{keywordtype}{double}\ \&minCost,\ \textcolor{keywordtype}{double}\ sumCost);}
-\DoxyCodeLine{00020\ \ \ \ \ std::vector<int>\ backtracking(\textcolor{keywordtype}{long}\ \&duration,\ \textcolor{keywordtype}{double}\ \&cost);}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ triangularInequality();}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ preOrderWalk(std::vector<Edge*>\ MST,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *v,\ std::vector<Vertex*>\ \&preOrder);}
-\DoxyCodeLine{00023\ \ \ \ \ std::vector<Edge\ *>\ primMST();}
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ loadExtraGraph(\textcolor{keywordtype}{int}\ option);}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ loadRealGraph(\textcolor{keywordtype}{int}\ option);}
-\DoxyCodeLine{00026\ \ \ \ \ std::vector<int>\ realWorldHeuristic(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{long}\ \&duration,\ \textcolor{keywordtype}{double}\ \&cost);}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ resetGraph();}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ validateNodeNumber(\textcolor{keyword}{const}\ std::string\ \&option);}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ validateVertex(\textcolor{keyword}{const}\ std::string\ \&option);}
-\DoxyCodeLine{00032\ \};}
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DA\_PROJ2\_MANAGER\_H}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classManager_a1fe26b5dde160291bf67b4df53e49fe3}{loadToyGraph}}(\textcolor{keywordtype}{int}\ option);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classManager_a7419ecbfd86d5993c6a8074e380abe73}{tsp\_backtracking}}(std::vector<int>\ \&path,\ std::vector<int>\ \&bestPath,\ \textcolor{keywordtype}{double}\ \&minCost,\ \textcolor{keywordtype}{double}\ currentCost);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classManager_a64e0a1092615115c5db15b0f340f265d}{backtracking}}(\textcolor{keywordtype}{long}\ \&duration,\ \textcolor{keywordtype}{double}\ \&cost);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classManager_a95b9cc1d3092ea830c2bf744218b730e}{preOrderWalk}}(std::vector<Edge*>\ MST,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *v,\ std::vector<Vertex*>\ \&preOrder);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<Edge\ *>\ \mbox{\hyperlink{classManager_a01f9b3a275e7b0c450cb9f014be8a61b}{primMST}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classManager_aa1b324748a1e8e1d47184bf9614dd769}{loadExtraGraph}}(\textcolor{keywordtype}{int}\ option);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classManager_a56e2ff5b677ff7cc3ae203067512bec5}{loadRealGraph}}(\textcolor{keywordtype}{int}\ option);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00079\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classManager_a57ed468241c09f8fee2cd296893bd064}{realWorldHeuristic}}(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{long}\ \&duration,\ \textcolor{keywordtype}{double}\ \&cost);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ *\mbox{\hyperlink{classManager_a71db9ab5f24f9186c480dfb146787dc2}{findShortestEdge}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *vertex,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *src,\ \textcolor{keywordtype}{bool}\ \textcolor{keyword}{final});}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}*\ \mbox{\hyperlink{classManager_a413e6d91bde804e5fab43dc9da5f482b}{findFarthestVertex}}(\mbox{\hyperlink{classVertex}{Vertex}}*\ start);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}*\ \mbox{\hyperlink{classManager_a895364f44bb327454c12478b1a3eac61}{findEdge}}(\mbox{\hyperlink{classVertex}{Vertex}}*\ start,\ \mbox{\hyperlink{classVertex}{Vertex}}*\ end);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00116\ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classManager_a35a70352d9a3f8ce0830f97547b3a1f9}{otherHeuristic}}(\textcolor{keywordtype}{int}\ source,\ \textcolor{keywordtype}{long}\ \&duration,\ \textcolor{keywordtype}{double}\ \&cost);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classManager_a6b28e6723d6c47a59bae1a714fc21f05}{resetGraph}}();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classManager_a7890be13859f359d0c311060890cea68}{validateNodeNumber}}(\textcolor{keyword}{const}\ std::string\ \&option);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classManager_a85e708d529508e4c6b3e892361464116}{validateVertex}}(\textcolor{keyword}{const}\ std::string\ \&option);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classManager_afbe3c3ef90f9789462976774457cced4}{triangularInequality}}(\textcolor{keywordtype}{long}\ \&duration,\ \textcolor{keywordtype}{double}\ \&cost);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classManager_a5586cb2a3935dfa67cb3b45c4e6de7bf}{checkConnected}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *v1,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *v2);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classManager_aba8e3aad02018f091d7b62fe0514c377}{haversineDistance}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *v1,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *v2);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classManager_af3281349d86dcc63937346805a867202}{calculateCost}}(std::vector<Vertex\ *>\ \&preorder);}
+\DoxyCodeLine{00173\ \};}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DA\_PROJ2\_MANAGER\_H}}
 
 \end{DoxyCode}

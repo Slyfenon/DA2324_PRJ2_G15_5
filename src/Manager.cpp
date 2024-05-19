@@ -60,13 +60,6 @@ void Manager::tsp_backtracking(std::vector<int> &path, std::vector<int> &bestPat
     }
 }
 
-
-
-
-Graph *Manager::getGraph() const {
-    return graph;
-}
-
 void Manager::loadToyGraph(int option) {
     switch (option) {
         case 1:
@@ -124,7 +117,6 @@ std::vector<int> Manager::backtracking(long &duration, double &cost) {
     return bestPath;
 }
 
-
 void Manager::preOrderWalk(std::vector<Edge*> MST, Vertex* v, std::vector<Vertex*> &preOrder) {
     v->setVisited(true);
     preOrder.push_back(v);
@@ -142,8 +134,6 @@ void Manager::preOrderWalk(std::vector<Edge*> MST, Vertex* v, std::vector<Vertex
         }
     }
 }
-
-
 
 std::vector<Edge*> Manager::primMST() {
     std::vector<Edge*> MST;
@@ -185,7 +175,6 @@ std::vector<Edge*> Manager::primMST() {
         }
     }
     return MST;
-
 }
 
 void Manager::triangularInequality(long &duration, double &cost) {
